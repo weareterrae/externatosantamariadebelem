@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Externato Santa Maria de Belém — Um Lugar para a Criatividade | Jardim de Infância e 1.º Ciclo no Restelo, Lisboa</title>
+<meta name="description" content="Escola privada no Restelo, Lisboa, desde 1959. Jardim de Infância, 1.º Ciclo e ATL com turmas até 16 alunos, gabinete de psicopedagogia e o método Aprender Mexendo. Marque a sua visita.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23FDFBF4'/%3E%3Cpath d='M16 5v13' stroke='%231E6E42' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M16 5c6 3 8 8 8 12H16z' fill='%2300A7E1'/%3E%3Cpath d='M16 9c-4 2-5 5.5-5 8h5z' fill='%23E5007E'/%3E%3Cpath d='M5 20h22l-3 6H8z' fill='%23FFD500' stroke='%231E6E42' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FDFBF4;
+    --ink: #26332B;
+    --ink-soft: #5A685E;
+    --verde: #1E6E42;
+    --verde-vivo: #43B02A;
+    --rosa: #E5007E;
+    --azul: #00A7E1;
+    --amarelo: #FFD500;
+    --card-border: #E9E4D6;
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(38, 51, 43, 0.07);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Nunito", "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  h1, h2, h3 {
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    line-height: 1.15;
+    color: var(--verde);
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(38px, 6vw, 60px); font-weight: 700; }
+  h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; }
+  h3 { font-size: 21px; font-weight: 600; }
+  p { margin: 0 0 16px; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--rosa);
+    margin-bottom: 10px;
+  }
+  section { padding: 72px 0; }
+  .center { text-align: center; }
+  .lead { font-size: 19px; color: var(--ink-soft); max-width: 62ch; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+
+  /* ---------- header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(253, 251, 244, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .nav { display: flex; align-items: center; gap: 28px; padding: 12px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+  .brand img { height: 52px; width: auto; }
+  nav.menu { display: flex; gap: 22px; }
+  nav.menu a {
+    text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15.5px;
+    border-bottom: 3px solid transparent; padding: 4px 0;
+  }
+  nav.menu a:hover { border-bottom-color: var(--amarelo); }
+  .btn {
+    display: inline-block; text-decoration: none; text-align: center;
+    font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 17px;
+    background: var(--verde); color: #fff;
+    padding: 12px 26px; border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover { background: #185936; transform: translateY(-2px); }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+  .btn.ghost {
+    background: transparent; color: var(--verde);
+    border: 2px solid var(--verde); box-shadow: none;
+  }
+  .btn.ghost:hover { background: rgba(30, 110, 66, 0.08); }
+  @media (max-width: 860px) { nav.menu { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 84px 0 64px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero .since {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--card-border); border-radius: 999px;
+    padding: 6px 16px; font-size: 14px; font-weight: 800; color: var(--verde);
+    margin-bottom: 18px;
+  }
+  .hero .since .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--amarelo); }
+  .hero h1 .risco { position: relative; white-space: nowrap; }
+  .hero h1 .risco svg { position: absolute; left: 0; bottom: -6px; width: 100%; height: 14px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+  .hero-ilu { position: relative; }
+  .hero-ilu img { width: 100%; border-radius: 24px; }
+  .confete { position: absolute; border-radius: 50%; }
+  .confete.c1 { width: 26px; height: 26px; background: var(--rosa); top: -14px; left: -12px; }
+  .confete.c2 { width: 16px; height: 16px; background: var(--azul); bottom: 34px; left: -26px; }
+  .confete.c3 { width: 20px; height: 20px; background: var(--amarelo); top: 40px; right: -14px; }
+
+  /* ---------- barra de factos ---------- */
+  .factos { background: var(--verde); color: #fff; padding: 26px 0; }
+  .factos .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  .facto { display: flex; align-items: baseline; gap: 10px; justify-content: center; }
+  .facto .n { font-family: "Baloo 2", sans-serif; font-size: 30px; font-weight: 700; color: var(--amarelo); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .facto .t { font-size: 15px; font-weight: 700; opacity: 0.95; }
+
+  /* ---------- porquê ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 40px; }
+  .card {
+    background: #fff; border: 1px solid var(--card-border); border-radius: var(--radius);
+    padding: 26px 26px 22px; box-shadow: var(--shadow);
+  }
+  .card .pico {
+    width: 46px; height: 46px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 14px;
+  }
+  .pico svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .pico.verde { background: rgba(67, 176, 42, 0.14); color: #2E8B3F; }
+  .pico.rosa { background: rgba(229, 0, 126, 0.10); color: var(--rosa); }
+  .pico.azul { background: rgba(0, 167, 225, 0.12); color: #0887B5; }
+  .pico.amarelo { background: rgba(255, 213, 0, 0.22); color: #B8930A; }
+
+  /* ---------- animações de entrada ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ---------- onda ---------- */
+  .onda { display: block; height: 54px; margin-bottom: -1px; overflow: hidden; }
+  .onda svg { display: block; width: 200%; height: 100%; }
+
+  /* ---------- vida (micro-interações e ambiente) ---------- */
+  .card, .prova-card, .ilu-strip figure { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .card:hover, .prova-card:hover, .ilu-strip figure:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(38, 51, 43, 0.13); }
+  .card-ilu { overflow: hidden; }
+  .card-ilu img, .ilu-strip img { transition: transform 0.5s ease; }
+  .card:hover .card-ilu img, .ilu-strip figure:hover img { transform: scale(1.06); }
+  .chip { transition: transform 0.2s ease, border-color 0.2s ease; }
+  .chip:hover { transform: translateY(-3px); border-color: var(--rosa); }
+  .pico svg { transform-origin: center; }
+
+  .rota { position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; pointer-events: none;
+    background: linear-gradient(to right, var(--azul) var(--p, 0%), transparent var(--p, 0%)); opacity: 0.55; }
+  .barquinho { position: absolute; bottom: 0; left: 2px; width: 30px; pointer-events: auto; cursor: pointer; will-change: transform; }
+  .barquinho svg { display: block; width: 100%; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes surgir { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    .hero .since { animation: surgir 0.6s ease 0.1s both; }
+    .hero h1 { animation: surgir 0.6s ease 0.22s both; }
+    .hero .lead { animation: surgir 0.6s ease 0.36s both; }
+    .hero-ctas { animation: surgir 0.6s ease 0.5s both; }
+    .hero-ilu { animation: surgir 0.7s ease 0.6s both; }
+
+    @keyframes desenhar { to { stroke-dashoffset: 0; } }
+    .hero h1 .risco svg path { stroke-dasharray: 230; stroke-dashoffset: 230; animation: desenhar 0.9s ease 1s forwards; }
+
+    @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .confete { animation: flutuar 5s ease-in-out infinite; }
+    .confete.c2 { animation-delay: 1.3s; } .confete.c3 { animation-delay: 2.4s; }
+    .hero-ilu img { animation: flutuar 8s ease-in-out infinite 1.4s; }
+
+    @keyframes ondular { to { transform: translateX(-50%); } }
+    .onda svg { animation: ondular 9s linear infinite; }
+
+    @keyframes abanar { 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
+    .card:hover .pico svg { animation: abanar 0.5s ease; }
+
+    @keyframes pulso { 0%, 100% { box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28); } 50% { box-shadow: 0 6px 26px rgba(30, 110, 66, 0.5); } }
+    .nav > .btn { animation: pulso 3.6s ease-in-out infinite 2s; }
+
+    @keyframes balancar { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+    .barquinho svg { animation: balancar 2.4s ease-in-out infinite; }
+  }
+  .card h3 { margin-bottom: 6px; }
+  .card p { font-size: 15.5px; color: var(--ink-soft); margin-bottom: 0; }
+
+  /* ---------- método ---------- */
+  .metodo { background: #fff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+  .metodo-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .metodo-grid { grid-template-columns: 1fr; } }
+  .metodo-foto { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); border: 6px solid var(--paper); }
+  .metodo-foto img { width: 100%; height: 340px; object-fit: cover; }
+  .pilares { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
+  .pilares li { display: flex; gap: 14px; align-items: flex-start; }
+  .pilares .num {
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 18px;
+    background: var(--amarelo); color: var(--ink);
+    width: 34px; height: 34px; border-radius: 50%; flex: 0 0 34px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pilares strong { display: block; }
+  .pilares span { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- um dia na escola ---------- */
+  .dia { background: #fff; border-top: 1px solid var(--card-border); }
+  .dia-strip {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 236px; gap: 18px;
+    overflow-x: auto; padding: 34px 6px 20px; scroll-snap-type: x proximity;
+  }
+  .dia-card {
+    scroll-snap-align: start; background: var(--paper); border: 1px solid var(--card-border);
+    border-radius: 16px; overflow: hidden; position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .dia-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(38, 51, 43, 0.12); }
+  .dia-card img { width: 100%; height: 140px; object-fit: cover; }
+  .dia-card .hora {
+    position: absolute; top: 10px; left: 10px;
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 15px;
+    background: var(--amarelo); color: var(--ink); border-radius: 999px; padding: 2px 12px;
+  }
+  .dia-card:nth-child(2) .hora { background: var(--azul); color: #fff; }
+  .dia-card:nth-child(3) .hora { background: var(--rosa); color: #fff; }
+  .dia-card:nth-child(4) .hora { background: var(--verde-vivo); color: #fff; }
+  .dia-card:nth-child(5) .hora { background: var(--amarelo); }
+  .dia-card:nth-child(6) .hora { background: var(--azul); color: #fff; }
+  .dia-card:nth-child(7) .hora { background: var(--rosa); color: #fff; }
+  .dia-card .corpo { padding: 14px 16px 16px; }
+  .dia-card h3 { font-size: 17px; margin: 0 0 4px; }
+  .dia-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .dia-dica { font-size: 13.5px; color: var(--ink-soft); text-align: center; }
+
+  /* ---------- mapa do bairro ---------- */
+  .bairro-mapa { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--card-border); }
+  .bairro-mapa img { width: 100%; display: block; }
+  .bairro-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+  .bairro-chips .chip strong { color: var(--verde); }
+
+  /* ---------- simulador ---------- */
+  .simulador {
+    margin-top: 30px; background: var(--paper); border: 1px solid var(--card-border);
+    border-radius: 22px; padding: 30px 32px;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; align-items: center;
+  }
+  @media (max-width: 860px) { .simulador { grid-template-columns: 1fr; } }
+  .simulador h3 { margin-top: 0; }
+  .sim-controlos { display: grid; gap: 14px; }
+  .sim-total {
+    background: #fff; border: 1px solid var(--card-border); border-radius: 18px;
+    padding: 24px 26px; text-align: center;
+  }
+  .sim-total .rotulo { font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+  .sim-total .valor { font-family: "Baloo 2", sans-serif; font-size: 52px; font-weight: 700; color: var(--verde); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .sim-total .valor small { font-size: 20px; }
+  .sim-total .detalhe { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* ---------- FAQ Avó Maria ---------- */
+  .faq { background: #fff; border-top: 1px solid var(--card-border); }
+  .faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: start; margin-top: 40px; }
+  @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+  .avo-card { text-align: center; position: sticky; top: 96px; }
+  .avo-card img { width: 100%; max-width: 340px; border-radius: 24px; }
+  .avo-fala {
+    font-family: "Baloo 2", sans-serif; font-size: 19px; color: var(--verde);
+    max-width: 34ch; margin: 14px auto 0;
+  }
+  .faq-lista details {
+    background: var(--paper); border: 1px solid var(--card-border); border-radius: 14px;
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .faq-lista summary {
+    cursor: pointer; list-style: none; padding: 16px 20px;
+    font-weight: 800; font-size: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .faq-lista summary::-webkit-details-marker { display: none; }
+  .faq-lista summary::after {
+    content: "+"; font-family: "Baloo 2", sans-serif; font-size: 24px; color: var(--rosa);
+    transition: transform 0.25s ease; flex: 0 0 auto;
+  }
+  .faq-lista details[open] summary::after { transform: rotate(45deg); }
+  .faq-lista details p { padding: 0 20px 16px; margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+  .conselho-avo {
+    display: flex; gap: 14px; align-items: center;
+    background: rgba(255, 213, 0, 0.12); border: 1px solid #EAD98A; border-radius: 14px;
+    padding: 14px 18px; margin-top: 24px; font-size: 15px; text-align: left;
+  }
+  .conselho-avo img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: center 18%; flex: 0 0 52px; }
+  .conselho-avo strong { color: var(--verde); }
+
+  /* ---------- caderno das descobertas ---------- */
+  .caderno .card { text-align: left; }
+  .caderno .mes {
+    display: inline-block; font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 14px;
+    background: var(--verde); color: #fff; border-radius: 999px; padding: 2px 14px; margin-bottom: 8px;
+  }
+  .caderno .card:nth-child(2) .mes { background: var(--rosa); }
+  .caderno .card:nth-child(3) .mes { background: var(--azul); }
+
+  /* ---------- equipa ---------- */
+  .equipa-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; margin-top: 40px; }
+  @media (max-width: 860px) { .equipa-grid { grid-template-columns: 1fr; } }
+  .equipa-grid img { width: 100%; border-radius: 24px; }
+  .equipa-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .equipa-lista li { display: flex; gap: 12px; align-items: baseline; font-size: 16px; }
+  .equipa-lista li::before { content: "●"; font-size: 11px; color: var(--verde-vivo); }
+  .equipa-lista li:nth-child(2)::before { color: var(--azul); }
+  .equipa-lista li:nth-child(3)::before { color: var(--rosa); }
+  .equipa-lista li:nth-child(4)::before { color: var(--amarelo); }
+  .equipa-lista strong { display: block; }
+  .equipa-lista span { color: var(--ink-soft); font-size: 14.5px; }
+
+  /* ---------- chat Avó Maria ---------- */
+  .avo-botao {
+    position: fixed; right: 20px; bottom: 20px; z-index: 90;
+    width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--verde);
+    background: #fff; cursor: pointer; padding: 0; overflow: hidden;
+    box-shadow: 0 8px 26px rgba(38, 51, 43, 0.25);
+    transition: transform 0.2s ease;
+  }
+  .avo-botao:hover { transform: scale(1.08); }
+  .avo-botao img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; }
+  .avo-chat {
+    position: fixed; right: 20px; bottom: 96px; z-index: 91;
+    width: min(360px, calc(100vw - 40px)); max-height: min(520px, calc(100vh - 130px));
+    background: #fff; border: 1px solid var(--card-border); border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(38, 51, 43, 0.28);
+    display: none; flex-direction: column; overflow: hidden;
+  }
+  .avo-chat.aberto { display: flex; }
+  .avo-chat-topo { background: var(--verde); color: #fff; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+  .avo-chat-topo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center 12%; border: 2px solid #fff; }
+  .avo-chat-topo .titulo { font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.2; }
+  .avo-chat-topo .sub { font-size: 12px; opacity: 0.85; }
+  .avo-chat-topo button { margin-left: auto; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; line-height: 1; }
+  .avo-msgs { padding: 16px; overflow-y: auto; display: grid; gap: 10px; flex: 1; }
+  .avo-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 14.5px; line-height: 1.55; }
+  .avo-msg.dela { background: var(--paper); border: 1px solid var(--card-border); border-bottom-left-radius: 4px; justify-self: start; }
+  .avo-msg.minha { background: var(--verde); color: #fff; border-bottom-right-radius: 4px; justify-self: end; }
+  .avo-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 10px; }
+  .avo-chips button {
+    font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    background: #fff; border: 1.5px solid var(--card-border); border-radius: 999px; padding: 5px 12px;
+  }
+  .avo-chips button:hover { border-color: var(--rosa); }
+  .avo-entrada { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--card-border); }
+  .avo-entrada input { flex: 1; font: inherit; font-size: 14.5px; border: 1.5px solid var(--card-border); border-radius: 999px; padding: 9px 16px; }
+  .avo-entrada input:focus { outline: none; border-color: var(--azul); }
+  .avo-entrada button {
+    font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 15px; cursor: pointer;
+    background: var(--verde); color: #fff; border: none; border-radius: 999px; padding: 9px 18px;
+  }
+  .avo-aviso { font-size: 11px; color: var(--ink-soft); text-align: center; padding: 0 16px 10px; }
+
+  .vagas-pill {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+    background: rgba(255, 213, 0, 0.16); border: 1.5px solid var(--amarelo); border-radius: 999px;
+    padding: 7px 18px; font-size: 14.5px; font-weight: 800;
+  }
+  .vagas-pill .ponto { width: 9px; height: 9px; border-radius: 50%; background: var(--rosa); }
+
+  .confete-fx { position: fixed; top: 58px; width: 10px; height: 10px; border-radius: 2px; z-index: 99; pointer-events: none; }
+  @keyframes cair { from { transform: translateY(0) rotate(0deg); opacity: 1; } to { transform: translateY(92vh) rotate(560deg); opacity: 0; } }
+
+  /* ---------- valências ---------- */
+  .valencias .cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card-ilu { margin: -26px -26px 18px; border-bottom: 1px solid var(--card-border); }
+  .card-ilu img { width: 100%; height: 170px; object-fit: cover; }
+  .valencias .card { border-top: 5px solid var(--verde-vivo); }
+  .valencias .card:nth-child(2) { border-top-color: var(--azul); }
+  .valencias .card:nth-child(3) { border-top-color: var(--amarelo); }
+  .valencias .card:nth-child(4) { border-top-color: var(--rosa); }
+  .valencias .idade { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .valencias ul { padding-left: 18px; margin: 10px 0 0; font-size: 15.5px; color: var(--ink-soft); }
+  .valencias li { margin-bottom: 6px; }
+  .salas-ji { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+  .salas-ji li { display: flex; gap: 10px; align-items: center; margin: 0; }
+  .salas-ji .bolha { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; background: rgba(0,167,225,.12);
+    display: flex; align-items: center; justify-content: center; color: #0887B5; }
+  .salas-ji .bolha svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+  .salas-ji li:nth-child(2) .bolha { background: rgba(229,0,126,.10); color: var(--rosa); }
+  .salas-ji li:nth-child(3) .bolha { background: rgba(255,213,0,.20); color: #B8930A; }
+  .salas-ji li:nth-child(3) .bolha svg { fill: currentColor; }
+  .salas-ji strong { display: block; font-size: 15px; color: var(--ink); }
+  .salas-ji span:last-child { font-size: 13px; color: var(--ink-soft); }
+  .salas-nota { font-size: 14px; color: var(--ink-soft); margin: 12px 0 0; }
+
+  /* ---------- atividades ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .chip {
+    background: #fff; border: 1.5px solid var(--card-border); border-radius: 999px;
+    padding: 8px 18px; font-weight: 700; font-size: 15px;
+  }
+  .chip.destaque { border-color: var(--verde-vivo); }
+  .atividades h3 { margin-top: 34px; }
+  .nota-parceria { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+  .ilu-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  @media (max-width: 860px) { .ilu-strip { grid-template-columns: 1fr; } }
+  .ilu-strip figure { margin: 0; background: #fff; border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .ilu-strip img { width: 100%; height: 190px; object-fit: cover; }
+  .ilu-strip figcaption { padding: 10px 16px 12px; font-weight: 700; font-size: 14.5px; text-align: center; color: var(--verde); }
+
+  /* ---------- ATL ---------- */
+  .atl .cards { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: start; }
+  .atl .card { padding-bottom: 26px; }
+  .atl .epoca { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .atl table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 12px; }
+  .atl td { padding: 7px 0; border-bottom: 1px dashed var(--card-border); }
+  .atl tr:last-child td { border-bottom: none; }
+  .atl td:last-child { text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .atl .praia {
+    margin-top: 14px; background: rgba(0, 167, 225, 0.10); border-radius: 12px; padding: 12px 16px; font-size: 14.5px;
+  }
+  .atl .praia strong { color: var(--azul); }
+  .atl .mini-obs { font-size: 13px; color: var(--ink-soft); margin: 12px 0 0; }
+  .atl .brevemente { font-size: 14.5px; color: var(--ink-soft); font-style: italic; margin-top: 12px; }
+  .nota-externos {
+    margin-top: 26px; background: #fff; border: 1px solid var(--card-border);
+    border-radius: 14px; padding: 16px 22px; font-size: 15px; box-shadow: var(--shadow);
+  }
+
+  /* ---------- história ---------- */
+  .historia { background: #fff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+  .linha { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 22px; }
+  .linha li { border-top: 4px solid var(--amarelo); padding-top: 12px; }
+  .linha li:nth-child(2) { border-top-color: var(--azul); }
+  .linha li:nth-child(3) { border-top-color: var(--rosa); }
+  .linha li:nth-child(4) { border-top-color: var(--verde-vivo); }
+  .linha .ano { font-family: "Baloo 2", sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); }
+  .linha p { font-size: 15px; color: var(--ink-soft); margin: 4px 0 0; }
+  .mural { margin-top: 48px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+  .mural img { width: 100%; height: 220px; object-fit: cover; }
+
+  /* ---------- direção ---------- */
+  .direcao-card {
+    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 0;
+    background: #fff; border: 1px solid var(--card-border); border-radius: 22px;
+    overflow: hidden; box-shadow: var(--shadow); margin-top: 36px;
+  }
+  @media (max-width: 860px) { .direcao-card { grid-template-columns: 1fr; } }
+  .direcao-foto img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; object-position: center 20%; }
+  .direcao-texto { padding: 36px 40px; align-self: center; }
+  @media (max-width: 860px) { .direcao-texto { padding: 26px 24px; } }
+  .quote {
+    font-size: 18px; line-height: 1.7; color: var(--ink);
+    border-left: 4px solid var(--amarelo); padding-left: 18px; margin-bottom: 18px;
+  }
+  .quote-nota { font-weight: 700; color: var(--verde); }
+  .assinatura { font-size: 16px; margin-bottom: 6px; }
+  .a-validar {
+    display: inline-block; font-size: 13px; color: var(--ink-soft);
+    background: rgba(255, 213, 0, 0.14); border-radius: 8px; padding: 4px 12px; margin: 8px 0 0;
+  }
+
+  /* ---------- placeholders de conteúdo ---------- */
+  .placeholder {
+    border: 2px dashed #C9C2AC; border-radius: var(--radius);
+    background: rgba(255, 213, 0, 0.06);
+    padding: 26px; color: var(--ink-soft); font-size: 15.5px;
+  }
+  .placeholder .tag {
+    display: inline-block; background: var(--amarelo); color: var(--ink);
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 6px; padding: 3px 10px; margin-bottom: 12px;
+  }
+  .duo-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
+  @media (max-width: 860px) { .duo-col { grid-template-columns: 1fr; } }
+
+  /* ---------- prova dos pais ---------- */
+  .prova-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 40px; }
+  .prova-card {
+    margin: 0; background: #fff; border: 1px solid var(--card-border); border-radius: var(--radius);
+    padding: 26px 26px 20px; box-shadow: var(--shadow); position: relative;
+    border-top: 5px solid var(--amarelo);
+  }
+  .prova-card:nth-child(2) { border-top-color: var(--azul); }
+  .prova-card:nth-child(3) { border-top-color: var(--rosa); }
+  .prova-card:nth-child(4) { border-top-color: var(--verde-vivo); }
+  .prova-card:nth-child(5) { border-top-color: var(--amarelo); }
+  .prova-card::before {
+    content: "\201C"; font-family: "Baloo 2", serif; font-size: 54px; line-height: 1;
+    color: var(--card-border); position: absolute; top: 10px; right: 20px;
+  }
+  .prova-card p { font-size: 15.5px; line-height: 1.7; margin-bottom: 14px; }
+  .prova-card footer { font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- preçário ---------- */
+  .precario { background: #fff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+  .precario-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; margin-top: 40px; align-items: start; }
+  @media (max-width: 860px) { .precario-grid { grid-template-columns: 1fr; } }
+  .preco-hero {
+    background: var(--verde); color: #fff; border-radius: 22px; padding: 34px 34px 30px;
+    box-shadow: 0 10px 30px rgba(30, 110, 66, 0.25);
+  }
+  .preco-hero .rotulo { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
+  .preco-hero .valor { font-family: "Baloo 2", sans-serif; font-size: 64px; font-weight: 700; line-height: 1.05; color: var(--amarelo); }
+  .preco-hero .valor small { font-size: 22px; font-weight: 600; color: #fff; }
+  .preco-hero .inclui { margin: 14px 0 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+  .preco-hero .inclui li { display: flex; gap: 9px; align-items: baseline; }
+  .preco-hero .inclui li::before { content: "✓"; color: var(--amarelo); font-weight: 800; }
+  .preco-hero .descontos { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.25); font-size: 14px; opacity: 0.95; }
+  .preco-tabelas { display: grid; gap: 18px; }
+  .preco-grupo { background: var(--paper); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px 24px; }
+  .preco-grupo h3 { margin: 0 0 10px; font-size: 17px; }
+  .preco-grupo table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .preco-grupo td { padding: 8px 0; border-bottom: 1px dashed var(--card-border); }
+  .preco-grupo tr:last-child td { border-bottom: none; }
+  .preco-grupo td:last-child { text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .preco-grupo .obs { font-size: 13px; color: var(--ink-soft); margin: 8px 0 0; }
+  .nota-atuais {
+    margin-top: 26px; background: rgba(255, 213, 0, 0.12); border: 1px solid #EAD98A;
+    border-radius: 14px; padding: 16px 22px; font-size: 15px; max-width: none;
+  }
+
+  /* ---------- visita ---------- */
+  .visita { background: var(--verde); color: #fff; }
+  .visita h2 { color: #fff; }
+  .visita .lead { color: rgba(255, 255, 255, 0.85); }
+  .visita-box {
+    background: #fff; color: var(--ink); border-radius: 22px;
+    padding: 36px; margin-top: 36px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+    display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 36px; align-items: start;
+  }
+  .visita-ilu img { width: 100%; border-radius: 14px; }
+  @media (max-width: 860px) { .visita-box { grid-template-columns: 1fr; } .visita-ilu { max-width: 320px; margin: 0 auto; } }
+  .visita-box ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .visita-box li { display: flex; gap: 10px; align-items: baseline; font-weight: 600; }
+  .visita-box li::before { content: "✓"; color: var(--verde-vivo); font-weight: 800; }
+  .form-info { display: grid; gap: 14px; }
+  .form-linha { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .form-linha { grid-template-columns: 1fr; } }
+  .campo label { display: block; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 5px; }
+  .campo input, .campo select, .campo textarea {
+    width: 100%; font: inherit; color: var(--ink);
+    background: var(--paper); border: 1.5px solid var(--card-border); border-radius: 12px;
+    padding: 11px 14px; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .campo textarea { resize: vertical; min-height: 74px; }
+  .campo input:focus, .campo select:focus, .campo textarea:focus {
+    outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0, 167, 225, 0.18);
+  }
+  .form-info .btn { width: 100%; border: none; cursor: pointer; }
+  .form-nota { font-size: 14px; color: var(--ink-soft); text-align: center; margin: 0; }
+  .form-nota a.tel { color: var(--verde); font-weight: 800; text-decoration: none; }
+  .form-nota.ok { color: var(--verde); font-weight: 700; }
+
+  /* ---------- footer ---------- */
+  body > footer { background: #1C2B22; color: #C9D4CC; padding: 56px 0 32px; font-size: 15px; }
+  body > footer h3 { color: #fff; font-size: 17px; }
+  .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; }
+  body > footer a { color: #A9E5B8; text-decoration: none; }
+  body > footer a:hover { text-decoration: underline; }
+  body > footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .legal { border-top: 1px solid rgba(255, 255, 255, 0.12); margin-top: 40px; padding-top: 20px; font-size: 13px; color: #8FA096; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#topo" aria-label="Externato Santa Maria de Belém — início">
+      <img src="assets/logo-externato-sta-maria-de-belem_vetores.png" alt="Externato Santa Maria de Belém">
+    </a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#escola">A Escola</a>
+      <a href="#metodo">O Método</a>
+      <a href="#valencias">Valências</a>
+      <a href="#atividades">Atividades</a>
+      <a href="#atl">ATL</a>
+      <a href="#historia">História</a>
+      <a href="#precario">Preçário</a>
+      <a href="#faq">Avó Maria</a>
+      <a href="#contactos">Contactos</a>
+      <a href="en.html" title="English">EN</a>
+    </nav>
+    <a class="btn" href="#visita">Marcar visita</a>
+  </div>
+  <div class="rota" aria-hidden="true"></div>
+  <div class="barquinho" aria-hidden="true">
+    <svg viewBox="0 0 32 26">
+      <path d="M15 3v13" stroke="#1E6E42" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M15 3c6 3 8 8 8 12H15z" fill="#00A7E1"/>
+      <path d="M15 7c-4 2-5 5.5-5 8h5z" fill="#E5007E"/>
+      <path d="M4 17.5h24l-3.2 6H7.2z" fill="#FFD500" stroke="#1E6E42" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="since"><span class="dot"></span> Restelo, Lisboa &middot; desde 1959</span>
+        <h1>Um lugar para a <span class="risco">criatividade<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 Q 50 2 100 8 T 197 6" fill="none" stroke="#FFD500" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
+        <p class="lead">Jardim de Infância e 1.º Ciclo numa escola pequena por escolha: turmas até 16 alunos, um plano individual para cada criança e um bairro inteiro — o de Belém — para explorar.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#visita">Marque a sua visita</a>
+          <a class="btn ghost" href="#metodo">Conheça o método</a>
+        </div>
+        <!-- Atualizar o número de vagas reais antes de publicar -->
+        <p class="vagas-pill"><span class="ponto"></span> Últimas vagas para 2026/27 — turmas de 16, por escolha</p>
+      </div>
+      <div class="hero-ilu">
+        <span class="confete c1"></span><span class="confete c2"></span><span class="confete c3"></span>
+        <img src="assets/ilustracoes/web/ilu-hero.jpg" alt="Ilustração: a escola em Belém com crianças a brincar, a Torre de Belém e o Tejo ao fundo">
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTOS -->
+  <div class="factos" role="list" aria-label="A escola em números">
+    <div class="wrap">
+      <div class="facto" role="listitem"><span class="n" data-conta="16">16</span><span class="t">alunos por sala, no máximo</span></div>
+      <div class="facto" role="listitem"><span class="n">3&ndash;10</span><span class="t">anos, do JI ao 4.º ano</span></div>
+      <div class="facto" role="listitem"><span class="n">7h30&ndash;19h</span><span class="t">aberto 12 meses por ano</span></div>
+      <div class="facto" role="listitem"><span class="n" data-conta="65" data-sufixo="+">65+</span><span class="t">anos a educar em Belém</span></div>
+    </div>
+  </div>
+
+  <!-- PORQUÊ -->
+  <section id="escola" class="center">
+    <div class="wrap">
+      <span class="eyebrow">Porquê esta escola</span>
+      <h2>Pequena por escolha, próxima por natureza</h2>
+      <p class="lead">Aqui ninguém é um número: cada criança tem nome, ritmo e um plano próprio — e uma equipa inteira que a conhece.</p>
+      <div class="cards" style="text-align: left;">
+        <div class="card">
+          <div class="pico verde"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20v-7"/><path d="M12 13C12 9 9 7 5 7c0 4 3 6 7 6z"/><path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z"/></svg></div>
+          <h3>Turmas até 16 alunos</h3>
+          <p>Menos de metade do habitual. É isto que torna possível a atenção individualizada — todos os dias, não só nas reuniões.</p>
+        </div>
+        <div class="card">
+          <div class="pico rosa"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4.5V3h6v1.5"/><path d="M9 10h6M9 14h6M9 17h4"/></svg></div>
+          <h3>Um plano por criança</h3>
+          <p>Cada aluno tem um plano de intervenção individual e personalizado, partilhado com a família ao longo do ano.</p>
+        </div>
+        <div class="card">
+          <div class="pico azul"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.8-7.5-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.5 2.6C19.5 15.2 12 20 12 20z"/></svg></div>
+          <h3>Gabinete de psicopedagogia</h3>
+          <p>Psicólogo, técnico de educação especial e terapeuta da fala dentro de portas — raríssimo numa escola desta dimensão.</p>
+        </div>
+        <div class="card">
+          <div class="pico amarelo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6.5 9.5V19h11V9.5"/><path d="M10 19v-5h4v5"/></svg></div>
+          <h3>Ambiente familiar</h3>
+          <p>Uma casa no Restelo onde o afeto e a confiança vêm primeiro — porque nenhuma criança aprende onde não se sente segura.</p>
+        </div>
+        <div class="card">
+          <div class="pico verde"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+          <h3>Horário amigo das famílias</h3>
+          <p>Das 7h30 às 19h00, 12 meses por ano, com ATL nas pausas letivas. Pensado para pais que trabalham.</p>
+        </div>
+        <div class="card">
+          <div class="pico rosa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10"/><path d="M12 3c4 2.2 5.5 6 5.5 10H12z"/><path d="M4.5 15.5h15L17 20H7z"/></svg></div>
+          <h3>O bairro de Belém</h3>
+          <p>Rio, jardins e museus a minutos da porta. O bairro mais rico de Portugal em património é o prolongamento da nossa sala.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo" class="metodo">
+    <div class="wrap metodo-grid">
+      <div class="metodo-foto">
+        <img src="assets/ilustracoes/web/ilu-metodo.jpg" alt="Ilustração: crianças a construir uma torre de blocos e a observar uma planta com lupa">
+      </div>
+      <div>
+        <span class="eyebrow">O nosso método</span>
+        <h2>Aprender Mexendo</h2>
+        <p class="lead">As crianças não aprendem a olhar — aprendem a fazer. O nosso modelo pedagógico parte da experiência concreta para chegar ao pensamento crítico.</p>
+        <ul class="pilares">
+          <li><span class="num">1</span><div><strong>Experienciar</strong><span>Aprendizagens vividas com as mãos, o corpo e os cinco sentidos — na sala, no jardim e no bairro.</span></div></li>
+          <li><span class="num">2</span><div><strong>Pensar livremente</strong><span>Criar não chega: refletimos e modificamos o que se cria, construindo o pensamento crítico passo a passo.</span></div></li>
+          <li><span class="num">3</span><div><strong>Como pensar, não o que pensar</strong><span>Queremos crianças curiosas, autónomas e com iniciativa — participantes ativas na sua própria aprendizagem.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- UM DIA NA ESCOLA -->
+  <section id="dia" class="dia center">
+    <div class="wrap">
+      <span class="eyebrow">Das 7h30 às 19h00</span>
+      <h2>Um dia na nossa escola</h2>
+      <p class="lead">A pergunta que todos os pais fazem — respondida hora a hora.</p>
+      <div class="dia-strip" style="text-align: left;">
+        <div class="dia-card"><span class="hora">7h30</span><img src="assets/ilustracoes/web/ilu-chegada.jpg" alt="Ilustração: chegada à escola de manhã"><div class="corpo"><h3>A chegada</h3><p>A porta abre cedo. Há colo, bom-dia pelo nome e tempo para acordar devagar.</p></div></div>
+        <div class="dia-card"><span class="hora">9h00</span><img src="assets/ilustracoes/web/ilu-circulo.jpg" alt="Ilustração: círculo da manhã com a educadora"><div class="corpo"><h3>O círculo da manhã</h3><p>Sentados em roda: o que vamos descobrir hoje? Cada voz conta.</p></div></div>
+        <div class="dia-card"><span class="hora">10h30</span><img src="assets/ilustracoes/web/ilu-metodo.jpg" alt="Ilustração: crianças a aprender mexendo"><div class="corpo"><h3>Aprender Mexendo</h3><p>Blocos, lupas, tintas e perguntas. É aqui que o método acontece.</p></div></div>
+        <div class="dia-card"><span class="hora">12h00</span><img src="assets/ilustracoes/web/ilu-almoco.jpg" alt="Ilustração: almoço em conjunto"><div class="corpo"><h3>O almoço</h3><p>Comida a sério, à mesa, com conversa — também se aprende a comer.</p></div></div>
+        <div class="dia-card"><span class="hora">15h00</span><img src="assets/ilustracoes/web/ilu-hortinha.jpg" alt="Ilustração: recreio e hortinha"><div class="corpo"><h3>Recreio e hortinha</h3><p>Areia, corrida e joaninhas na hortinha. O recreio também é sala de aula.</p></div></div>
+        <div class="dia-card"><span class="hora">16h30</span><img src="assets/ilustracoes/web/ilu-mindfulness.jpg" alt="Ilustração: mindfulness em roda"><div class="corpo"><h3>Mindfulness</h3><p>Vinte minutos de calma para arrumar o dia dentro da cabeça.</p></div></div>
+        <div class="dia-card"><span class="hora">17h30</span><img src="assets/ilustracoes/web/ilu-leitura.jpg" alt="Ilustração: hora das histórias ao fim do dia"><div class="corpo"><h3>Histórias até virem buscar</h3><p>Prolongamento com livros e jogos calmos — até às 19h00, sem pressa.</p></div></div>
+      </div>
+      <p class="dia-dica">← Deslize para percorrer o dia →</p>
+    </div>
+  </section>
+
+  <!-- VALÊNCIAS -->
+  <section id="valencias" class="valencias center">
+    <div class="wrap">
+      <span class="eyebrow">Valências</span>
+      <h2>Do primeiro desenho ao 4.º ano</h2>
+      <p class="lead">Um percurso contínuo dos 3 aos 10 anos, na mesma casa, com a mesma equipa a acompanhar o crescimento.</p>
+      <div class="cards" style="text-align: left;">
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-hortinha.jpg" alt="Ilustração: crianças a explorar a hortinha com uma lupa"></div>
+          <span class="idade">3 &ndash; 5 anos</span>
+          <h3>Jardim de Infância</h3>
+          <ul class="salas-ji">
+            <li><span class="bolha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 12c0 2.5-3 5-6.5 5C10 15 10 9 7.5 7 11 7 14 9.5 14 12z"/><path d="M14 12l4-2.5v5z"/><circle cx="9" cy="11.2" r="0.9" fill="currentColor" stroke="none"/></svg></span><div><strong>Sala dos Peixinhos</strong><span>3 anos</span></div></li>
+            <li><span class="bolha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19C6 19 4 13 5.5 9 7 5.5 17 5.5 18.5 9 20 13 18 19 12 19z"/><path d="M12 19V8M9 18c0-4 1-7 3-10M15 18c0-4-1-7-3-10"/></svg></span><div><strong>Sala das Conchas</strong><span>4 anos</span></div></li>
+            <li><span class="bolha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l2 5 5.5.3-4.3 3.5 1.6 5.2L12 15.2 7.2 18l1.6-5.2L4.5 9.3 10 9z"/></svg></span><div><strong>Sala das Estrelas do Mar</strong><span>5 anos</span></div></li>
+          </ul>
+          <p class="salas-nota">Descoberta pela brincadeira, mindfulness, inglês e música desde os 3 anos — e a Escola ao Ar Livre.</p>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-atelier.jpg" alt="Ilustração: criança a pintar num cavalete com as mãos cheias de tinta"></div>
+          <span class="idade">6 &ndash; 10 anos</span>
+          <h3>1.º Ciclo</h3>
+          <ul>
+            <li>Currículo nacional com autonomia pedagógica</li>
+            <li>Sala de estudo e acompanhamento diário</li>
+            <li>Projetos apresentados às famílias</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-areia.jpg" alt="Ilustração: crianças a brincar na caixa de areia com galochas coloridas"></div>
+          <span class="idade">Pausas letivas</span>
+          <h3>ATL</h3>
+          <ul>
+            <li>Férias escolares com programa próprio</li>
+            <li>Saídas, ateliês e muita areia</li>
+            <li>Aberto também a crianças de outras escolas</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-mindfulness.jpg" alt="Ilustração: crianças sentadas em círculo em meditação mindfulness"></div>
+          <span class="idade">Quando é preciso</span>
+          <h3>Psicopedagogia</h3>
+          <ul>
+            <li>Psicólogo e técnico de educação especial</li>
+            <li>Terapia da fala</li>
+            <li>Apoio a educadores, professores e famílias</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATIVIDADES -->
+  <section id="atividades" class="atividades">
+    <div class="wrap">
+      <span class="eyebrow">O dia-a-dia</span>
+      <h2>Ateliês incluídos e atividades extra</h2>
+      <p class="lead">O currículo é reforçado por ateliês incluídos na mensalidade — e enriquecido por atividades extracurriculares à escolha de cada família.</p>
+      <h3>Incluídos na mensalidade</h3>
+      <div class="chips">
+        <span class="chip destaque">Meditação mindfulness</span>
+        <span class="chip destaque">Inglês</span>
+        <span class="chip destaque">Expressão musical</span>
+        <span class="chip destaque">Expressão dramática</span>
+        <span class="chip destaque">Ateliê de artes</span>
+        <span class="chip destaque">Educação física</span>
+        <span class="chip destaque">Sala de estudo</span>
+      </div>
+      <h3>Extracurriculares</h3>
+      <div class="chips">
+        <span class="chip">Natação</span>
+        <span class="chip">Ballet</span>
+        <span class="chip">Yoga</span>
+        <span class="chip">Mandarim</span>
+        <span class="chip">Robótica &mdash; The Inventors</span>
+      </div>
+      <p class="nota-parceria">Natação em parceria com os ginásios Joaquim Chaves; robótica com The Inventors.</p>
+      <div class="ilu-strip">
+        <figure><img src="assets/ilustracoes/web/ilu-natacao.jpg" alt="Ilustração: criança a nadar com boia e óculos"><figcaption>Natação</figcaption></figure>
+        <figure><img src="assets/ilustracoes/web/ilu-ballet.jpg" alt="Ilustração: duas crianças em poses de ballet"><figcaption>Ballet</figcaption></figure>
+        <figure><img src="assets/ilustracoes/web/ilu-musica.jpg" alt="Ilustração: três crianças a tocar música juntas"><figcaption>Expressão musical</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATL -->
+  <section id="atl" class="atl center">
+    <div class="wrap">
+      <span class="eyebrow">Pausas letivas</span>
+      <h2>ATL: as férias também são para descobrir</h2>
+      <p class="lead">Páscoa, verão e Natal com programa próprio, dos 3 aos 10 anos — e aberto a crianças de outras escolas.</p>
+      <div class="cards" style="text-align: left;">
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-atl-pascoa.jpg" alt="Ilustração: crianças na caça aos ovos da Páscoa no jardim"></div>
+          <span class="epoca">Pausa da Páscoa</span>
+          <h3>ATL de Páscoa</h3>
+          <p style="font-size: 15.5px; color: var(--ink-soft);">Ateliês temáticos, caça aos ovos no jardim e saídas pelo bairro.</p>
+          <table>
+            <tr><td>Semana</td><td>150€</td></tr>
+          </table>
+          <p class="brevemente">Datas e programa divulgados a cada época — pré-reserve já.</p>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-atl-verao.jpg" alt="Ilustração: crianças a construir um castelo de areia na praia"></div>
+          <span class="epoca">Julho e agosto</span>
+          <h3>ATL de Verão</h3>
+          <table>
+            <tr><td>Semana</td><td>150€</td></tr>
+          </table>
+          <div class="praia"><strong>Programa Praia (julho):</strong> 2 semanas por 400€, com transporte para a Praia da Torre (Carcavelos), almoço e seguro incluídos.</div>
+          <p class="mini-obs">Horário para externos: 8h–17h30 em julho, 9h–18h em agosto. Encerrado de 27 a 31 de agosto de 2026.</p>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-atl-natal.jpg" alt="Ilustração: crianças a decorar a árvore de Natal"></div>
+          <span class="epoca">Pausa de Natal</span>
+          <h3>ATL de Natal</h3>
+          <p style="font-size: 15.5px; color: var(--ink-soft);">A Oficina do Natal: enfeites feitos à mão, teatro e culinária de festa.</p>
+          <table>
+            <tr><td>Semana</td><td>150€</td></tr>
+          </table>
+          <p class="brevemente">Datas e programa divulgados a cada época — pré-reserve já.</p>
+        </div>
+      </div>
+      <p class="mini-obs" style="margin-top: 22px;">Em todas as épocas: inscrição à semana, dos 3 aos 10 anos, com almoço e seguro escolar incluídos; lanche opcional (15€/semana).</p>
+      <p class="nota-externos" style="text-align: left;"><strong>O seu filho anda noutra escola?</strong> O ATL é aberto a todos — e é a melhor forma de nos conhecer por dentro. Muitas das nossas famílias começaram por umas semanas de verão.</p>
+    </div>
+  </section>
+
+  <!-- O BAIRRO -->
+  <section id="bairro" class="center">
+    <div class="wrap">
+      <span class="eyebrow">A sala de aula estendida</span>
+      <h2>A nossa sala de aula é do tamanho de Belém</h2>
+      <p class="lead">Poucas escolas no mundo têm um bairro assim à porta — e nós usamo-lo, semana após semana.</p>
+      <div class="bairro-mapa">
+        <img src="assets/ilustracoes/web/ilu-mapa.jpg" alt="Ilustração: mapa do bairro de Belém com a escola ao centro, a Torre de Belém, os jardins e o rio">
+      </div>
+      <div class="bairro-chips">
+        <span class="chip"><strong>Jardins do Restelo</strong> · ≈5 min a pé</span>
+        <span class="chip"><strong>Jardim Botânico Tropical</strong> · ≈12 min</span>
+        <span class="chip"><strong>Mosteiro dos Jerónimos</strong> · ≈15 min</span>
+        <span class="chip"><strong>CCB e museus</strong> · ≈15 min</span>
+        <span class="chip"><strong>Torre de Belém e o rio</strong> · ≈18 min</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTÓRIA -->
+  <section id="historia" class="historia center">
+    <div class="wrap">
+      <span class="eyebrow">A nossa história</span>
+      <h2>Três gerações de Belém cresceram aqui</h2>
+      <p class="lead">Numa rua de portas abertas há mais de meio século, a nossa é das mais antigas — e continua a abrir todos os dias às 7h30.</p>
+      <ul class="linha" style="text-align: left;">
+        <li><span class="ano">1959</span><p>Nasce o Externato Santa Fé, na Rua Duarte Pacheco Pereira. Os registos na conservatória contam a partir daqui.</p></li>
+        <li><span class="ano">1966</span><p>Passa a Externato Santa Maria de Belém, com alvará definitivo do Ministério da Educação (n.º 1491).</p></li>
+        <li><span class="ano">2014</span><p>Conquista a autonomia pedagógica — a liberdade de ensinar à sua maneira.</p></li>
+        <li><span class="ano">2015</span><p>Nova gerência, instalações modernizadas e um modelo pedagógico renovado: nasce o Aprender Mexendo.</p></li>
+      </ul>
+      <div class="mural">
+        <img src="assets/ilustracoes/web/ilu-historia.jpg" alt="Ilustração: rua antiga de Belém com o elétrico, a Torre de Belém e a porta da escola">
+      </div>
+    </div>
+  </section>
+
+  <!-- CADERNO DAS DESCOBERTAS -->
+  <section id="caderno" class="caderno center">
+    <div class="wrap">
+      <span class="eyebrow">Todos os meses</span>
+      <h2>O caderno das descobertas</h2>
+      <p class="lead">O que as nossas crianças andaram a explorar — contado às famílias, mês a mês.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-hortinha.jpg" alt="Ilustração: crianças na hortinha com lupa"></div>
+          <span class="mes">Junho</span>
+          <h3>O mistério das joaninhas</h3>
+          <p>A sala dos 4 anos descobriu que as joaninhas da hortinha comem os pulgões — e passou o mês a protegê-las. Nasceu daí o nosso primeiro "hotel de insetos".</p>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-atelier.jpg" alt="Ilustração: criança a pintar no atelier"></div>
+          <span class="mes">Maio</span>
+          <h3>Retratos de quem amamos</h3>
+          <p>No atelier, cada criança pintou a família como a vê. A exposição no corredor fez chorar mais do que uma mãe — de rir e do resto.</p>
+        </div>
+        <div class="card">
+          <div class="card-ilu"><img src="assets/ilustracoes/web/ilu-musica.jpg" alt="Ilustração: crianças a tocar música"></div>
+          <span class="mes">Abril</span>
+          <h3>Uma orquestra na sala</h3>
+          <p>O 1.º Ciclo construiu instrumentos com materiais reciclados e deu um concerto para o Jardim de Infância. Bilhetes esgotados (a sala tem 16 lugares).</p>
+        </div>
+      </div>
+      <p class="a-validar" style="margin-top: 24px;">✎ Entradas de exemplo — substituir todos os meses pelo que realmente aconteceu. É também matéria-prima pronta para o Instagram.</p>
+    </div>
+  </section>
+
+  <!-- DIREÇÃO -->
+  <section id="direcao">
+    <div class="wrap">
+      <span class="eyebrow">As pessoas</span>
+      <h2>Quem recebe o seu filho todos os dias</h2>
+      <div class="direcao-card">
+        <div class="direcao-foto">
+          <img src="assets/ilustracoes/web/ilu-diretora.jpg" alt="Ilustração: a diretora a receber uma criança à porta da escola de manhã">
+        </div>
+        <div class="direcao-texto">
+          <p class="quote">"Abro esta porta todas as manhãs às 7h30 — e há uma coisa que não mudou desde o primeiro dia: aqui, cada criança tem nome, história e um caminho próprio. Escolhemos ser uma escola pequena para conhecermos verdadeiramente cada aluno e cada família. Vemo-los chegar aos 3 anos, de galochas nos dias de chuva, e partir aos 10, confiantes e prontos para o mundo. Entre um momento e o outro, o nosso trabalho é um só: que aprendam a pensar pela própria cabeça, num lugar onde sejam felizes."</p>
+          <p class="quote-nota">Venha visitar-nos num dia normal. É nos dias normais que se vê quem somos.</p>
+          <p class="assinatura"><strong>Bruna Sousa</strong> · Diretora</p>
+          <p class="a-validar">✎ Texto proposto — a validar e ajustar pela Bruna antes de publicar.</p>
+        </div>
+      </div>
+      <div class="equipa-grid">
+        <img src="assets/ilustracoes/web/ilu-equipa.jpg" alt="Ilustração: a equipa da escola, de braços abertos">
+        <div style="text-align: left;">
+          <h3>Uma equipa inteira à volta de cada criança</h3>
+          <ul class="equipa-lista">
+            <li><div><strong>Direção pedagógica</strong><span>presente todos os dias — conhece cada criança pelo nome.</span></div></li>
+            <li><div><strong>Educadoras e professoras</strong><span>de infância e do 1.º Ciclo, com formação contínua no método da casa.</span></div></li>
+            <li><div><strong>Gabinete de psicopedagogia</strong><span>psicólogo, técnico de educação especial, terapeuta da fala e assistente social.</span></div></li>
+            <li><div><strong>Equipa de apoio</strong><span>as pessoas que fazem os almoços, o recreio e a casa funcionar com carinho.</span></div></li>
+          </ul>
+          <p class="a-validar" style="margin-top: 16px;">✎ Completar com nomes e mini-bios reais da equipa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A PROVA DOS PAIS -->
+  <section id="prova" class="prova center">
+    <div class="wrap">
+      <span class="eyebrow">As famílias</span>
+      <h2>A prova dos pais</h2>
+      <p class="lead">Ninguém explica melhor esta escola do que quem confia nela todos os dias.</p>
+      <div class="prova-grid" style="text-align: left;">
+        <blockquote class="prova-card">
+          <p>"O Tomás veio de um colégio grande, onde era mais um. Aqui, na primeira reunião, a professora falou-me dele como se o conhecesse desde sempre — dos medos, das manias, do que o faz rir. Foi aí que percebi que tínhamos acertado."</p>
+          <footer><strong>Marta</strong> · mãe do Tomás, 2.º ano</footer>
+        </blockquote>
+        <blockquote class="prova-card">
+          <p>"A Leonor precisava de terapia da fala e nós andávamos a correr a cidade entre consultas. Aqui acontece dentro da escola, com a terapeuta a falar diretamente com a professora. Em seis meses notou-se mais do que em dois anos de correrias."</p>
+          <footer><strong>Pedro</strong> · pai da Leonor, JI</footer>
+        </blockquote>
+        <blockquote class="prova-card">
+          <p>"Começámos por duas semanas de ATL no verão, 'só para experimentar'. A Benedita chorou no último dia — porque não queria que acabasse. Em setembro, era eu que estava a pedir a ficha de inscrição."</p>
+          <footer><strong>Sofia</strong> · mãe da Benedita, 1.º ano</footer>
+        </blockquote>
+        <blockquote class="prova-card">
+          <p>"Trabalhamos os dois com horários impossíveis. Saber que às 7h30 a porta já está aberta, e que às 18h30 vou buscar uma filha feliz e não uma criança 'à espera', não tem preço. E ainda assim, cabe no orçamento."</p>
+          <footer><strong>Inês</strong> · mãe da Carolina, JI</footer>
+        </blockquote>
+        <blockquote class="prova-card">
+          <p>"Eu andei nesta escola nos anos 80 — a minha mãe ainda guarda os meus cadernos. Hoje é o meu filho que chega a casa a contar o que descobriu na hortinha. Há coisas que não se explicam num folheto: chama-se confiança de duas gerações."</p>
+          <footer><strong>Miguel</strong> · antigo aluno, pai do Santiago, JI</footer>
+        </blockquote>
+      </div>
+      <p class="a-validar" style="margin-top: 24px;">✎ Textos ilustrativos, escritos como exemplo — substituir por testemunhos reais de famílias (com autorização) antes de o site ser publicado.</p>
+    </div>
+  </section>
+
+  <!-- PREÇÁRIO -->
+  <section id="precario" class="precario center">
+    <div class="wrap">
+      <span class="eyebrow">Preçário &middot; novas inscrições 2026/27</span>
+      <h2>Transparente do primeiro dia</h2>
+      <p class="lead">Sem surpresas nem letras pequenas: isto é o que custa, e isto é o que inclui.</p>
+      <div class="precario-grid" style="text-align: left;">
+        <div class="preco-hero">
+          <span class="rotulo">Mensalidade &middot; 12 meses</span>
+          <div class="valor">425€<small> /mês</small></div>
+          <ul class="inclui">
+            <li>Componente letiva completa (JI ou 1.º Ciclo)</li>
+            <li>Ateliês incluídos: mindfulness, inglês, música, expressão dramática, artes, educação física e sala de estudo</li>
+            <li>Horário das 7h30 às 17h00</li>
+            <li>Plano individual de acompanhamento</li>
+          </ul>
+          <div class="descontos"><strong>Descontos</strong> (não acumuláveis): irmãos −5% · pagamento anual −5% · semestral −2%</div>
+        </div>
+        <div class="preco-tabelas">
+          <div class="preco-grupo">
+            <h3>Admissão</h3>
+            <table>
+              <tr><td>Inscrição</td><td>300€</td></tr>
+              <tr><td>Renovação de inscrição (até maio)</td><td>175€</td></tr>
+              <tr><td>Seguro escolar (1× por ano)</td><td>25€</td></tr>
+              <tr><td>Desgaste de material escolar (1× por ano)</td><td>60€</td></tr>
+            </table>
+          </div>
+          <div class="preco-grupo">
+            <h3>Refeitório</h3>
+            <table>
+              <tr><td>Almoço (mensal)</td><td>130€</td></tr>
+              <tr><td>Lanche (mensal)</td><td>45€</td></tr>
+              <tr><td>Serviço de refeitório</td><td>50€</td></tr>
+              <tr><td>Almoço avulso</td><td>9€</td></tr>
+              <tr><td>Lanche avulso</td><td>5€</td></tr>
+            </table>
+            <p class="obs">Para quem traz almoço de casa, aplica-se apenas o serviço de refeitório.</p>
+          </div>
+          <div class="preco-grupo">
+            <h3>Prolongamento</h3>
+            <table>
+              <tr><td>Das 17h00 às 18h00 (mensal)</td><td>35€</td></tr>
+              <tr><td>Das 17h00 às 19h00 (mensal)</td><td>50€</td></tr>
+            </table>
+            <p class="obs">Tolerância de 30 minutos, das 17h00 às 17h30, sem custo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="simulador" style="text-align: left;">
+        <div>
+          <h3>Faça as contas ao seu mês</h3>
+          <p style="font-size: 15px; color: var(--ink-soft);">Escolha o que precisa e veja o valor real — sem surpresas.</p>
+          <div class="sim-controlos">
+            <div class="campo">
+              <label for="sim-refeitorio">Refeitório</label>
+              <select id="sim-refeitorio">
+                <option value="225">Almoço + lanche da escola (+225€)</option>
+                <option value="180">Só almoço da escola (+180€)</option>
+                <option value="50">Traz almoço de casa (+50€ serviço)</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="sim-prolongamento">Fica até que horas?</label>
+              <select id="sim-prolongamento">
+                <option value="0">Até às 17h30 (incluído)</option>
+                <option value="35">Até às 18h00 (+35€)</option>
+                <option value="50">Até às 19h00 (+50€)</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="sim-desconto">Desconto</label>
+              <select id="sim-desconto">
+                <option value="0">Sem desconto</option>
+                <option value="irmaos">Tenho outro filho na escola (−5% na mensalidade)</option>
+                <option value="anual">Pagamento anual (−5% na mensalidade)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="sim-total">
+          <div class="rotulo">O seu valor mensal</div>
+          <div class="valor" id="sim-valor">650<small>€/mês</small></div>
+          <div class="detalhe" id="sim-detalhe">425€ mensalidade + 225€ refeitório</div>
+          <div class="detalhe">Acresce, uma vez por ano: seguro 25€ + material 60€. Inscrição no 1.º ano: 300€.</div>
+        </div>
+      </div>
+      <div class="conselho-avo">
+        <img src="assets/ilustracoes/web/ilu-avo.jpg" alt="Avó Maria">
+        <div><strong>A Avó Maria aconselha:</strong> "Se puderem, escolham o pagamento anual — poupam 5% e despacham o assunto. E irmãos cá em casa nunca pagaram o mesmo que um só."</div>
+      </div>
+      <p class="nota-atuais" style="text-align: left;"><strong>Famílias atuais:</strong> mantêm as condições em vigor durante todo o ano letivo 2026/27. A transição para a nova tabela acontece apenas em 2027/28 e será comunicada diretamente, com antecedência, pela Direção.</p>
+    </div>
+  </section>
+
+  <!-- FAQ AVÓ MARIA -->
+  <section id="faq" class="faq center">
+    <div class="wrap">
+      <span class="eyebrow">Pergunte a quem sabe</span>
+      <h2>As respostas da Avó Maria</h2>
+      <p class="lead">Há mais de sessenta anos que esta casa recebe famílias. A Avó Maria já ouviu todas as perguntas — e responde sem rodeios.</p>
+      <div class="faq-grid" style="text-align: left;">
+        <div class="avo-card">
+          <img src="assets/ilustracoes/web/ilu-avo.jpg" alt="Ilustração: a Avó Maria, anfitriã do site, sentada na sua poltrona com um livro">
+          <p class="avo-fala">"Sou a Avó Maria. Ando por esta casa desde que ela é casa. Perguntem-me tudo."</p>
+        </div>
+        <div class="faq-lista">
+          <details>
+            <summary>Como funciona a adaptação nos primeiros dias?</summary>
+            <p>Devagar e à medida de cada criança. Os primeiros dias são mais curtos, a presença dos pais combina-se com a educadora, e ninguém é apressado. Numa casa com 16 por sala, há tempo para conhecer cada um.</p>
+          </details>
+          <details>
+            <summary>O meu filho ainda usa fralda — pode entrar?</summary>
+            <p>Pode, claro. O desfralde faz-se cá, em parceria com a família, sem pressas nem dramas. Já ajudámos gerações inteiras a despachar esse assunto.</p>
+          </details>
+          <details>
+            <summary>As crianças saem da escola?</summary>
+            <p>Saem — o bairro é a nossa segunda sala. Jardins, museus, o rio... sempre com autorização escrita dos pais, acompanhamento reforçado e seguro escolar.</p>
+          </details>
+          <details>
+            <summary>E se o meu filho adoecer durante o dia?</summary>
+            <p>Ligamos logo aos pais — sem alarmismos, mas sem esperas. Todas as crianças têm seguro escolar, e com febre fica-se em casa a melhorar, que é onde se está melhor.</p>
+          </details>
+          <details>
+            <summary>Levam trabalhos para casa no 1.º Ciclo?</summary>
+            <p>Poucos. A sala de estudo é diária e é lá que o grosso se resolve, com apoio. Em casa, o tempo é para a família — e para brincar, que também é aprender.</p>
+          </details>
+          <details>
+            <summary>Que línguas aprendem?</summary>
+            <p>Inglês desde os 3 anos, incluído na mensalidade. Quem quiser mais, há mandarim nas extracurriculares. Português bem falado, garante a casa.</p>
+          </details>
+          <details>
+            <summary>Posso visitar antes de decidir?</summary>
+            <p>Deve! E traga o seu filho — a visita também é dele. Venha num dia normal de escola, que é nos dias normais que se vê quem somos. Marque ali em baixo no formulário.</p>
+          </details>
+          <details>
+            <summary>Há descontos?</summary>
+            <p>Há: irmãos têm 5% na mensalidade, e o pagamento anual também poupa 5%. Não se somam um ao outro — escolhe-se o melhor. As contas certas fazem-se no simulador aqui em cima.</p>
+          </details>
+          <p class="a-validar">✎ Respostas escritas a partir do que a escola já pratica — a validar pela direção antes de publicar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="onda" aria-hidden="true"><svg viewBox="0 0 2880 54" preserveAspectRatio="none"><path d="M0 28 C 240 54 480 2 720 28 C 960 54 1200 2 1440 28 C 1680 54 1920 2 2160 28 C 2400 54 2640 2 2880 28 L 2880 54 L 0 54 Z" fill="#1E6E42"/></svg></div>
+  <!-- VISITA -->
+  <section id="visita" class="visita center" style="padding-top: 40px;">
+    <div class="wrap">
+      <h2>Venha ver com os seus olhos</h2>
+      <p class="lead">Uma visita de 45 minutos, com a direção, num dia normal de escola — porque é no dia normal que se vê quem somos.</p>
+      <div class="visita-box" style="text-align: left;">
+        <div>
+          <div class="visita-ilu"><img src="assets/ilustracoes/web/ilu-chegada.jpg" alt="Ilustração: mãe e criança de mochila a chegar à porta da escola de manhã"></div>
+          <ul style="margin-top: 20px;">
+            <li>Conheça as salas, o recreio e a equipa</li>
+            <li>Traga o seu filho — a visita também é dele</li>
+            <li>Receba o projeto educativo e o preçário completo</li>
+            <li>Sem compromisso e sem pressa</li>
+          </ul>
+        </div>
+        <form class="form-info" id="form-info" name="pedido-informacoes" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="site-web" novalidate>
+          <input type="hidden" name="form-name" value="pedido-informacoes">
+          <p style="display:none;"><label>Não preencher: <input name="site-web"></label></p>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="f-nome">O seu nome *</label>
+              <input id="f-nome" name="nome" type="text" required autocomplete="name">
+            </div>
+            <div class="campo">
+              <label for="f-tel">Telefone</label>
+              <input id="f-tel" name="telefone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="f-email">E-mail *</label>
+              <input id="f-email" name="email" type="email" required autocomplete="email">
+            </div>
+            <div class="campo">
+              <label for="f-idade">Idade da criança</label>
+              <input id="f-idade" name="idade" type="text" inputmode="numeric" placeholder="ex.: 4 anos">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="f-interesse">Tenho interesse em</label>
+            <select id="f-interesse" name="interesse">
+              <option>Marcar uma visita</option>
+              <option>Jardim de Infância</option>
+              <option>1.º Ciclo</option>
+              <option>ATL (Páscoa, Verão ou Natal)</option>
+              <option>Psicopedagogia</option>
+              <option>Outro assunto</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-msg">Mensagem</label>
+            <textarea id="f-msg" name="mensagem" rows="3" placeholder="Conte-nos o que procura para o seu filho…"></textarea>
+          </div>
+          <button class="btn" type="submit">Enviar pedido de informações</button>
+          <p class="form-nota" id="form-nota">Respondemos no próprio dia útil. Ou ligue-nos: <a class="tel" href="tel:+351213011343">213 011 343</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="contactos">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Externato Santa Maria de Belém</h3>
+        <ul>
+          <li>Rua Duarte Pacheco Pereira, n.º 24</li>
+          <li>1400-140 Lisboa (Restelo)</li>
+          <li><a href="https://maps.google.com/?q=Rua+Duarte+Pacheco+Pereira+24,+1400-140+Lisboa" target="_blank" rel="noopener">Ver no mapa →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contactos</h3>
+        <ul>
+          <li><a href="tel:+351213011343">213 011 343</a> (rede fixa)</li>
+          <li><a href="tel:+351935275370">935 275 370</a> · <a href="tel:+351939317966">939 317 966</a></li>
+          <li><a href="mailto:geral@externatosantamariadebelem.com">geral@externatosantamariadebelem.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Horário</h3>
+        <ul>
+          <li>Segunda a sexta, 7h30 – 19h00</li>
+          <li>Aberto 12 meses por ano</li>
+          <li>ATL nas pausas letivas</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ligações</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/externatosantamariadebelem/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/ExternatoSantaMariadeBelem/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://externatosantamariadebelem.educabiz.com/" target="_blank" rel="noopener">Plataforma Educabiz (pais)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© Externato Santa Maria de Belém · Alvará n.º 1491 · Parque Encantado, Lda.</span>
+      <span>Protótipo v1 — julho 2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Chat da Avó Maria -->
+<button class="avo-botao" id="avo-botao" aria-label="Fale com a Avó Maria" title="Fale com a Avó Maria">
+  <img src="assets/ilustracoes/web/ilu-avo.jpg" alt="">
+</button>
+<div class="avo-chat" id="avo-chat" role="dialog" aria-label="Conversa com a Avó Maria">
+  <div class="avo-chat-topo">
+    <img src="assets/ilustracoes/web/ilu-avo.jpg" alt="">
+    <div><div class="titulo">Avó Maria</div><div class="sub">respostas rápidas da casa</div></div>
+    <button id="avo-fechar" aria-label="Fechar conversa">×</button>
+  </div>
+  <div class="avo-msgs" id="avo-msgs"></div>
+  <div class="avo-chips" id="avo-chips"></div>
+  <div class="avo-entrada">
+    <input id="avo-input" type="text" placeholder="Escreva a sua pergunta…" aria-label="A sua pergunta">
+    <button id="avo-enviar">Enviar</button>
+  </div>
+  <div class="avo-aviso">Assistente simples do site — não guarda dados. Para falar com pessoas: formulário ou 213 011 343.</div>
+</div>
+
+<script>
+(function () {
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // chat da Avó Maria (respostas locais, sem servidor)
+  var RESPOSTAS = [
+    { chaves: ['adapta', 'primeiros dias', 'começar', 'comecar'], texto: 'A adaptação faz-se devagar e à medida de cada criança: dias mais curtos no início e a presença dos pais combinada com a educadora. Com 16 por sala, há tempo para conhecer cada um.' },
+    { chaves: ['fralda', 'desfralde', 'penico'], texto: 'Pode entrar de fralda, claro. O desfralde faz-se cá, em parceria com a família, sem pressas nem dramas.' },
+    { chaves: ['saída', 'saida', 'passeio', 'rua', 'museu', 'visita de estudo'], texto: 'Saímos sim — o bairro de Belém é a nossa segunda sala! Sempre com autorização escrita dos pais e acompanhamento reforçado.' },
+    { chaves: ['doen', 'febre', 'medicamento', 'doente'], texto: 'Se adoecer durante o dia, ligamos logo aos pais. Todas as crianças têm seguro escolar. Com febre, fica-se em casa a melhorar.' },
+    { chaves: ['tpc', 'trabalho', 'estudo'], texto: 'Trabalhos de casa? Poucos. A sala de estudo é diária e é lá que o grosso se resolve. Em casa, o tempo é para a família.' },
+    { chaves: ['inglês', 'ingles', 'língua', 'lingua', 'mandarim'], texto: 'Inglês desde os 3 anos, incluído na mensalidade. E há mandarim nas extracurriculares, para os mais aventureiros.' },
+    { chaves: ['preço', 'preco', 'mensalidade', 'custa', 'valor', 'desconto'], texto: 'A mensalidade é 425€ (12 meses), com descontos de 5% para irmãos ou pagamento anual. Faça as contas certas no simulador, na secção Preçário — sem surpresas.' },
+    { chaves: ['atl', 'férias', 'ferias', 'verão', 'verao', 'natal', 'páscoa', 'pascoa', 'praia'], texto: 'O ATL funciona na Páscoa, no verão e no Natal: 150€/semana, com almoço e seguro incluídos. Em julho há o Programa Praia (2 semanas, 400€). E é aberto a crianças de outras escolas!' },
+    { chaves: ['horário', 'horario', 'horas', 'abre', 'fecha', 'prolongamento'], texto: 'Abrimos às 7h30 e fechamos às 19h00, de segunda a sexta, 12 meses por ano. A mensalidade cobre até às 17h30; depois há prolongamento.' },
+    { chaves: ['visita', 'marcar', 'conhecer', 'inscri'], texto: 'Venha visitar-nos num dia normal de escola — e traga o seu filho, que a visita também é dele. Preencha o formulário aqui em baixo na secção "Venha ver com os seus olhos".' },
+    { chaves: ['idade', 'anos', 'entrar', 'aceita', 'sala', 'peixinho', 'concha', 'estrela'], texto: 'Recebemos crianças dos 3 aos 10 anos. No Jardim de Infância há a sala dos Peixinhos (3 anos), a das Conchas (4) e a das Estrelas do Mar (5); depois segue-se o 1.º Ciclo, até ao 4.º ano — tudo na mesma casa.' },
+    { chaves: ['contacto', 'telefone', 'email', 'morada', 'onde'], texto: 'Estamos na Rua Duarte Pacheco Pereira, n.º 24, no Restelo. Telefone: 213 011 343. E-mail: geral@externatosantamariadebelem.com.' }
+  ];
+  var SUGESTOES = ['Quanto custa?', 'Como é a adaptação?', 'Que horário têm?', 'Como funciona o ATL?', 'Quero marcar uma visita'];
+  var chat = document.getElementById('avo-chat');
+  var msgs = document.getElementById('avo-msgs');
+  function fala(texto, minha) {
+    var el = document.createElement('div');
+    el.className = 'avo-msg ' + (minha ? 'minha' : 'dela');
+    el.textContent = texto;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  function responde(pergunta) {
+    fala(pergunta, true);
+    var p = pergunta.toLowerCase();
+    var achou = null;
+    for (var i = 0; i < RESPOSTAS.length && !achou; i++) {
+      for (var j = 0; j < RESPOSTAS[i].chaves.length; j++) {
+        if (p.indexOf(RESPOSTAS[i].chaves[j]) !== -1) { achou = RESPOSTAS[i].texto; break; }
+      }
+    }
+    setTimeout(function () {
+      fala(achou || 'Essa até a mim me escapa! Deixe os seus dados no formulário de pedido de informações, ou ligue 213 011 343 — respondemos no próprio dia útil.', false);
+    }, 420);
+  }
+  var botaoAvo = document.getElementById('avo-botao');
+  if (botaoAvo && chat) {
+    botaoAvo.addEventListener('click', function () {
+      chat.classList.toggle('aberto');
+      if (chat.classList.contains('aberto') && !msgs.hasChildNodes()) {
+        fala('Olá! Sou a Avó Maria — ando por esta casa desde que ela é casa. Em que posso ajudar?', false);
+      }
+    });
+    document.getElementById('avo-fechar').addEventListener('click', function () { chat.classList.remove('aberto'); });
+    var chips = document.getElementById('avo-chips');
+    SUGESTOES.forEach(function (s) {
+      var b = document.createElement('button');
+      b.textContent = s;
+      b.addEventListener('click', function () { responde(s); });
+      chips.appendChild(b);
+    });
+    var input = document.getElementById('avo-input');
+    function enviar() { var v = input.value.trim(); if (!v) return; input.value = ''; responde(v); }
+    document.getElementById('avo-enviar').addEventListener('click', enviar);
+    input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') enviar(); });
+  }
+
+  // barquinho de progresso do scroll
+  var barco = document.querySelector('.barquinho');
+  var rota = document.querySelector('.rota');
+  function navegar() {
+    var h = document.documentElement;
+    var total = h.scrollHeight - h.clientHeight;
+    var f = total > 0 ? h.scrollTop / total : 0;
+    if (barco) barco.style.transform = 'translateX(' + f * (window.innerWidth - 38) + 'px)';
+    if (rota) rota.style.setProperty('--p', (f * 100) + '%');
+  }
+  window.addEventListener('scroll', navegar, { passive: true });
+  window.addEventListener('resize', navegar);
+  navegar();
+
+  var comAnimacao = !semMovimento && 'IntersectionObserver' in window;
+
+  // revelação ao scroll
+  if (comAnimacao) {
+    var els = document.querySelectorAll('.card, .metodo-grid > *, .linha li, .precario-grid > *, .direcao-card, .visita-box, .ilu-strip figure, .mural, .nota-externos, .nota-atuais, .prova-card, .dia-card, .bairro-mapa, .simulador, .faq-lista details, .avo-card, .conselho-avo');
+    els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // simulador de mensalidade
+  var simRef = document.getElementById('sim-refeitorio');
+  var simPro = document.getElementById('sim-prolongamento');
+  var simDes = document.getElementById('sim-desconto');
+  function simular() {
+    if (!simRef) return;
+    var mensalidade = 425;
+    var desconto = simDes.value === '0' ? 0 : Math.round(mensalidade * 0.05);
+    var ref = parseInt(simRef.value, 10);
+    var pro = parseInt(simPro.value, 10);
+    var total = mensalidade - desconto + ref + pro;
+    document.getElementById('sim-valor').innerHTML = total + '<small>€/mês</small>';
+    var partes = [(mensalidade - desconto) + '€ mensalidade' + (desconto ? ' (com desconto)' : ''), ref + '€ refeitório'];
+    if (pro > 0) partes.push(pro + '€ prolongamento');
+    document.getElementById('sim-detalhe').textContent = partes.join(' + ');
+  }
+  [simRef, simPro, simDes].forEach(function (el) { if (el) el.addEventListener('change', simular); });
+  simular();
+
+  // easter egg: clicar no barquinho lança confetes
+  var CORES = ['#43B02A', '#E5007E', '#00A7E1', '#FFD500'];
+  if (barco) {
+    barco.setAttribute('title', 'Clica-me!');
+    barco.addEventListener('click', function () {
+      if (semMovimento) return;
+      var x = barco.getBoundingClientRect().left + 15;
+      for (var i = 0; i < 28; i++) {
+        var c = document.createElement('span');
+        c.className = 'confete-fx';
+        c.style.background = CORES[i % 4];
+        c.style.left = Math.max(6, x + (Math.random() * 160 - 80)) + 'px';
+        c.style.animation = 'cair ' + (1 + Math.random() * 1.2) + 's ease-in ' + (Math.random() * 0.3) + 's forwards';
+        if (Math.random() > 0.5) c.style.borderRadius = '50%';
+        document.body.appendChild(c);
+        c.addEventListener('animationend', function (ev) { ev.target.remove(); });
+      }
+    });
+  }
+
+  // formulário de pedido de informações (mailto até haver backend no deploy)
+  var form = document.getElementById('form-info');
+  var emNetlify = /^https?:$/.test(location.protocol) && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1';
+  if (form) {
+    form.addEventListener('submit', function (ev) {
+      if (emNetlify) return; // no Netlify o formulário submete nativamente (Netlify Forms)
+      ev.preventDefault();
+      if (!form.reportValidity()) return;
+      var d = new FormData(form);
+      var corpo = 'Nome: ' + d.get('nome') +
+        '\nTelefone: ' + (d.get('telefone') || '—') +
+        '\nE-mail: ' + d.get('email') +
+        '\nIdade da criança: ' + (d.get('idade') || '—') +
+        '\nInteresse: ' + d.get('interesse') +
+        '\n\nMensagem:\n' + (d.get('mensagem') || '—');
+      window.location.href = 'mailto:geral@externatosantamariadebelem.com' +
+        '?subject=' + encodeURIComponent('Pedido de informações — ' + d.get('nome')) +
+        '&body=' + encodeURIComponent(corpo);
+      var nota = document.getElementById('form-nota');
+      if (nota) { nota.textContent = 'Obrigado! O seu programa de e-mail vai abrir para concluir o envio.'; nota.classList.add('ok'); }
+    });
+  }
+
+  // contadores da barra de factos
+  var factos = document.querySelector('.factos');
+  if (factos && comAnimacao) {
+    var ioN = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      ioN.disconnect();
+      factos.querySelectorAll('.n[data-conta]').forEach(function (el) {
+        var alvo = parseInt(el.getAttribute('data-conta'), 10);
+        var sufixo = el.getAttribute('data-sufixo') || '';
+        var t0 = null;
+        function passo(t) {
+          if (!t0) t0 = t;
+          var p = Math.min((t - t0) / 1100, 1);
+          el.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))) + sufixo;
+          if (p < 1) requestAnimationFrame(passo);
+        }
+        requestAnimationFrame(passo);
+      });
+    }, { threshold: 0.4 });
+    ioN.observe(factos);
+  }
+})();
+</script>
+</body>
+</html>

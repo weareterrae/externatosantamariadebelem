@@ -1,0 +1,9 @@
+# Site estático — sem build. Publica a raiz do repositório.
+[build]
+  publish = "."
+
+# Cabeçalhos de cache para os assets (ilustrações e logo)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

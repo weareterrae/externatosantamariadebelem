@@ -1,0 +1,15 @@
+# Maquetes de partilha (não fazem parte do site publicado)
+externato-prototipo-*.html
+
+# Artefactos de teste local
+.playwright-mcp/
+*.log
+
+# Masters de ilustração e pré-visualizações (ficam no OneDrive, não no site)
+assets/ilustracoes/*.png
+assets/ilustracoes/prev_*.jpg
+
+# Fotografias antigas já não usadas (site é 100% ilustrado)
+assets/foto*.jpg
+assets/hero-recreio.jpg
+assets/bruna.jpg
