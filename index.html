@@ -65,14 +65,15 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--card-border);
   }
-  .nav { display: flex; align-items: center; gap: 28px; padding: 12px 0; }
+  .nav { display: flex; align-items: center; gap: 20px; padding: 12px 0; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-  .brand img { height: 52px; width: auto; }
-  nav.menu { display: flex; gap: 22px; }
+  .brand img { height: 50px; width: auto; }
+  nav.menu { display: flex; gap: 16px; }
   nav.menu a {
-    text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15.5px;
+    text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15px; white-space: nowrap;
     border-bottom: 3px solid transparent; padding: 4px 0;
   }
+  @media (max-width: 1120px) { nav.menu { gap: 13px; } nav.menu a { font-size: 14px; } }
   nav.menu a:hover { border-bottom-color: var(--amarelo); }
   .btn {
     display: inline-block; text-decoration: none; text-align: center;
@@ -207,6 +208,36 @@
   }
   .pilares strong { display: block; }
   .pilares span { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- salas do JI (secção dedicada) ---------- */
+  .salas { background: linear-gradient(180deg, #EAF6FB 0%, var(--paper) 100%); }
+  .salas-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  @media (max-width: 860px) { .salas-cards { grid-template-columns: 1fr; } }
+  .sala-card {
+    background: #fff; border: 1px solid var(--card-border); border-radius: 22px;
+    padding: 12px 12px 26px; text-align: center; box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .sala-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(38,51,43,.13); }
+  .sala-emblema { border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; }
+  .sala-emblema img { width: 100%; display: block; }
+  .sala-idade {
+    position: absolute; top: 12px; right: 12px;
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 14px;
+    color: #fff; border-radius: 999px; padding: 3px 14px;
+  }
+  .sala-card.azul .sala-idade { background: var(--azul); }
+  .sala-card.rosa .sala-idade { background: var(--rosa); }
+  .sala-card.amarelo .sala-idade { background: #E0AE00; }
+  .sala-card h3 { font-size: 23px; margin-bottom: 6px; }
+  .sala-card.azul h3 { color: #0887B5; }
+  .sala-card.rosa h3 { color: var(--rosa); }
+  .sala-card.amarelo h3 { color: #B8930A; }
+  .sala-card p { font-size: 15px; color: var(--ink-soft); margin: 0 20px; }
+  .salas-mote {
+    font-family: "Baloo 2", sans-serif; font-size: 19px; color: var(--verde);
+    max-width: 46ch; margin: 34px auto 0;
+  }
 
   /* ---------- um dia na escola ---------- */
   .dia { background: #fff; border-top: 1px solid var(--card-border); }
@@ -571,13 +602,13 @@
     <nav class="menu" aria-label="Menu principal">
       <a href="#escola">A Escola</a>
       <a href="#metodo">O Método</a>
+      <a href="#salas">Salas</a>
       <a href="#valencias">Valências</a>
       <a href="#atividades">Atividades</a>
       <a href="#atl">ATL</a>
       <a href="#historia">História</a>
       <a href="#precario">Preçário</a>
       <a href="#faq">Avó Maria</a>
-      <a href="#contactos">Contactos</a>
       <a href="en.html" title="English">EN</a>
     </nav>
     <a class="btn" href="#visita">Marcar visita</a>
@@ -683,6 +714,33 @@
           <li><span class="num">3</span><div><strong>Como pensar, não o que pensar</strong><span>Queremos crianças curiosas, autónomas e com iniciativa — participantes ativas na sua própria aprendizagem.</span></div></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- AS NOSSAS SALAS -->
+  <section id="salas" class="salas center">
+    <div class="wrap">
+      <span class="eyebrow">Jardim de Infância</span>
+      <h2>Três salas, uma viagem pelo mar</h2>
+      <p class="lead">Aqui à beira-Tejo, cada sala do Jardim de Infância tem um nome que vem do mar — e uma turma pequena, de 16, onde ninguém se perde.</p>
+      <div class="salas-cards" style="text-align: left;">
+        <div class="sala-card azul">
+          <div class="sala-emblema"><span class="sala-idade">3 anos</span><img src="assets/ilustracoes/web/sala-peixinhos.jpg" alt="Emblema da Sala dos Peixinhos: um cardume de peixinhos"></div>
+          <h3>Peixinhos</h3>
+          <p>Os mais novos dão os primeiros mergulhos: descobrir o mundo pelos sentidos, ganhar rotinas e fazer os primeiros amigos.</p>
+        </div>
+        <div class="sala-card rosa">
+          <div class="sala-emblema"><span class="sala-idade">4 anos</span><img src="assets/ilustracoes/web/sala-conchas.jpg" alt="Emblema da Sala das Conchas: um búzio e uma concha"></div>
+          <h3>Conchas</h3>
+          <p>A curiosidade abre-se: linguagem, números a brincar, projetos que nascem de uma pergunta e a primeira ida ao palco.</p>
+        </div>
+        <div class="sala-card amarelo">
+          <div class="sala-emblema"><span class="sala-idade">5 anos</span><img src="assets/ilustracoes/web/sala-estrelas.jpg" alt="Emblema da Sala das Estrelas do Mar: uma estrela-do-mar sorridente"></div>
+          <h3>Estrelas do Mar</h3>
+          <p>Prontos a brilhar: autonomia, leitura e escrita a despontar e a confiança para dar o salto para o 1.º Ciclo.</p>
+        </div>
+      </div>
+      <p class="salas-mote">Dos Peixinhos às Estrelas do Mar, o mesmo mar e a mesma equipa a acompanhar cada maré.</p>
     </div>
   </section>
 
