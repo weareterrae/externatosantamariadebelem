@@ -90,7 +90,28 @@
     border: 2px solid var(--verde); box-shadow: none;
   }
   .btn.ghost:hover { background: rgba(30, 110, 66, 0.08); }
-  @media (max-width: 860px) { nav.menu { display: none; } }
+
+  /* ---------- menu mobile (hambúrguer) ---------- */
+  .hamburguer { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburguer svg { display: block; width: 26px; height: 26px; stroke: var(--verde); stroke-width: 2.4; stroke-linecap: round; fill: none; }
+  @media (max-width: 860px) {
+    .nav { gap: 10px; }
+    .nav > .btn { padding: 10px 18px; font-size: 15px; }
+    .hamburguer { display: block; }
+    nav.menu { display: none; }
+    header.menu-aberto nav.menu {
+      display: flex; flex-direction: column; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--paper); border-bottom: 1px solid var(--card-border);
+      box-shadow: 0 16px 32px rgba(38, 51, 43, 0.14);
+      padding: 4px 0 10px;
+    }
+    header.menu-aberto nav.menu a { padding: 13px 26px; font-size: 16.5px; border-bottom: none; }
+    header.menu-aberto nav.menu a:active { background: #EFECE0; }
+  }
+
+  /* âncoras não ficam escondidas atrás do header fixo */
+  section[id], footer[id] { scroll-margin-top: 84px; }
 
   /* ---------- hero ---------- */
   .hero { padding: 84px 0 64px; overflow: hidden; }
@@ -382,7 +403,7 @@
   }
   .avo-chips button:hover { border-color: var(--rosa); }
   .avo-entrada { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--card-border); }
-  .avo-entrada input { flex: 1; font: inherit; font-size: 14.5px; border: 1.5px solid var(--card-border); border-radius: 999px; padding: 9px 16px; }
+  .avo-entrada input { flex: 1; min-width: 0; font: inherit; font-size: 16px; border: 1.5px solid var(--card-border); border-radius: 999px; padding: 9px 16px; }
   .avo-entrada input:focus { outline: none; border-color: var(--azul); }
   .avo-entrada button {
     font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 15px; cursor: pointer;
@@ -583,6 +604,62 @@
   .form-nota.ok { color: var(--verde); font-weight: 700; }
 
   /* ---------- footer ---------- */
+  /* ---------- mobile a sério ---------- */
+  @media (max-width: 700px) {
+    section { padding: 52px 0; }
+    .wrap { padding: 0 18px; }
+    .hero { padding: 36px 0 44px; }
+    .hero-grid { gap: 26px; }
+    h1 { font-size: clamp(33px, 9.5vw, 44px); }
+    h2 { font-size: clamp(25px, 7vw, 32px); }
+    .lead { font-size: 16.5px; }
+    .hero-ctas { gap: 10px; }
+    .hero-ctas .btn { flex: 1 1 46%; padding: 12px 14px; font-size: 16px; }
+    .vagas-pill { font-size: 12.5px; padding: 6px 14px; }
+    .factos { padding: 20px 0; }
+    .factos .wrap { grid-template-columns: 1fr 1fr; gap: 14px 12px; padding: 0 22px; }
+    .facto { flex-direction: column; align-items: flex-start; gap: 1px; justify-content: flex-start; }
+    .facto .n { font-size: 25px; }
+    .facto .t { font-size: 12.5px; opacity: 0.9; }
+    .cards { gap: 14px; margin-top: 28px; }
+    .card { padding: 22px 20px 20px; }
+    .card-ilu { margin: -22px -20px 16px; }
+    .dia-strip { grid-auto-columns: 76vw; gap: 14px; padding: 26px 4px 16px; scroll-snap-type: x mandatory; }
+    .dia-card img { height: 160px; }
+    .ilu-strip { gap: 14px; margin-top: 28px; }
+    .ilu-strip img { height: 175px; }
+    .mural img { height: 150px; }
+    .linha { gap: 18px; margin-top: 30px; }
+    .direcao-foto img { min-height: 240px; }
+    .equipa-grid { gap: 20px; margin-top: 30px; }
+    .prova-grid { gap: 14px; margin-top: 28px; }
+    .prova-card { padding: 22px 20px 16px; }
+    .precario-grid { gap: 16px; margin-top: 28px; }
+    .preco-hero { padding: 26px 22px 24px; }
+    .preco-hero .valor { font-size: 50px; }
+    .preco-grupo { padding: 16px 18px; }
+    .simulador { padding: 22px 18px; gap: 20px; margin-top: 22px; }
+    .sim-total { padding: 18px 20px; }
+    .sim-total .valor { font-size: 42px; }
+    .faq-grid { gap: 24px; margin-top: 28px; }
+    .avo-card { position: static; }
+    .avo-card img { max-width: 240px; }
+    .faq-lista summary { padding: 14px 16px; font-size: 15px; }
+    .faq-lista details p { padding: 0 16px 14px; font-size: 15px; }
+    .visita-box { padding: 22px 18px; gap: 22px; margin-top: 26px; }
+    .onda { height: 38px; }
+    .salas-cards { gap: 14px; margin-top: 28px; }
+    .sala-card p { margin: 0 10px; }
+    .bairro-chips { gap: 8px; }
+    .bairro-chips .chip { font-size: 13px; padding: 7px 13px; }
+    .chip { padding: 9px 16px; }
+    .conselho-avo { padding: 12px 14px; font-size: 14px; }
+    .nota-atuais, .nota-externos { padding: 14px 16px; font-size: 14px; }
+    .foot-grid { gap: 26px; }
+    .avo-chat { bottom: 88px; max-height: min(480px, calc(100vh - 110px)); }
+    .avo-botao { width: 58px; height: 58px; right: 16px; bottom: 16px; }
+  }
+
   body > footer { background: #1C2B22; color: #C9D4CC; padding: 56px 0 32px; font-size: 15px; }
   body > footer h3 { color: #fff; font-size: 17px; }
   .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; }
@@ -612,6 +689,9 @@
       <a href="en.html" title="English">EN</a>
     </nav>
     <a class="btn" href="#visita">Marcar visita</a>
+    <button class="hamburguer" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
   </div>
   <div class="rota" aria-hidden="true"></div>
   <div class="barquinho" aria-hidden="true">
@@ -1395,6 +1475,22 @@
     function enviar() { var v = input.value.trim(); if (!v) return; input.value = ''; responde(v); }
     document.getElementById('avo-enviar').addEventListener('click', enviar);
     input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') enviar(); });
+  }
+
+  // menu mobile (hambúrguer)
+  var ham = document.querySelector('.hamburguer');
+  var cabecalho = document.querySelector('header');
+  if (ham && cabecalho) {
+    ham.addEventListener('click', function () {
+      var aberto = cabecalho.classList.toggle('menu-aberto');
+      ham.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    });
+    document.querySelectorAll('nav.menu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        cabecalho.classList.remove('menu-aberto');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
   // barquinho de progresso do scroll
