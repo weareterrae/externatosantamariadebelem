@@ -570,6 +570,13 @@
   .preco-hero .rotulo { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
   .preco-hero .valor { font-family: "Fraunces", Georgia, serif; font-size: 62px; font-weight: 700; line-height: 1.05; color: var(--amarelo); }
   .preco-hero .valor small { font-size: 22px; font-weight: 600; color: #fff; }
+  .preco-hero .precos-dois { display: grid; gap: 2px; margin: 8px 0 2px; }
+  .preco-hero .preco-linha { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.22); }
+  .preco-hero .preco-linha:last-child { border-bottom: none; }
+  .preco-hero .etapa { display: flex; flex-direction: column; font-weight: 800; font-size: 16px; }
+  .preco-hero .etapa small { font-weight: 600; font-size: 12.5px; opacity: 0.82; letter-spacing: 0.02em; margin-top: 1px; }
+  .preco-hero .preco-linha .valor { font-size: 42px; line-height: 1; }
+  .preco-hero .preco-linha .valor small { font-size: 17px; }
   .preco-hero .inclui { margin: 14px 0 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
   .preco-hero .inclui li { display: flex; gap: 9px; align-items: baseline; }
   .preco-hero .inclui li::before { content: "✓"; color: var(--amarelo); font-weight: 800; }
@@ -1148,7 +1155,16 @@
       <div class="precario-grid" style="text-align: left;">
         <div class="preco-hero">
           <span class="rotulo">Mensalidade &middot; 12 meses</span>
-          <div class="valor">425€<small> /mês</small></div>
+          <div class="precos-dois">
+            <div class="preco-linha">
+              <span class="etapa">Pré-escolar<small>3–5 anos</small></span>
+              <span class="valor">390€<small> /mês</small></span>
+            </div>
+            <div class="preco-linha">
+              <span class="etapa">1.º Ciclo<small>6–10 anos</small></span>
+              <span class="valor">425€<small> /mês</small></span>
+            </div>
+          </div>
           <ul class="inclui">
             <li>Componente letiva completa (JI ou 1.º Ciclo)</li>
             <li>Ateliês incluídos: mindfulness, inglês, música, expressão dramática, artes, educação física e sala de estudo</li>
@@ -1194,6 +1210,13 @@
           <p style="font-size: 15px; color: var(--ink-soft);">Escolha o que precisa e veja o valor real — sem surpresas.</p>
           <div class="sim-controlos">
             <div class="campo">
+              <label for="sim-etapa">Etapa</label>
+              <select id="sim-etapa">
+                <option value="390">Pré-escolar · 3–5 anos (390€)</option>
+                <option value="425">1.º Ciclo · 6–10 anos (425€)</option>
+              </select>
+            </div>
+            <div class="campo">
               <label for="sim-refeitorio">Refeitório</label>
               <select id="sim-refeitorio">
                 <option value="175">Almoço + lanche da escola (+175€)</option>
@@ -1221,8 +1244,8 @@
         </div>
         <div class="sim-total">
           <div class="rotulo">O seu valor mensal</div>
-          <div class="valor" id="sim-valor">600<small>€/mês</small></div>
-          <div class="detalhe" id="sim-detalhe">425€ mensalidade + 175€ refeitório</div>
+          <div class="valor" id="sim-valor">565<small>€/mês</small></div>
+          <div class="detalhe" id="sim-detalhe">390€ mensalidade + 175€ refeitório</div>
           <div class="detalhe">Acresce, uma vez por ano: seguro 25€ + material 60€. Inscrição no 1.º ano: 300€.</div>
         </div>
       </div>
@@ -1422,7 +1445,7 @@
     { chaves: ['doen', 'febre', 'medicamento', 'doente'], texto: 'Se adoecer durante o dia, ligamos logo aos pais. Todas as crianças têm seguro escolar. Com febre, fica-se em casa a melhorar.' },
     { chaves: ['tpc', 'trabalho', 'estudo'], texto: 'Trabalhos de casa? Poucos. A sala de estudo é diária e é lá que o grosso se resolve. Em casa, o tempo é para a família.' },
     { chaves: ['inglês', 'ingles', 'língua', 'lingua', 'mandarim'], texto: 'Inglês desde os 3 anos, incluído na mensalidade. E há mandarim nas extracurriculares, para os mais aventureiros.' },
-    { chaves: ['preço', 'preco', 'mensalidade', 'custa', 'valor', 'desconto'], texto: 'A mensalidade é 425€ (12 meses), com descontos de 5% para irmãos ou pagamento anual. Faça as contas certas no simulador, na secção Preçário — sem surpresas.' },
+    { chaves: ['preço', 'preco', 'mensalidade', 'custa', 'valor', 'desconto'], texto: 'A mensalidade é 390€ no pré-escolar e 425€ no 1.º ciclo (12 meses), com descontos de 5% para irmãos ou pagamento anual. Faça as contas certas no simulador, na secção Preçário — sem surpresas.' },
     { chaves: ['atl', 'férias', 'ferias', 'verão', 'verao', 'natal', 'páscoa', 'pascoa', 'praia'], texto: 'O ATL funciona na Páscoa, no verão e no Natal: 150€/semana, com almoço e seguro incluídos. Em julho há o Programa Praia (2 semanas, 400€). E é aberto a crianças de outras escolas!' },
     { chaves: ['horário', 'horario', 'horas', 'abre', 'fecha', 'prolongamento'], texto: 'Abrimos às 7h30 e fechamos às 19h00, de segunda a sexta, 12 meses por ano. A mensalidade cobre até às 17h30; depois há prolongamento.' },
     { chaves: ['visita', 'marcar', 'conhecer', 'inscri'], texto: 'Venha visitar-nos num dia normal de escola — e traga o seu filho, que a visita também é dele. Preencha o formulário aqui em baixo na secção "Venha ver com os seus olhos".' },
@@ -1558,12 +1581,13 @@
   }
 
   // simulador de mensalidade
+  var simEta = document.getElementById('sim-etapa');
   var simRef = document.getElementById('sim-refeitorio');
   var simPro = document.getElementById('sim-prolongamento');
   var simDes = document.getElementById('sim-desconto');
   function simular() {
     if (!simRef) return;
-    var mensalidade = 425;
+    var mensalidade = simEta ? parseInt(simEta.value, 10) : 425;
     var desconto = simDes.value === '0' ? 0 : Math.round(mensalidade * 0.05);
     var ref = parseInt(simRef.value, 10);
     var pro = parseInt(simPro.value, 10);
@@ -1573,7 +1597,7 @@
     if (pro > 0) partes.push(pro + '€ prolongamento');
     document.getElementById('sim-detalhe').textContent = partes.join(' + ');
   }
-  [simRef, simPro, simDes].forEach(function (el) { if (el) el.addEventListener('change', simular); });
+  [simEta, simRef, simPro, simDes].forEach(function (el) { if (el) el.addEventListener('change', simular); });
   simular();
 
   // easter egg: clicar no barquinho lança confetes
