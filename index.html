@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23FDFBF4'/%3E%3Cpath d='M16 5v13' stroke='%231E6E42' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M16 5c6 3 8 8 8 12H16z' fill='%2300A7E1'/%3E%3Cpath d='M16 9c-4 2-5 5.5-5 8h5z' fill='%23E5007E'/%3E%3Cpath d='M5 20h22l-3 6H8z' fill='%23FFD500' stroke='%231E6E42' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FDFBF4;
@@ -35,15 +35,17 @@
     line-height: 1.65;
   }
   h1, h2, h3 {
-    font-family: "Baloo 2", "Segoe UI", sans-serif;
-    line-height: 1.15;
+    font-family: "Lora", Georgia, serif;
+    line-height: 1.18;
     color: var(--verde);
     margin: 0 0 14px;
     text-wrap: balance;
   }
-  h1 { font-size: clamp(38px, 6vw, 60px); font-weight: 700; }
-  h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; }
-  h3 { font-size: 21px; font-weight: 600; }
+  h1 { font-size: clamp(36px, 5.6vw, 56px); font-weight: 600; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(27px, 3.8vw, 36px); font-weight: 600; letter-spacing: -0.005em; }
+  h3 { font-size: 20px; font-weight: 600; }
+  /* zonas lúdicas mantêm a letra arredondada */
+  .salas h2, .sala-card h3, .salas-mote, .avo-fala, .avo-chat-topo .titulo { font-family: "Baloo 2", "Segoe UI", sans-serif; }
   p { margin: 0 0 16px; }
   img { max-width: 100%; display: block; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
@@ -77,7 +79,7 @@
   nav.menu a:hover { border-bottom-color: var(--amarelo); }
   .btn {
     display: inline-block; text-decoration: none; text-align: center;
-    font-family: "Baloo 2", sans-serif; font-weight: 600; font-size: 17px;
+    font-family: "Nunito", sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.01em;
     background: var(--verde); color: #fff;
     padding: 12px 26px; border-radius: 999px;
     box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28);
@@ -260,6 +262,20 @@
     max-width: 46ch; margin: 34px auto 0;
   }
 
+  /* ---------- 1.º ciclo (tom sóbrio) ---------- */
+  .pciclo { background: #fff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+  .pciclo-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .pciclo-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .pciclo .eyebrow { color: var(--verde); }
+  .pciclo-ilu { display: grid; gap: 16px; }
+  .pciclo-ilu img { width: 100%; border-radius: 12px; border: 1px solid var(--card-border); }
+  .pciclo-lista { list-style: none; padding: 0; margin: 26px 0 0; max-width: none; }
+  .pciclo-lista li { padding: 15px 0; border-top: 1px solid var(--card-border); display: grid; gap: 3px; margin: 0; }
+  .pciclo-lista li:last-child { border-bottom: 1px solid var(--card-border); }
+  .pciclo-lista strong { font-size: 16.5px; color: var(--ink); }
+  .pciclo-lista span { font-size: 15px; color: var(--ink-soft); }
+  .pciclo-mote { font-family: "Lora", serif; font-style: italic; font-size: 18.5px; color: var(--verde); margin-top: 24px; }
+
   /* ---------- um dia na escola ---------- */
   .dia { background: #fff; border-top: 1px solid var(--card-border); }
   .dia-strip {
@@ -309,7 +325,7 @@
     padding: 24px 26px; text-align: center;
   }
   .sim-total .rotulo { font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
-  .sim-total .valor { font-family: "Baloo 2", sans-serif; font-size: 52px; font-weight: 700; color: var(--verde); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .sim-total .valor { font-family: "Lora", serif; font-size: 50px; font-weight: 700; color: var(--verde); line-height: 1.1; font-variant-numeric: tabular-nums; }
   .sim-total .valor small { font-size: 20px; }
   .sim-total .detalhe { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
 
@@ -485,7 +501,7 @@
   .linha li:nth-child(2) { border-top-color: var(--azul); }
   .linha li:nth-child(3) { border-top-color: var(--rosa); }
   .linha li:nth-child(4) { border-top-color: var(--verde-vivo); }
-  .linha .ano { font-family: "Baloo 2", sans-serif; font-size: 26px; font-weight: 700; color: var(--ink); }
+  .linha .ano { font-family: "Lora", serif; font-size: 26px; font-weight: 700; color: var(--ink); }
   .linha p { font-size: 15px; color: var(--ink-soft); margin: 4px 0 0; }
   .mural { margin-top: 48px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
   .mural img { width: 100%; height: 220px; object-fit: cover; }
@@ -552,7 +568,7 @@
     box-shadow: 0 10px 30px rgba(30, 110, 66, 0.25);
   }
   .preco-hero .rotulo { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
-  .preco-hero .valor { font-family: "Baloo 2", sans-serif; font-size: 64px; font-weight: 700; line-height: 1.05; color: var(--amarelo); }
+  .preco-hero .valor { font-family: "Lora", serif; font-size: 62px; font-weight: 700; line-height: 1.05; color: var(--amarelo); }
   .preco-hero .valor small { font-size: 22px; font-weight: 600; color: #fff; }
   .preco-hero .inclui { margin: 14px 0 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
   .preco-hero .inclui li { display: flex; gap: 9px; align-items: baseline; }
@@ -679,9 +695,8 @@
     <nav class="menu" aria-label="Menu principal">
       <a href="#escola">A Escola</a>
       <a href="#metodo">O Método</a>
-      <a href="#salas">Salas</a>
-      <a href="#valencias">Valências</a>
-      <a href="#atividades">Atividades</a>
+      <a href="#salas">Pré-Escolar</a>
+      <a href="#primeiro-ciclo">1.º Ciclo</a>
       <a href="#atl">ATL</a>
       <a href="#historia">História</a>
       <a href="#precario">Preçário</a>
@@ -821,6 +836,28 @@
         </div>
       </div>
       <p class="salas-mote">Dos Peixinhos às Estrelas do Mar, o mesmo mar e a mesma equipa a acompanhar cada maré.</p>
+    </div>
+  </section>
+
+  <!-- 1.º CICLO -->
+  <section id="primeiro-ciclo" class="pciclo">
+    <div class="wrap pciclo-grid">
+      <div>
+        <span class="eyebrow">1.º Ciclo · 6–10 anos</span>
+        <h2>Onde a curiosidade ganha método</h2>
+        <p class="lead">Do brincar ao estudar sem perder o gosto. Duas turmas, do 1.º ao 4.º ano, onde os hábitos de trabalho se constroem com a mesma atenção de sempre: 16 alunos por sala e um plano para cada um.</p>
+        <ul class="pciclo-lista">
+          <li><strong>Currículo nacional, com autonomia pedagógica</strong><span>Autonomia concedida pelo Ministério da Educação desde 2014 — cumprimos o programa, ensinamos à nossa maneira.</span></li>
+          <li><strong>Sala de estudo diária</strong><span>Os trabalhos fazem-se na escola, com apoio de professor. Em casa, o tempo é da família.</span></li>
+          <li><strong>Línguas e pensamento científico</strong><span>Inglês curricular; mandarim e robótica como opções; projetos investigados e apresentados às famílias.</span></li>
+          <li><strong>Preparação real para o 2.º ciclo</strong><span>Autonomia, hábitos de estudo e confiança — e famílias que acompanham a avaliação de perto, sem surpresas.</span></li>
+        </ul>
+        <p class="pciclo-mote">Rigor não é o contrário de felicidade — é o que a torna duradoura.</p>
+      </div>
+      <div class="pciclo-ilu">
+        <img src="assets/ilustracoes/web/pciclo-estudo.jpg" alt="Ilustração a traço: aluno do 1.º ciclo a escrever no caderno">
+        <img src="assets/ilustracoes/web/pciclo-ciencia.jpg" alt="Ilustração a traço: alunos a observar uma planta e a tomar notas">
+      </div>
     </div>
   </section>
 
