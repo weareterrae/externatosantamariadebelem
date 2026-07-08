@@ -1,0 +1,8 @@
+{
+  "name": "externato-smb-site",
+  "private": true,
+  "description": "Site do Externato Santa Maria de Belém + função Avó Maria (Netlify Functions)",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  }
+}

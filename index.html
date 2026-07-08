@@ -1314,9 +1314,10 @@
     { chaves: ['contacto', 'telefone', 'email', 'morada', 'onde'], texto: 'Estamos na Rua Duarte Pacheco Pereira, n.º 24, no Restelo. Telefone: 213 011 343. E-mail: geral@externatosantamariadebelem.com.' }
   ];
   var SUGESTOES = ['Quanto custa?', 'Como é a adaptação?', 'Que horário têm?', 'Como funciona o ATL?', 'Quero marcar uma visita'];
-  // URL da edge function (Supabase) que dá inteligência real à Avó Maria.
-  // Vazio = modo local (respostas por palavras-chave). Preencher após o deploy da função.
-  var AVO_IA_ENDPOINT = '';
+  // Endpoint da Avó Maria com IA (Netlify Function, mesmo domínio).
+  // Se a função falhar ou não existir (ex.: pré-visualização local), o chat
+  // cai automaticamente para as respostas locais por palavras-chave.
+  var AVO_IA_ENDPOINT = '/api/avo-maria';
 
   var chat = document.getElementById('avo-chat');
   var msgs = document.getElementById('avo-msgs');

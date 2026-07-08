@@ -1,54 +1,38 @@
-# Avó Maria com IA real — guia de ativação
+# Avó Maria com IA real — guia de ativação (Netlify Functions)
 
-O chat do site funciona hoje em **modo local** (respostas por palavras-chave, grátis, sem servidor).
-Este guia ativa o **modo IA**: uma edge function no Supabase que guarda a chave da Anthropic e responde
-com o Claude, na voz da Avó Maria, com todo o conhecimento da escola. O site faz fallback automático
-para o modo local se a função falhar — nunca fica mudo.
+A Avó Maria com IA corre numa **Netlify Function**, no mesmo projeto onde o site já está —
+sem contas novas, sem servidores. A função (`netlify/functions/avo-maria.mts`) faz deploy
+automático em cada push, no endpoint `/api/avo-maria` do próprio domínio.
 
-## O que já está feito (neste repo)
-- `supabase/functions/avo-maria/index.ts` — a função completa: personalidade, factos da escola
-  (preços, salas, ATL, políticas), regras de segurança (não inventa, encaminha casos sensíveis
-  para a Direção, resiste a desvios de papel), CORS restrito aos domínios do site.
-- `index.html` — o chat envia o histórico (últimos 8 turnos) ao endpoint quando `AVO_IA_ENDPOINT`
-  estiver preenchido; mostra "A Avó Maria está a escrever…"; cai para as respostas locais em erro.
+O chat do site já aponta para lá. Se a função falhar (ou a chave não estiver configurada),
+o chat **cai automaticamente para as respostas locais** por palavras-chave — nunca fica mudo.
 
-## Passos (≈10 minutos, mesmo padrão do Chef Prima)
+## Ativar (1 passo, ~2 minutos)
 
-1. **Projeto Supabase** — usar um existente ou criar novo em supabase.com (plano gratuito chega).
+1. **Colar a chave da Anthropic no Netlify** (criar a chave em console.anthropic.com → API Keys):
+   - app.netlify.com → projeto **externatosantamariadebelem** → **Site configuration →
+     Environment variables → Add a variable**
+   - Key: `ANTHROPIC_API_KEY` · Value: `sk-ant-...`
+   - Depois: **Deploys → Trigger deploy → Deploy site** (para a função apanhar a variável).
 
-2. **Deploy da função** (na pasta `site-novo/`, com o Supabase CLI ligado ao projeto):
-   ```sh
-   supabase functions deploy avo-maria --no-verify-jwt
-   ```
-   (`--no-verify-jwt` porque o chat é público — a proteção é o CORS + a função não fazer nada sensível.)
+2. **Testar no site publicado**: abrir o chat e fazer perguntas de preço/horário e uma fora do
+   guião (ex.: "o meu filho é alérgico a glúten, como fazem?") — deve acolher e encaminhar
+   para a Direção. Se responder com frases "de guião" idênticas às de antes, está em fallback:
+   verificar a variável e o deploy em **Logs → Functions → avo-maria**.
 
-3. **Chave da Anthropic** (criar em console.anthropic.com → API Keys):
-   ```sh
-   supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
-   ```
+## O que a função faz
+- Modelo `claude-opus-4-8` com a personalidade da Avó Maria e os factos completos da escola
+  (preços, salas, ATL, políticas) no bloco `SYSTEM` de `netlify/functions/avo-maria.mts`.
+- Regras de segurança: não inventa preços/datas/vagas; casos sensíveis (saúde, NEE, reclamações)
+  → encaminha para a Direção; não comenta outras escolas; resiste a desvios de papel.
+- Controlo de custo/abuso: histórico cortado aos últimos 8 turnos e 1.000 caracteres por mensagem,
+  respostas até 400 tokens.
 
-4. **Ligar o site**: em `index.html`, preencher a constante:
-   ```js
-   var AVO_IA_ENDPOINT = 'https://<PROJECT_REF>.functions.supabase.co/avo-maria';
-   ```
-   Commit + push → o Netlify publica → a Avó Maria fica inteligente.
-
-5. **Testar no site publicado**: perguntas de preço/horário e uma pergunta fora do guião
-   (ex.: "o meu filho é alérgico a glúten, como fazem?") — deve acolher e encaminhar para a Direção.
-
-## Custos (modelo claude-opus-4-8, o melhor — já configurado)
-- ~1.900 tokens de entrada + ~200 de saída por resposta ≈ **1,5 cêntimos por mensagem**.
-- 1.000 mensagens/mês ≈ **15€/mês**. Para uma campanha de captação, é irrisório face a um lead.
-- Se o volume disparar, muda-se `MODEL` para `claude-haiku-4-5` (≈20× mais barato, ainda muito bom).
+## Custos
+- ~1,5 cêntimos por mensagem (Opus 4.8). 1.000 conversas/mês ≈ 15€.
+- Se o volume disparar: mudar `MODEL` para `claude-haiku-4-5` (≈20× mais barato) e push.
 
 ## Manutenção
-- Os factos da escola vivem no bloco `SYSTEM` de `supabase/functions/avo-maria/index.ts`.
-  Mudou um preço ou uma política? Editar lá + `supabase functions deploy avo-maria` — 1 minuto.
-- Manter o site (secção preçário/FAQ) e o SYSTEM sincronizados — são as duas fontes que os pais veem.
-
-## Notas de segurança
-- A chave NUNCA vai no site — vive num secret do Supabase.
-- CORS restrito aos domínios do site (netlify.app + domínio oficial). Ao mudar de domínio,
-  atualizar `ORIGENS_PERMITIDAS` na função.
-- A função corta o histórico a 8 turnos e 1.000 caracteres por mensagem (controlo de custo e abuso).
-- Se um dia houver abuso, ativar rate limiting (ex.: por IP com Upstash) — por agora não é necessário.
+- Mudou um preço ou política? Editar o bloco `SYSTEM` em `netlify/functions/avo-maria.mts`
+  **e** a secção correspondente do site (preçário/FAQ) → commit → push. O Netlify trata do resto.
+- A chave NUNCA vai no código nem no site — vive só nas environment variables do Netlify.

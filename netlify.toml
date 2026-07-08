@@ -1,6 +1,11 @@
 # Site estático — sem build. Publica a raiz do repositório.
+# A função da Avó Maria vive em netlify/functions (deploy automático).
 [build]
   publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 # Cabeçalhos de cache para os assets (ilustrações e logo)
 [[headers]]
