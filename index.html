@@ -1314,27 +1314,65 @@
     { chaves: ['contacto', 'telefone', 'email', 'morada', 'onde'], texto: 'Estamos na Rua Duarte Pacheco Pereira, n.º 24, no Restelo. Telefone: 213 011 343. E-mail: geral@externatosantamariadebelem.com.' }
   ];
   var SUGESTOES = ['Quanto custa?', 'Como é a adaptação?', 'Que horário têm?', 'Como funciona o ATL?', 'Quero marcar uma visita'];
+  // URL da edge function (Supabase) que dá inteligência real à Avó Maria.
+  // Vazio = modo local (respostas por palavras-chave). Preencher após o deploy da função.
+  var AVO_IA_ENDPOINT = '';
+
   var chat = document.getElementById('avo-chat');
   var msgs = document.getElementById('avo-msgs');
+  var historico = [];
   function fala(texto, minha) {
     var el = document.createElement('div');
     el.className = 'avo-msg ' + (minha ? 'minha' : 'dela');
     el.textContent = texto;
     msgs.appendChild(el);
     msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+  function achaLocal(pergunta) {
+    var p = pergunta.toLowerCase();
+    for (var i = 0; i < RESPOSTAS.length; i++) {
+      for (var j = 0; j < RESPOSTAS[i].chaves.length; j++) {
+        if (p.indexOf(RESPOSTAS[i].chaves[j]) !== -1) { return RESPOSTAS[i].texto; }
+      }
+    }
+    return 'Essa até a mim me escapa! Deixe os seus dados no formulário de pedido de informações, ou ligue 213 011 343 — respondemos no próprio dia útil.';
   }
   function responde(pergunta) {
     fala(pergunta, true);
-    var p = pergunta.toLowerCase();
-    var achou = null;
-    for (var i = 0; i < RESPOSTAS.length && !achou; i++) {
-      for (var j = 0; j < RESPOSTAS[i].chaves.length; j++) {
-        if (p.indexOf(RESPOSTAS[i].chaves[j]) !== -1) { achou = RESPOSTAS[i].texto; break; }
-      }
+    historico.push({ role: 'user', content: pergunta });
+
+    if (!AVO_IA_ENDPOINT) {
+      setTimeout(function () {
+        var t = achaLocal(pergunta);
+        fala(t, false);
+        historico.push({ role: 'assistant', content: t });
+      }, 420);
+      return;
     }
-    setTimeout(function () {
-      fala(achou || 'Essa até a mim me escapa! Deixe os seus dados no formulário de pedido de informações, ou ligue 213 011 343 — respondemos no próprio dia útil.', false);
-    }, 420);
+
+    var typing = fala('A Avó Maria está a escrever…', false);
+    typing.style.opacity = '0.6';
+    typing.style.fontStyle = 'italic';
+
+    fetch(AVO_IA_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: historico.slice(-8) })
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        typing.remove();
+        var t = (d && d.reply) ? d.reply : achaLocal(pergunta);
+        fala(t, false);
+        historico.push({ role: 'assistant', content: t });
+      })
+      .catch(function () {
+        typing.remove();
+        var t = achaLocal(pergunta);
+        fala(t, false);
+        historico.push({ role: 'assistant', content: t });
+      });
   }
   var botaoAvo = document.getElementById('avo-botao');
   if (botaoAvo && chat) {
