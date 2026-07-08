@@ -14,12 +14,16 @@
     --paper: #FDFBF4;
     --ink: #26332B;
     --ink-soft: #5A685E;
-    --verde: #1E6E42;
-    --verde-vivo: #43B02A;
-    --rosa: #E5007E;
-    --azul: #00A7E1;
-    --amarelo: #FFD500;
-    --card-border: #E9E4D6;
+    /* Paleta "Aguarela" (08/07/2026) — cores suaves das ilustrações, não neon.
+       Nomes mantidos por compatibilidade: --rosa=terracota, --amarelo=ocre. */
+    --verde: #3B6B50;       /* pinho suave (primário) */
+    --verde-vivo: #5E8C6E;  /* sálvia (hovers, checks) */
+    --rosa: #C27A66;        /* terracota (era magenta) */
+    --azul: #7CA4BC;        /* azul-poeira (era ciano) */
+    --amarelo: #C9993F;     /* ocre (era amarelo-vivo) */
+    --areia: #EAD9B6;       /* areia quente — acentos sobre verde */
+    --sage: #7E9C88;        /* sálvia clara — preenchimentos suaves */
+    --card-border: #E4DCC9;
     --radius: 16px;
     --shadow: 0 6px 24px rgba(38, 51, 43, 0.07);
   }
@@ -146,7 +150,7 @@
   .factos { background: var(--verde); color: #fff; padding: 26px 0; }
   .factos .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
   .facto { display: flex; align-items: baseline; gap: 10px; justify-content: center; }
-  .facto .n { font-family: "Fraunces", Georgia, serif; font-size: 30px; font-weight: 700; color: var(--amarelo); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .facto .n { font-family: "Fraunces", Georgia, serif; font-size: 30px; font-weight: 700; color: var(--areia); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .facto .t { font-size: 15px; font-weight: 700; opacity: 0.95; }
 
   /* ---------- porquê ---------- */
@@ -185,11 +189,6 @@
   .chip:hover { transform: translateY(-3px); border-color: var(--rosa); }
   .pico svg { transform-origin: center; }
 
-  .rota { position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; pointer-events: none;
-    background: linear-gradient(to right, var(--azul) var(--p, 0%), transparent var(--p, 0%)); opacity: 0.55; }
-  .barquinho { position: absolute; bottom: 0; left: 2px; width: 30px; pointer-events: auto; cursor: pointer; will-change: transform; }
-  .barquinho svg { display: block; width: 100%; }
-
   @media (prefers-reduced-motion: no-preference) {
     @keyframes surgir { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
     .hero .since { animation: surgir 0.6s ease 0.1s both; }
@@ -215,8 +214,6 @@
     @keyframes pulso { 0%, 100% { box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28); } 50% { box-shadow: 0 6px 26px rgba(30, 110, 66, 0.5); } }
     .nav > .btn { animation: pulso 3.6s ease-in-out infinite 2s; }
 
-    @keyframes balancar { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-    .barquinho svg { animation: balancar 2.4s ease-in-out infinite; }
   }
   .card h3 { margin-bottom: 6px; }
   .card p { font-size: 15.5px; color: var(--ink-soft); margin-bottom: 0; }
@@ -257,11 +254,11 @@
   }
   .sala-card.azul .sala-idade { background: var(--azul); }
   .sala-card.rosa .sala-idade { background: var(--rosa); }
-  .sala-card.amarelo .sala-idade { background: #E0AE00; }
+  .sala-card.amarelo .sala-idade { background: #B8862F; }
   .sala-card h3 { font-size: 23px; margin-bottom: 6px; }
-  .sala-card.azul h3 { color: #0887B5; }
-  .sala-card.rosa h3 { color: var(--rosa); }
-  .sala-card.amarelo h3 { color: #B8930A; }
+  .sala-card.azul h3 { color: #4E7D96; }
+  .sala-card.rosa h3 { color: #B0654F; }
+  .sala-card.amarelo h3 { color: #96702A; }
   .sala-card p { font-size: 15px; color: var(--ink-soft); margin: 0 20px; }
   .salas-mote {
     font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 19px; color: var(--verde);
@@ -440,8 +437,6 @@
   }
   .vagas-pill .ponto { width: 9px; height: 9px; border-radius: 50%; background: var(--rosa); }
 
-  .confete-fx { position: fixed; top: 58px; width: 10px; height: 10px; border-radius: 2px; z-index: 99; pointer-events: none; }
-  @keyframes cair { from { transform: translateY(0) rotate(0deg); opacity: 1; } to { transform: translateY(92vh) rotate(560deg); opacity: 0; } }
 
   /* ---------- valências ---------- */
   .valencias .cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
@@ -574,7 +569,7 @@
     box-shadow: 0 10px 30px rgba(30, 110, 66, 0.25);
   }
   .preco-hero .rotulo { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; }
-  .preco-hero .valor { font-family: "Fraunces", Georgia, serif; font-size: 62px; font-weight: 700; line-height: 1.05; color: var(--amarelo); }
+  .preco-hero .valor { font-family: "Fraunces", Georgia, serif; font-size: 62px; font-weight: 700; line-height: 1.05; color: var(--areia); }
   .preco-hero .valor small { font-size: 22px; font-weight: 600; color: #fff; }
   .preco-hero .precos-dois { display: grid; gap: 2px; margin: 8px 0 2px; }
   .preco-hero .preco-linha { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.22); }
@@ -722,15 +717,6 @@
       <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
   </div>
-  <div class="rota" aria-hidden="true"></div>
-  <div class="barquinho" aria-hidden="true">
-    <svg viewBox="0 0 32 26">
-      <path d="M15 3v13" stroke="#1E6E42" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M15 3c6 3 8 8 8 12H15z" fill="#00A7E1"/>
-      <path d="M15 7c-4 2-5 5.5-5 8h5z" fill="#E5007E"/>
-      <path d="M4 17.5h24l-3.2 6H7.2z" fill="#FFD500" stroke="#1E6E42" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-  </div>
 </header>
 
 <main id="topo">
@@ -740,7 +726,7 @@
     <div class="wrap hero-grid">
       <div>
         <span class="since"><span class="dot"></span> Restelo, Lisboa &middot; desde 1959</span>
-        <h1>Um lugar para a <span class="risco">criatividade<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 Q 50 2 100 8 T 197 6" fill="none" stroke="#FFD500" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
+        <h1>Um lugar para a <span class="risco">criatividade<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 Q 50 2 100 8 T 197 6" fill="none" stroke="#C9993F" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
         <p class="lead">Jardim de Infância e 1.º Ciclo numa escola pequena por escolha: turmas até 16 alunos, um plano individual para cada criança e um bairro inteiro — o de Belém — para explorar.</p>
         <div class="hero-ctas">
           <a class="btn" href="#visita">Marque a sua visita</a>
@@ -1314,7 +1300,7 @@
     </div>
   </section>
 
-  <div class="onda" aria-hidden="true"><svg viewBox="0 0 2880 54" preserveAspectRatio="none"><path d="M0 28 C 240 54 480 2 720 28 C 960 54 1200 2 1440 28 C 1680 54 1920 2 2160 28 C 2400 54 2640 2 2880 28 L 2880 54 L 0 54 Z" fill="#1E6E42"/></svg></div>
+  <div class="onda" aria-hidden="true"><svg viewBox="0 0 2880 54" preserveAspectRatio="none"><path d="M0 28 C 240 54 480 2 720 28 C 960 54 1200 2 1440 28 C 1680 54 1920 2 2160 28 C 2400 54 2640 2 2880 28 L 2880 54 L 0 54 Z" fill="#3B6B50"/></svg></div>
   <!-- VISITA -->
   <section id="visita" class="visita center" style="padding-top: 40px;">
     <div class="wrap">
@@ -1559,20 +1545,6 @@
     });
   }
 
-  // barquinho de progresso do scroll
-  var barco = document.querySelector('.barquinho');
-  var rota = document.querySelector('.rota');
-  function navegar() {
-    var h = document.documentElement;
-    var total = h.scrollHeight - h.clientHeight;
-    var f = total > 0 ? h.scrollTop / total : 0;
-    if (barco) barco.style.transform = 'translateX(' + f * (window.innerWidth - 38) + 'px)';
-    if (rota) rota.style.setProperty('--p', (f * 100) + '%');
-  }
-  window.addEventListener('scroll', navegar, { passive: true });
-  window.addEventListener('resize', navegar);
-  navegar();
-
   var comAnimacao = !semMovimento && 'IntersectionObserver' in window;
 
   // revelação ao scroll
@@ -1606,26 +1578,6 @@
   }
   [simEta, simRef, simPro, simDes].forEach(function (el) { if (el) el.addEventListener('change', simular); });
   simular();
-
-  // easter egg: clicar no barquinho lança confetes
-  var CORES = ['#43B02A', '#E5007E', '#00A7E1', '#FFD500'];
-  if (barco) {
-    barco.setAttribute('title', 'Clica-me!');
-    barco.addEventListener('click', function () {
-      if (semMovimento) return;
-      var x = barco.getBoundingClientRect().left + 15;
-      for (var i = 0; i < 28; i++) {
-        var c = document.createElement('span');
-        c.className = 'confete-fx';
-        c.style.background = CORES[i % 4];
-        c.style.left = Math.max(6, x + (Math.random() * 160 - 80)) + 'px';
-        c.style.animation = 'cair ' + (1 + Math.random() * 1.2) + 's ease-in ' + (Math.random() * 0.3) + 's forwards';
-        if (Math.random() > 0.5) c.style.borderRadius = '50%';
-        document.body.appendChild(c);
-        c.addEventListener('animationend', function (ev) { ev.target.remove(); });
-      }
-    });
-  }
 
   // formulário de pedido de informações (mailto até haver backend no deploy)
   var form = document.getElementById('form-info');
