@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Plano de Comunicação — Externato Santa Maria de Belém</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#FDFBF4; --ink:#26332B; --ink-soft:#5C6B60; --ink-faint:#8A9690;
+    --pinho:#3B6B50; --sage:#7E9C88; --terracota:#C27A66; --azul:#7CA4BC;
+    --ocre:#C9993F; --areia:#EAD9B6; --linha:#E4DCC9; --card:#FFFFFF;
+    --sombra:0 6px 22px rgba(40,54,44,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;font-size:16px;line-height:1.62}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.14;text-wrap:balance;margin:0}
+  a{color:var(--pinho)}
+  .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--terracota)}
+
+  /* nav */
+  nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+  nav.top .in{max-width:1160px;margin:0 auto;padding:11px 22px;display:flex;gap:8px;align-items:center;overflow-x:auto}
+  nav.top .brand{font-family:"Fraunces",serif;font-weight:600;font-size:16px;color:var(--pinho);white-space:nowrap;margin-right:8px}
+  nav.top a{font-size:13px;font-weight:700;color:var(--ink-soft);text-decoration:none;padding:6px 11px;border-radius:999px;white-space:nowrap}
+  nav.top a:hover{background:var(--card);color:var(--pinho)}
+
+  .wrap{max-width:1160px;margin:0 auto;padding:44px 22px 100px}
+  header.hero{border-bottom:1px solid var(--linha);padding-bottom:34px;margin-bottom:14px}
+  header.hero h1{font-size:clamp(30px,4.6vw,46px);color:var(--pinho);margin:10px 0 14px}
+  header.hero p{margin:0;font-size:17px;color:var(--ink);max-width:76ch}
+  header.hero p b{color:var(--pinho)}
+  .metan{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{display:inline-flex;gap:8px;font-size:13px;font-weight:700;border-radius:999px;padding:7px 15px;text-decoration:none}
+  .pill.site{background:var(--pinho);color:#fff}
+  .pill.win{background:color-mix(in srgb,var(--ocre) 14%,transparent);border:1px solid color-mix(in srgb,var(--ocre) 40%,transparent);color:var(--ink)}
+
+  section{scroll-margin-top:70px;padding:44px 0;border-bottom:1px solid var(--linha)}
+  section>.eyebrow{margin-bottom:6px}
+  section>h2{font-size:28px;color:var(--pinho);margin:0 0 8px}
+  section>.sub{color:var(--ink-soft);font-size:15px;margin:0 0 24px;max-width:78ch}
+
+  .idea{background:linear-gradient(180deg,color-mix(in srgb,var(--pinho) 10%,transparent),transparent);border:1px solid color-mix(in srgb,var(--pinho) 28%,transparent);border-radius:20px;padding:26px 30px;margin:28px 0}
+  .idea h3{font-size:clamp(22px,3.4vw,30px);color:var(--pinho);margin:6px 0 8px}
+  .idea .slog{font-family:"Fraunces",serif;font-style:italic;font-size:19px;margin-top:12px}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:8px 0 4px}
+  .kpi{background:var(--card);border:1px solid var(--linha);border-radius:13px;padding:15px 17px;box-shadow:var(--sombra)}
+  .kpi .n{font-family:"Fraunces",serif;font-size:27px;font-weight:700;color:var(--pinho);line-height:1;font-variant-numeric:tabular-nums}
+  .kpi .l{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.35}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  @media(max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+  .canais{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}
+  .canal{background:var(--card);border:1px solid var(--linha);border-radius:13px;padding:15px 17px}
+  .canal .h{display:flex;gap:8px;align-items:baseline;margin-bottom:5px}
+  .canal .h b{font-family:"Fraunces",serif;font-size:15.5px}
+  .canal .tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:5px;margin-left:auto;background:color-mix(in srgb,var(--sage) 24%,transparent);color:var(--pinho)}
+  .canal .tag.novo{background:color-mix(in srgb,var(--ocre) 20%,transparent);color:var(--ocre)}
+  .canal .tag.on{background:color-mix(in srgb,var(--pinho) 16%,transparent);color:var(--pinho)}
+  .canal p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.5}
+
+  .motor{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}
+  @media(max-width:900px){.motor{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.motor{grid-template-columns:1fr}}
+  .slot{border:1px solid var(--linha);border-top-width:3px;border-radius:12px;padding:14px 15px;background:var(--card)}
+  .slot .d{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+  .slot h3{font-size:15.5px;margin:5px 0 6px}
+  .slot p{margin:0;font-size:12px;color:var(--ink-soft);line-height:1.45}
+  .s1{border-top-color:var(--ocre)}.s1 h3{color:var(--ocre)}
+  .s2{border-top-color:var(--azul)}.s2 h3{color:var(--azul)}
+  .s3{border-top-color:var(--sage)}.s3 h3{color:var(--pinho)}
+  .s4{border-top-color:var(--terracota)}.s4 h3{color:var(--terracota)}
+  .s5{border-top-color:var(--pinho)}.s5 h3{color:var(--pinho)}
+
+  .fases{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  @media(max-width:760px){.fases{grid-template-columns:1fr}}
+  .fase{border:1px solid var(--linha);border-radius:13px;padding:17px 19px;background:var(--card)}
+  .fase .quando{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .fase h3{font-size:18px;margin:5px 0 7px}
+  .fase p{margin:0;font-size:13.5px;color:var(--ink-soft)}
+  .fase.f1{border-top:3px solid var(--ocre)}.fase.f1 h3{color:var(--ocre)}
+  .fase.f2{border-top:3px solid var(--azul)}.fase.f2 h3{color:var(--azul)}
+  .fase.f3{border-top:3px solid var(--terracota)}.fase.f3 h3{color:var(--terracota)}
+
+  .bloco{background:var(--card);border:1px solid var(--linha);border-radius:13px;padding:19px 21px}
+  .bloco h3{font-size:17px;color:var(--pinho);margin-bottom:9px}
+  .bloco ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-soft)}
+  .bloco li{margin-bottom:6px}.bloco li b{color:var(--ink)}
+  .role{font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+
+  .tabela-wrap{overflow-x:auto;border:1px solid var(--linha);border-radius:13px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:840px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--linha);vertical-align:top}
+  th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);background:color-mix(in srgb,var(--sage) 10%,transparent)}
+  td.sem{font-weight:800;color:var(--pinho);white-space:nowrap;font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:none}
+
+  /* peça de conteúdo */
+  .peca{background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:20px 22px;margin-bottom:14px;box-shadow:var(--sombra)}
+  .peca .ph{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+  .peca h4{font-size:17px;margin-right:auto}
+  .chip{font-size:11px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .c-ref{background:color-mix(in srgb,var(--ocre) 20%,transparent);color:var(--ocre)}
+  .c-esc{background:color-mix(in srgb,var(--azul) 22%,transparent);color:var(--azul)}
+  .c-fam{background:color-mix(in srgb,var(--sage) 26%,transparent);color:var(--pinho)}
+  .c-bel{background:color-mix(in srgb,var(--terracota) 20%,transparent);color:var(--terracota)}
+  .c-cta{background:color-mix(in srgb,var(--pinho) 16%,transparent);color:var(--pinho)}
+  .c-fmt{background:#ece6d8;color:var(--ink-soft);font-family:ui-monospace,monospace;font-weight:700}
+  .copy{background:var(--papel);border-left:3px solid var(--sage);border-radius:0 8px 8px 0;padding:13px 16px;font-size:14px;white-space:pre-line}
+  .copy em{color:var(--pinho);font-style:italic}
+  .tags{margin-top:9px;font-size:12px;color:var(--azul);font-weight:600;word-break:break-word}
+  .nota{margin-top:9px;font-size:12.5px;color:var(--ink-soft);font-style:italic}
+  .visual{margin-top:9px;font-size:12.5px;color:var(--ink-soft)}
+  .visual b{color:var(--ink)}
+
+  /* carrossel slides */
+  .slides{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+  .sl{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:12px 13px;font-size:13px}
+  .sl .n{font-family:"Fraunces",serif;font-style:italic;color:var(--ocre);font-weight:700;font-size:12.5px;margin-bottom:4px}
+  .sl b{display:block;font-family:"Fraunces",serif;font-size:14px;margin-bottom:3px}
+  .sl span{color:var(--ink-soft);font-size:12.5px;line-height:1.45}
+
+  /* reel storyboard */
+  .board{display:grid;gap:8px;margin-top:10px}
+  .shot{display:grid;grid-template-columns:60px 1fr;gap:14px;background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:11px 14px;align-items:start}
+  .shot .t{font-family:"Fraunces",serif;font-weight:700;color:var(--terracota);font-size:13px;white-space:nowrap}
+  .shot .desc b{display:block;font-size:13.5px}
+  .shot .desc span{font-size:12.5px;color:var(--ink-soft)}
+  .shot .desc .osd{display:inline-block;margin-top:4px;font-size:12px;background:var(--card);border:1px solid var(--linha);border-radius:6px;padding:2px 8px;color:var(--ink)}
+
+  .handover{background:color-mix(in srgb,var(--pinho) 8%,transparent);border:1px solid color-mix(in srgb,var(--pinho) 30%,transparent);border-radius:15px;padding:22px 26px}
+  .passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}
+  .passo{background:var(--card);border:1px solid var(--linha);border-radius:11px;padding:13px 15px;font-size:13px;color:var(--ink-soft)}
+  .passo b{display:block;color:var(--ink);font-family:"Fraunces",serif;margin-bottom:3px}
+  .alerta{background:color-mix(in srgb,var(--terracota) 12%,transparent);border:1px solid color-mix(in srgb,var(--terracota) 45%,transparent);border-radius:12px;padding:16px 20px;font-size:14.5px}
+  .alerta b{color:var(--terracota)}
+  footer{padding-top:26px;font-size:13px;color:var(--ink-faint)}
+  .subh{font-family:"Fraunces",serif;font-size:19px;color:var(--pinho);margin:26px 0 12px}
+</style>
+</head>
+<body>
+
+<nav class="top"><div class="in">
+  <span class="brand">🌟 Plano de Comunicação</span>
+  <a href="#estrategia">Estratégia</a>
+  <a href="#calendario">Calendário</a>
+  <a href="#avo">Caderno da Avó</a>
+  <a href="#posts">Posts</a>
+  <a href="#carrosseis">Carrosséis</a>
+  <a href="#reels">Reels</a>
+  <a href="#linkedin">LinkedIn</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#anuncios">Anúncios</a>
+  <a href="#continuar">Continuar</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Externato Santa Maria de Belém · Documento de trabalho</div>
+  <h1>Plano de comunicação e viragem — tudo desenvolvido, pronto a executar</h1>
+  <p>O colégio tem 65 anos, cara nova e uma verdade rara: <b>cria crianças felizes e diz o preço em voz alta</b>. Esta é a máquina para o mundo saber — cinco publicações fortes por semana, conteúdo que os pais partilham, os avós como aliados, o LinkedIn como palco de autoridade, e o Open Day como grande porta aberta. Aqui está tudo escrito: posts, carrosséis, reels, LinkedIn, newsletter. Aprova, e avançamos com a produção.</p>
+  <div class="metan">
+    <a class="pill site" href="https://externatosantamariadebelem.netlify.app" target="_blank">🌐 O site novo</a>
+    <span class="pill win">📅 27 julho → 30 setembro · 10 semanas</span>
+  </div>
+</header>
+
+<!-- ESTRATÉGIA -->
+<section id="estrategia">
+  <div class="eyebrow">1 · A estratégia</div>
+  <h2>A grande ideia e o motor</h2>
+
+  <div class="idea">
+    <div class="eyebrow" style="color:var(--pinho)">A grande ideia</div>
+    <h3>Criar crianças felizes é coisa séria</h3>
+    <p style="margin:0;color:var(--ink-soft);max-width:76ch">Diz o que a escola faz (crianças felizes), assume que é <i>trabalho a sério</i> (rigor, método, equipa), e transforma cada peça educativa numa prova viva da promessa. Os pais não partilham anúncios de escolas — partilham ideias que os fazem sentir melhores pais.</p>
+    <div class="slog">"Há 65 anos a criar crianças felizes em Belém. Agora, com cara nova."</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5/sem</div><div class="l">publicações fortes</div></div>
+    <div class="kpi"><div class="n">10</div><div class="l">canais em jogo</div></div>
+    <div class="kpi"><div class="n">40+</div><div class="l">contactos até 30 set</div></div>
+    <div class="kpi"><div class="n">6–8</div><div class="l">matrículas novas</div></div>
+    <div class="kpi"><div class="n">5</div><div class="l">salas a encher</div></div>
+  </div>
+
+  <h3 class="subh">Os canais — jogar com tudo</h3>
+  <div class="canais">
+    <div class="canal"><div class="h"><b>📸 Instagram</b><span class="tag on">Já criado</span></div><p>Palco principal: as 5 publicações/semana, reels e stories. (Metricool ✓)</p></div>
+    <div class="canal"><div class="h"><b>👍 Facebook</b><span class="tag on">Já criado</span></div><p>Espelha o IG; onde estão avós e mães 35+. Ótimo para partilhas. (Metricool ✓)</p></div>
+    <div class="canal"><div class="h"><b>💼 LinkedIn</b><span class="tag novo">A criar</span></div><p>Autoridade + pais profissionais/embaixadas de Belém + recrutamento. Ver secção própria.</p></div>
+    <div class="canal"><div class="h"><b>📍 Google Business</b><span class="tag novo">A criar/ligar</span></div><p>Aparecer no mapa em "escola perto de mim" + campanha de avaliações.</p></div>
+    <div class="canal"><div class="h"><b>🔎 Google Ads</b><span class="tag">Pago</span></div><p>Apanha quem pesquisa no momento da decisão. Reforço no Open Day.</p></div>
+    <div class="canal"><div class="h"><b>🎯 Meta Ads</b><span class="tag">Pago</span></div><p>Pais 30–45 de Belém/Restelo + remarketing + segmento 55+ (avós).</p></div>
+    <div class="canal"><div class="h"><b>✉️ Newsletter</b><span class="tag novo">A criar</span></div><p>"As Cartas da Avó Maria" — mensal. O canal que não depende de algoritmos.</p></div>
+    <div class="canal"><div class="h"><b>💬 Boca-a-boca</b><span class="tag">Ouro</span></div><p>Famílias atuais: asset de WhatsApp + incentivo por indicação.</p></div>
+    <div class="canal"><div class="h"><b>👵 Os avós</b><span class="tag novo">Público</span></div><p>Quem paga e decide. Facebook, a Avó Maria, os 65 anos, duas gerações.</p></div>
+    <div class="canal"><div class="h"><b>🏛️ Comunidade & PR</b><span class="tag">Local</span></div><p>Grupos de pais de Lisboa Ocidental, media de bairro, parcerias.</p></div>
+  </div>
+
+  <h3 class="subh">O motor: 5 publicações por semana</h3>
+  <div class="motor">
+    <div class="slot s1"><div class="d">2ª</div><h3>Reflexão</h3><p>Caderno da Avó Maria. O íman de partilhas.</p></div>
+    <div class="slot s2"><div class="d">3ª</div><h3>Escola por dentro</h3><p>A prova: sala, método, equipa, um momento.</p></div>
+    <div class="slot s3"><div class="d">4ª</div><h3>Voz das famílias</h3><p>Testemunho real, avaliação, um momento vivido.</p></div>
+    <div class="slot s4"><div class="d">5ª</div><h3>Belém & memória</h3><p>O bairro, os avós, a história, parcerias.</p></div>
+    <div class="slot s5"><div class="d">6ª</div><h3>O convite</h3><p>Captação: visita, ATL, Matrícula, Open Day.</p></div>
+  </div>
+  <p class="nota" style="margin-top:14px">Por cima: stories diárias, 2 reels/semana, 1 Google Business/semana, anúncios sempre ativos. Fim de semana: 1 peça leve. Horários: 13h ou 21h. Tudo agendado de uma vez no Metricool.</p>
+
+  <h3 class="subh">As três fases</h3>
+  <div class="fases">
+    <div class="fase f1"><div class="quando">27 jul → 8 ago</div><h3>1. O Novo Rosto</h3><p>Revelar a identidade — logótipo, site, ilustrações. O ATL como prova viva.</p></div>
+    <div class="fase f2"><div class="quando">11 ago → 5 set</div><h3>2. Confiança & Autoridade</h3><p>O Caderno ganha ritmo, a prova mostra a escola, a Matrícula de Verão cria urgência.</p></div>
+    <div class="fase f3"><div class="quando">8 set → 30 set</div><h3>3. Regresso & Open Day</h3><p>O regresso às aulas, o Open Day, as últimas vagas. Converter.</p></div>
+  </div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section id="calendario">
+  <div class="eyebrow">2 · O calendário</div>
+  <h2>As 10 semanas, 5 posts cada</h2>
+  <p class="sub">Cada semana: reflexão (2ª) · escola por dentro (3ª) · voz das famílias (4ª) · Belém & memória (5ª) · convite (6ª). Os temas afinam-se com a data do Open Day e a decisão da oferta.</p>
+  <div class="tabela-wrap"><table>
+    <tr><th>Semana</th><th>2ª · Reflexão</th><th>3ª · Escola por dentro</th><th>4ª · Voz das famílias</th><th>5ª · Belém & memória</th><th>6ª · Convite</th></tr>
+    <tr><td class="sem">27 jul</td><td>Caderno #1 · Felicidade e aprendizagem</td><td>A escola tem cara nova (manifesto)</td><td>Reconhece esta escola? (nostalgia)</td><td>65 anos em Belém</td><td>O ATL está a acontecer</td></tr>
+    <tr><td class="sem">03 ago</td><td>Caderno #2 · O tédio educa</td><td>As três salas do mar (carrossel)</td><td>Testemunho · Carolina</td><td>Belém, a nossa sala maior</td><td>Marque uma visita</td></tr>
+    <tr><td class="sem">10 ago</td><td>Caderno #3 · 24h, não 30 atividades</td><td>Dezasseis por sala</td><td>Testemunho · pais do Francisco</td><td>A Avó conversa com os avós</td><td>Matrícula de Verão</td></tr>
+    <tr><td class="sem">17 ago</td><td>Caderno #4 · Dizer "não" é amar</td><td>A equipa + Turbilhão Mágico</td><td>Um momento do ATL</td><td>Os museus à porta</td><td>Belém, a nossa sala maior (reel)</td></tr>
+    <tr><td class="sem">24 ago</td><td>Caderno #5 · Quando não quer ir</td><td>Quanto custa? Já sabe (carrossel)</td><td>Testemunho · Sandro (antigo aluno)</td><td>Duas gerações</td><td>Últimos dias da Matrícula</td></tr>
+    <tr><td class="sem">31 ago</td><td>Caderno #6 · Deixe-o cair</td><td>Aprender Mexendo</td><td>Avaliação Google destacada</td><td>A Avó Maria com IA (reel)</td><td>A prova dos pais</td></tr>
+    <tr><td class="sem">07 set</td><td>Caderno #7 · Brincar é sério</td><td>O primeiro dia (regresso)</td><td>Testemunho · Ana</td><td>Setembro em Belém</td><td>Guarde a data: Open Day</td></tr>
+    <tr><td class="sem">14 set</td><td>Caderno #8 · O ecrã e a ausência</td><td>Um dia na nossa escola (reel)</td><td>Família nova apresenta-se</td><td>O bairro dá as boas-vindas</td><td>Open Day esta semana</td></tr>
+    <tr><td class="sem">21 set</td><td>Caderno #9 · Elogie o esforço</td><td>O que a psicopedagogia apanha</td><td>Ecos do Open Day</td><td>Os avós no Open Day</td><td>Últimas vagas</td></tr>
+    <tr><td class="sem">28 set</td><td>Caderno #10 · O que ele vai lembrar</td><td>Obrigado + o que aí vem</td><td>Testemunho de fecho</td><td>Uma carta de Belém</td><td>Marque antes que feche a sala</td></tr>
+  </table></div>
+</section>
+
+<!-- CADERNO DA AVÓ MARIA -->
+<section id="avo">
+  <div class="eyebrow">3 · O coração</div>
+  <h2>🌿 O «Caderno da Avó Maria» — as 10 edições, escritas</h2>
+  <p class="sub">O conteúdo educativo para os pais, na voz da nossa avó: sábia, calorosa, nunca a dar lições. Formato: <b>carrossel de 4 lâminas</b> no IG/FB (texto abaixo), <b>artigo</b> no LinkedIn, entrada no site e, mais tarde, newsletter. Fecho recorrente: "marque uma mãe/pai que precisa de ler isto". Cada edição sai à 2ª feira.</p>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#1 · 27 jul</span><h4>E se a felicidade não atrapalhasse a aprendizagem?</h4></div>
+    <div class="copy">Muita gente acha que primeiro se aprende, e a felicidade vem depois — como uma recompensa.
+
+Eu, que já vi passar tanta criança por esta casa, aprendi o contrário.
+
+Uma criança que se sente segura, acarinhada e vista aprende melhor. Não aprende <em>apesar</em> de ser feliz — aprende <em>porque</em> o é. O medo fecha a cabeça; o carinho abre-a.
+
+Por isso, aqui, cuidar e ensinar são a mesma coisa.
+
+— A Avó Maria 🌿
+
+👉 Marque uma mãe ou um pai que precisa de ler isto hoje.</div>
+    <div class="slides">
+      <div class="sl"><div class="n">Lâmina 1</div><b>E se a felicidade não atrapalhasse a aprendizagem?</b><span>Título grande sobre creme, uma estrelinha.</span></div>
+      <div class="sl"><div class="n">Lâmina 2</div><b>O medo fecha a cabeça.</b><span>O carinho abre-a. (ilustração: círculo da manhã)</span></div>
+      <div class="sl"><div class="n">Lâmina 3</div><b>Não aprende apesar de ser feliz — aprende porque o é.</b><span></span></div>
+      <div class="sl"><div class="n">Lâmina 4</div><b>Aqui, cuidar e ensinar são a mesma coisa.</b><span>Assinatura da Avó + link na bio.</span></div>
+    </div>
+    <div class="tags">#CadernoDaAvóMaria #CriançasFelizes #Parentalidade #ExternatoSantaMariadeBelem #Educação</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#2 · 03 ago</span><h4>O tédio também educa</h4></div>
+    <div class="copy">"Estou aborrecido!" — e nós, cheios de amor, corremos a preencher o silêncio.
+
+Mas o tédio não é um problema a resolver. É o solo onde nasce a imaginação.
+
+É do "não tenho nada para fazer" que sai a cabana de almofadas, a história inventada, o jogo que ninguém ensinou. A criança que nunca se aborrece nunca aprende a entreter-se a si própria — e essa é uma das ferramentas mais importantes da vida.
+
+Da próxima vez, experimente não fazer nada. E veja o que ela inventa.
+
+— A Avó Maria 🌿
+
+👉 Marque alguém que precisa de ouvir que está tudo bem em deixar a criança aborrecer-se.</div>
+    <div class="tags">#CadernoDaAvóMaria #Imaginação #BrincarLivre #Parentalidade #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#3 · 10 ago</span><h4>24 horas, não 30 atividades</h4></div>
+    <div class="copy">Natação à segunda, música à terça, inglês à quarta, ballet à quinta… e ao domingo, exaustos, perguntamos porque é que estão tão irritados.
+
+Uma agenda cheia parece amor. Muitas vezes é o contrário.
+
+As crianças precisam de tempo vazio como precisam de comer. Tempo para brincar sem objetivo, para olhar as nuvens, para não ter de ser bom em nada.
+
+Menos é mais. Uma tarde sem plano também é um presente.
+
+— A Avó Maria 🌿
+
+👉 Partilhe com um pai ou mãe que anda a correr de atividade em atividade.</div>
+    <div class="tags">#CadernoDaAvóMaria #InfânciaSemPressa #Parentalidade #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#4 · 17 ago</span><h4>Dizer "não" é dizer "amo-te"</h4></div>
+    <div class="copy">Custa dizer que não. Vemos a carinha desiludida e o coração aperta.
+
+Mas os limites não são o contrário do amor — são uma das suas formas mais altas.
+
+Uma criança sem limites é uma criança sozinha a decidir coisas grandes demais para ela. O "não" firme e calmo diz-lhe: "eu trato disto por ti; podes ser só criança."
+
+Dizer não, com carinho, é dizer: confia, que eu seguro-te.
+
+— A Avó Maria 🌿
+
+👉 Marque alguém que precisa de coragem para dizer "não" hoje.</div>
+    <div class="tags">#CadernoDaAvóMaria #Limites #Parentalidade #CriançasSeguras #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#5 · 24 ago</span><h4>Quando ele não quer ir à escola</h4></div>
+    <div class="copy">"Não quero ir." E a manhã transforma-se numa batalha.
+
+Antes de insistir, vale a pena parar e ouvir. O "não quero ir" quase nunca é sobre a escola. É saudade, é um amigo que magoou, é uma mudança em casa, é um medo que não sabe dizer por palavras.
+
+Não é uma birra para vencer — é uma mensagem para descodificar.
+
+Às vezes, o melhor que podemos fazer é ajoelhar, olhar nos olhos e perguntar: "o que é que te preocupa?"
+
+— A Avó Maria 🌿
+
+👉 Guarde para a próxima manhã difícil.</div>
+    <div class="tags">#CadernoDaAvóMaria #Emoções #Adaptação #Parentalidade #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#6 · 31 ago</span><h4>Deixe-o cair (com a rede por perto)</h4></div>
+    <div class="copy">O nosso instinto é aparar todas as quedas. Mas a criança que nunca cai nunca aprende a levantar-se.
+
+A resiliência não se ensina por palavras — treina-se a errar, a falhar, a tentar outra vez. Cada pequeno tombo com a mãe por perto é uma vacina contra os tombos grandes de amanhã.
+
+Proteger de mais é, sem querer, desproteger.
+
+Deixe-o tentar. Fique perto. E resista a resolver tudo.
+
+— A Avó Maria 🌿
+
+👉 Partilhe com quem, como todos nós, tem dificuldade em ver o filho falhar.</div>
+    <div class="tags">#CadernoDaAvóMaria #Resiliência #Parentalidade #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#7 · 07 set</span><h4>Brincar é a coisa mais séria do mundo</h4></div>
+    <div class="copy">"Ele só brinca." Como se fosse pouco.
+
+Quando uma criança brinca, está a fazer o trabalho mais sério da sua vida: a treinar a linguagem, a negociar com os outros, a resolver problemas, a inventar, a dominar os seus medos.
+
+Brincar não é a pausa da aprendizagem. É a aprendizagem, na sua forma mais pura.
+
+Por isso, aqui, levamos o brincar muito a sério.
+
+— A Avó Maria 🌿
+
+👉 Marque alguém que precisa de ouvir que "só brincar" é tudo menos pouco.</div>
+    <div class="tags">#CadernoDaAvóMaria #Brincar #AprenderMexendo #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#8 · 14 set</span><h4>O ecrã não é o inimigo — a ausência é</h4></div>
+    <div class="copy">Passamos o dia a lutar contra o tablet. Mas talvez estejamos a lutar contra a coisa errada.
+
+O que a criança procura no ecrã, quase sempre, é o que lhe falta fora dele: atenção, companhia, um adulto presente.
+
+A solução não é só proibir — é estar. Uma criança que tem quem brinque com ela, quem lhe conte histórias, quem a olhe nos olhos, procura menos o ecrã.
+
+Presença vale mais que proibição.
+
+— A Avó Maria 🌿
+
+👉 Partilhe com um pai ou mãe que anda em guerra com os ecrãs.</div>
+    <div class="tags">#CadernoDaAvóMaria #Ecrãs #Presença #Parentalidade #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#9 · 21 set</span><h4>Elogie o esforço, não a nota</h4></div>
+    <div class="copy">"És tão inteligente!" Parece um elogio bonito. Mas ensina a criança a ter medo de falhar — porque se errar, deixa de ser inteligente.
+
+Experimente mudar o foco: "Vi como te esforçaste." "Não desististe." "Tentaste de outra maneira."
+
+Uma criança elogiada pelo esforço aprende que pode melhorar tudo com trabalho. Uma criança elogiada só pelo talento tem medo de perder o rótulo.
+
+Elogie o caminho, não só a chegada.
+
+— A Avó Maria 🌿
+
+👉 Guarde para se lembrar na próxima vez que ele trouxer um trabalho.</div>
+    <div class="tags">#CadernoDaAvóMaria #Esforço #MentalidadeDeCrescimento #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <div class="peca">
+    <div class="ph"><span class="chip c-ref">#10 · 28 set</span><h4>O que é que ele vai lembrar daqui a 20 anos?</h4></div>
+    <div class="copy">Não vai ser a ficha de matemática. Nem a nota do teste.
+
+Vai lembrar-se do cheiro da cozinha, das histórias antes de dormir, da mão que o segurou num dia de medo, da mesa onde todos se sentavam. Vai lembrar-se de se ter sentido visto.
+
+É isso que fica. E é isso que, todos os dias, tentamos dar — a par das letras e dos números.
+
+Eduquemos para a memória que vale a pena guardar.
+
+— A Avó Maria 🌿
+
+👉 Marque quem lhe deu, a si, uma infância que vale a pena lembrar.</div>
+    <div class="tags">#CadernoDaAvóMaria #Memórias #InfânciaFeliz #ExternatoSantaMariadeBelem</div>
+  </div>
+
+  <p class="nota"><b>Banco para continuar (anos de conteúdo):</b> as emoções não se mandam calar · ler juntos, o hábito que muda um cérebro · a magia de uma refeição à mesa · o sono é matéria de escola · irmãos, ciúmes e justiça · a adaptação sem drama · o desfralde sem guerra · quando comparar faz mal · o poder de uma pergunta em vez de uma ordem · a birra é uma tempestade, não um ataque.</p>
+</section>
+
+<!-- POSTS POR PILAR -->
+<section id="posts">
+  <div class="eyebrow">4 · Os posts</div>
+  <h2>Os outros quatro pilares — copy pronta</h2>
+  <p class="sub">Um banco de publicações por pilar, prontas a agendar. Rodam ao longo das 10 semanas conforme o calendário; podem repetir-se e reciclar-se depois.</p>
+
+  <h3 class="subh">🏫 Escola por dentro (3ª feira)</h3>
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>A escola tem cara nova</h4></div>
+    <div class="copy">Há 65 anos a criar crianças felizes em Belém. E hoje, com uma cara nova.
+
+Logótipo novo, site novo, ilustrações desenhadas à mão. Não mudámos quem somos — demos-lhe finalmente o rosto que merecia.
+
+👉 Venham ver: link na bio.</div>
+    <div class="tags">#NovaIdentidade #Belém #Restelo #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>Dezasseis</h4></div>
+    <div class="copy">É o número máximo de crianças numa sala nossa. Menos de metade do habitual.
+
+Não é falta de procura — é uma escolha. É o que torna possível saber o nome, o ritmo e a história de cada criança. Todos os dias, não só nas reuniões.
+
+Pequena por escolha. Próxima por natureza.</div>
+    <div class="tags">#TurmasPequenas #EducaçãoComTempo #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>A equipa dentro de portas</h4></div>
+    <div class="copy">Psicólogo. Terapeuta da fala. Educação especial.
+
+Dentro da escola, todos os dias, em parceria com o Turbilhão Mágico. A terapia acontece aqui, com o terapeuta a falar diretamente com a professora — e a família não anda a correr a cidade entre consultas.
+
+Não é um extra. É a equipa inteira à volta de cada criança.</div>
+    <div class="tags">#Psicopedagogia #TerapiaDaFala #ExternatoSantaMariadeBelem #Belém</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>Aprender Mexendo</h4></div>
+    <div class="copy">As crianças não aprendem a olhar. Aprendem a fazer.
+
+O nosso método chama-se Aprender Mexendo: constrói-se, experimenta-se, pergunta-se, apresenta-se à família. Ensina-se a pensar — nunca o que pensar.
+
+Currículo nacional, com autonomia e paralelismo pedagógico. Cumprimos o programa. Ensinamos à nossa maneira.</div>
+    <div class="tags">#AprenderMexendo #AprendizagemAtiva #1ºCiclo #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>Quanto custa? Pronto, já sabe.</h4><span class="chip c-fmt">carrossel</span></div>
+    <div class="copy">390€ no pré-escolar. 425€ no 1.º Ciclo. Pronto. Já sabe.
+
+Não lhe pedimos que preencha um formulário para saber o preço. Não marcamos uma reunião para lhe dizer quanto custa. Está tudo no site — com um simulador onde vê o valor real do seu mês, ao cêntimo.
+
+A confiança de uma família começa aqui: sem surpresas, sem letras pequenas.
+
+👉 Faça as contas no link da bio.</div>
+    <div class="nota">Arma competitiva: os colégios da zona escondem os preços. Nunca nomear ninguém.</div>
+    <div class="tags">#Transparência #SemLetrasPequenas #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">A prova</span><h4>O que a psicopedagogia apanha cedo</h4></div>
+    <div class="copy">Uma dificuldade na fala. Uma forma diferente de aprender. Uma emoção que transborda.
+
+Numa escola pequena, com o gabinete dentro de portas, apanha-se cedo o que de outra forma só se veria tarde. E cedo faz toda a diferença.
+
+Não é sinal de que algo está mal. É sinal de que alguém está atento.</div>
+    <div class="tags">#Psicopedagogia #IntervençãoPrecoce #ExternatoSantaMariadeBelem</div></div>
+
+  <h3 class="subh">💛 Voz das famílias (4ª feira) — testemunhos reais</h3>
+  <div class="peca"><div class="ph"><span class="chip c-fam">Testemunho</span><h4>Carolina · mãe do Francisco, 2.º ano</h4></div>
+    <div class="copy">"Há escolas que ensinam a ler, a escrever e a contar. E há escolas que, além disso, deixam uma marca no coração. Esta é uma delas. Aqui, os meus filhos crescem felizes, seguros, acarinhados e valorizados. Obrigada por cuidarem, ensinarem e acreditarem neles todos os dias."</div>
+    <div class="tags">#AProvaDosPais #Famílias #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-fam">Testemunho</span><h4>Pais do Francisco e do Guilherme</h4></div>
+    <div class="copy">"O Francisco entrou com 2 aninhos e faz agora 8; o Guilherme entrou também com 2 e faz 4. Estes anos foram incríveis. As festas, os passeios, as atividades — tudo é feito com tanto carinho que se nota em cada detalhe. É aqui que eles cresceram, aprenderam e fizeram memórias para a vida."</div>
+    <div class="tags">#AProvaDosPais #DuasGerações #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-fam">Testemunho</span><h4>Sandro · pai do Martim, antigo aluno</h4></div>
+    <div class="copy">"O Martim já saiu do colégio e, ainda assim, não falha um único ATL — Páscoa, Natal, verão — só para voltar a estar com a família do Externato. Foi sempre tão bem tratado que ganhou amor a toda a gente, das auxiliares às educadoras. Uma escola de que os antigos alunos têm saudades diz tudo."</div>
+    <div class="tags">#AProvaDosPais #AntigosAlunos #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-fam">Testemunho</span><h4>Ana · mãe da Mariana</h4></div>
+    <div class="copy">"A Mariana andou aqui no Jardim de Infância e adorou cada dia. Saía de casa feliz e entrava em casa feliz — todos os dias, sem exceção. Para uma mãe, não há prova maior: uma filha que gosta tanto de ir à escola como de voltar para casa."</div>
+    <div class="tags">#AProvaDosPais #JardimDeInfância #ExternatoSantaMariadeBelem</div></div>
+
+  <h3 class="subh">🏛️ Belém & memória (5ª feira)</h3>
+  <div class="peca"><div class="ph"><span class="chip c-bel">Orgulho</span><h4>Há escolas com um pátio. A nossa tem Belém.</h4></div>
+    <div class="copy">O bairro mais rico de Portugal em património fica à nossa porta. O rio. Os Jerónimos. O CCB. O Jardim Botânico Tropical. A Torre.
+
+Para as nossas crianças não é o passeio de fim de ano — é o prolongamento da sala de aula. A minutos a pé, sem autocarro, sem produção.</div>
+    <div class="tags">#Belém #Restelo #JardimBotânicoTropical #CCB #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-bel">Nostalgia · avós</span><h4>Reconhece esta escola?</h4></div>
+    <div class="copy">Talvez o seu filho tenha andado aqui. Talvez tenha sido você.
+
+Os quatro meninos de mãos dadas são os mesmos de sempre — só que agora, desenhados à mão, prontos para os próximos 65 anos.
+
+👉 Marque nos comentários alguém que andou no Externato Santa Maria de Belém.</div>
+    <div class="tags">#Memórias #DuasGerações #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-bel">Avós</span><h4>Uma conversa da Avó Maria… para os avós</h4></div>
+    <div class="copy">Aos avós, que muitas vezes vão buscar os netos e ficam a ouvir o dia todo ao lanche:
+
+Vocês são a memória viva desta casa. Muitos de vós trouxeram cá os vossos filhos — e hoje trazem os netos. Obrigada por confiarem em nós duas gerações seguidas. Não há elogio maior.
+
+— A Avó Maria 🌿</div>
+    <div class="tags">#Avós #DuasGerações #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-bel">História</span><h4>65 anos em Belém</h4></div>
+    <div class="copy">Numa rua de portas abertas há mais de meio século, a nossa é das mais antigas — e continua a abrir todos os dias às 8h.
+
+O rio à porta, a Torre ao fundo, e uma casa onde cada criança tem nome. Há histórias que não cabem num folheto: chamam-se 65 anos.</div>
+    <div class="tags">#Belém #Restelo #História #ExternatoSantaMariadeBelem</div></div>
+
+  <h3 class="subh">📣 O convite (6ª feira)</h3>
+  <div class="peca"><div class="ph"><span class="chip c-cta">Captação</span><h4>O ATL está a acontecer</h4></div>
+    <div class="copy">Enquanto lê isto, há crianças a rir aqui dentro.
+
+ATL de Verão: 150€/semana, almoço e seguro incluídos, aberto a crianças de outras escolas. Muitas das nossas famílias começaram assim — "só para experimentar".
+
+Ainda há lugares 👉 link na bio.</div>
+    <div class="tags">#ATLVerão #Belém #Restelo #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-cta">Captação</span><h4>Marque uma visita num dia normal</h4></div>
+    <div class="copy">Não venha a um dia preparado. Venha a um dia normal — é aí que se vê quem somos.
+
+45 minutos, com a Direção, a escola a funcionar, e o seu filho ao lado. Sem compromisso, sem pressa.
+
+👉 Marque no link da bio. Respondemos no próprio dia útil.</div>
+    <div class="tags">#MarqueUmaVisita #Belém #Restelo #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-cta">Captação · oferta</span><h4>Matrícula de Verão</h4><span class="chip c-fmt">valida c/ Bruna</span></div>
+    <div class="copy">Matrícula de Verão: inscrição grátis até 31 de agosto.
+
+São 300€ que ficam no seu bolso, para quem garantir o lugar do seu filho até ao fim do mês. E são 16 lugares por sala — não por escola. Quando enchem, começa a lista de espera.
+
+👉 Marque a sua visita pelo link na bio.</div>
+    <div class="nota">Só publicar depois do "sim" da Bruna à oferta e com as vagas reais confirmadas.</div>
+    <div class="tags">#MatrículaDeVerão #VagasLimitadas #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-cta">Captação</span><h4>Guarde a data: Open Day</h4><span class="chip c-fmt">data c/ Bruna</span></div>
+    <div class="copy">No dia [DATA], abrimos as portas de par em par.
+
+Venha conhecer as salas, a equipa e a Avó Maria — e traga também os avós. As crianças são bem-vindas. Vai ver o preçário à vista e, se quiser, sair já com o lugar do seu filho garantido.
+
+👉 Inscreva-se no link da bio. As vagas são poucas.</div>
+    <div class="tags">#OpenDay #Belém #Restelo #ExternatoSantaMariadeBelem</div></div>
+</section>
+
+<!-- CARROSSÉIS -->
+<section id="carrosseis">
+  <div class="eyebrow">5 · Carrosséis</div>
+  <h2>Carrosséis — lâmina a lâmina</h2>
+  <p class="sub">Além do formato-carrossel de cada Caderno da Avó Maria (ver secção 3), estes são os carrosséis-âncora. Cada lâmina em recorte de papel, com uma ideia só.</p>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Carrossel</span><h4>As três salas, uma viagem pelo mar</h4></div>
+    <div class="slides">
+      <div class="sl"><div class="n">Capa</div><b>Três salas, uma viagem pelo mar</b><span>Emblemas das 3 salas em fila. "Arrasta 👉"</span></div>
+      <div class="sl"><div class="n">2</div><b>Peixinhos · 3 anos</b><span>Emblema do cardume. "Os primeiros mergulhos: descobrir o mundo pelos sentidos."</span></div>
+      <div class="sl"><div class="n">3</div><b>Conchas · 4 anos</b><span>Emblema das conchas. "A curiosidade abre-se: as primeiras perguntas grandes."</span></div>
+      <div class="sl"><div class="n">4</div><b>Estrelas do Mar · 5 anos</b><span>Emblema da estrela. "Prontos a brilhar: a confiança para o salto ao 1.º Ciclo."</span></div>
+      <div class="sl"><div class="n">Fecho</div><b>16 por sala. Nem mais uma.</b><span>Link na bio para conhecer.</span></div>
+    </div>
+    <div class="copy">Aqui à beira-Tejo, cada sala tem um nome que vem do mar. Dos Peixinhos às Estrelas do Mar, o mesmo mar e a mesma equipa a acompanhar cada maré. Arrasta para conhecer 👉</div>
+    <div class="tags">#SalaDosPeixinhos #SalaDasConchas #EstrelasDoMar #JardimDeInfância #Belém</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Carrossel</span><h4>Quanto custa? Pronto, já sabe.</h4></div>
+    <div class="slides">
+      <div class="sl"><div class="n">Capa</div><b>Quanto custa?</b><span>Sobre o verde. "Não vai gostar da resposta… porque é simples."</span></div>
+      <div class="sl"><div class="n">2</div><b>Pré-escolar · 390€/mês</b><span>3–5 anos. Número grande em areia.</span></div>
+      <div class="sl"><div class="n">3</div><b>1.º Ciclo · 425€/mês</b><span>6–10 anos.</span></div>
+      <div class="sl"><div class="n">4</div><b>Sem formulário. Sem reunião. Sem letras pequenas.</b><span>"Está tudo no site."</span></div>
+      <div class="sl"><div class="n">Fecho</div><b>A confiança começa aqui.</b><span>Simulador no link da bio.</span></div>
+    </div>
+    <div class="copy">Enquanto muitos pedem que marque uma reunião só para saber o preço, nós dizemo-lo em voz alta. 390€ no pré-escolar, 425€ no 1.º Ciclo — e um simulador para fazer as contas ao seu mês. Sem surpresas.</div>
+    <div class="tags">#Transparência #SemLetrasPequenas #Belém #ExternatoSantaMariadeBelem</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Carrossel</span><h4>Um dia na nossa escola</h4></div>
+    <div class="slides">
+      <div class="sl"><div class="n">Capa</div><b>Um dia na nossa escola</b><span>"A pergunta que todos os pais fazem — respondida hora a hora."</span></div>
+      <div class="sl"><div class="n">8h</div><b>A chegada</b><span>Colo, bom-dia pelo nome, tempo para acordar devagar.</span></div>
+      <div class="sl"><div class="n">9h</div><b>O círculo da manhã</b><span>Sentados em roda: o que vamos descobrir hoje?</span></div>
+      <div class="sl"><div class="n">12h</div><b>O almoço</b><span>Comida a sério, à mesa, com conversa.</span></div>
+      <div class="sl"><div class="n">17h30</div><b>A leitura do fim do dia</b><span>Histórias até virem buscar.</span></div>
+      <div class="sl"><div class="n">Fecho</div><b>8h às 19h, todo o ano.</b><span>Marque a sua visita.</span></div>
+    </div>
+    <div class="tags">#UmDiaNaEscola #HorárioAmigoDasFamílias #ExternatoSantaMariadeBelem</div></div>
+</section>
+
+<!-- REELS -->
+<section id="reels">
+  <div class="eyebrow">6 · Reels</div>
+  <h2>Reels — guião cena a cena</h2>
+  <p class="sub">Todos em recorte de papel, 1080×1920, mudos com áudio em tendência. 15–25s. Publicar 2/semana. Texto no ecrã em Fraunces.</p>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Reel âncora</span><h4>Reel 1 · O manifesto (lançamento)</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–3s</span><div class="desc"><b>Fundo verde, a estrela a "montar-se" em papel</b><span class="osd">Há 65 anos em Belém.</span></div></div>
+      <div class="shot"><span class="t">3–7s</span><div class="desc"><b>Ilustração: crianças a brincar / círculo</b><span class="osd">A fazer uma coisa a sério:</span></div></div>
+      <div class="shot"><span class="t">7–11s</span><div class="desc"><b>Grande plano de uma criança a rir (recorte)</b><span class="osd">crianças felizes.</span></div></div>
+      <div class="shot"><span class="t">11–15s</span><div class="desc"><b>O logótipo dos meninos aparece</b><span class="osd">Agora, com cara nova.</span></div></div>
+      <div class="shot"><span class="t">15–18s</span><div class="desc"><b>Hero de Belém + nome em Fraunces</b><span class="osd">Externato Santa Maria de Belém · link na bio</span></div></div>
+    </div>
+    <div class="nota">Legenda: "Não mudámos quem somos. Demos-lhe a cara que merecia. 🌟 #ExternatoSantaMariadeBelem #Belém"</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Reel</span><h4>Reel 2 · Três salas, uma viagem pelo mar</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–3s</span><div class="desc"><b>Onda de papel a entrar</b><span class="osd">Cada sala tem um nome que vem do mar.</span></div></div>
+      <div class="shot"><span class="t">3–7s</span><div class="desc"><b>Emblema Peixinhos</b><span class="osd">Peixinhos · 3 anos</span></div></div>
+      <div class="shot"><span class="t">7–10s</span><div class="desc"><b>Emblema Conchas</b><span class="osd">Conchas · 4 anos</span></div></div>
+      <div class="shot"><span class="t">10–13s</span><div class="desc"><b>Emblema Estrelas do Mar</b><span class="osd">Estrelas do Mar · 5 anos</span></div></div>
+      <div class="shot"><span class="t">13–16s</span><div class="desc"><b>Fundo verde, número grande</b><span class="osd">16 por sala. Nem mais uma.</span></div></div>
+    </div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Reel</span><h4>Reel 3 · Um dia na nossa escola</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–3s</span><div class="desc"><b>Título</b><span class="osd">Um dia na nossa escola</span></div></div>
+      <div class="shot"><span class="t">3–7s</span><div class="desc"><b>ilu-chegada</b><span class="osd">8h · a porta abre cedo</span></div></div>
+      <div class="shot"><span class="t">7–11s</span><div class="desc"><b>ilu-circulo</b><span class="osd">9h · o círculo da manhã</span></div></div>
+      <div class="shot"><span class="t">11–15s</span><div class="desc"><b>ilu-almoco</b><span class="osd">12h · almoço a sério</span></div></div>
+      <div class="shot"><span class="t">15–19s</span><div class="desc"><b>ilu-leitura</b><span class="osd">17h30 · a leitura do fim do dia</span></div></div>
+      <div class="shot"><span class="t">19–22s</span><div class="desc"><b>Fecho verde</b><span class="osd">Os trabalhos fazem-se aqui. Em casa, o tempo é da família.</span></div></div>
+    </div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-bel">Reel</span><h4>Reel 4 · Belém, a nossa sala maior</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–4s</span><div class="desc"><b>Fundo creme</b><span class="osd">Há escolas com um pátio.</span></div></div>
+      <div class="shot"><span class="t">4–8s</span><div class="desc"><b>Fundo verde</b><span class="osd">A nossa tem Belém.</span></div></div>
+      <div class="shot"><span class="t">8–14s</span><div class="desc"><b>ilu-mapa (o bairro)</b><span class="osd">O rio. Os Jerónimos. O CCB. A Torre.</span></div></div>
+      <div class="shot"><span class="t">14–18s</span><div class="desc"><b>ilu-hero</b><span class="osd">A minutos a pé. Sem autocarro.</span></div></div>
+      <div class="shot"><span class="t">18–22s</span><div class="desc"><b>Fecho</b><span class="osd">A sala de aula maior de Lisboa. · Marque a sua visita</span></div></div>
+    </div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-esc">Reel</span><h4>Reel 5 · Pergunte à Avó Maria (a escola com IA)</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–4s</span><div class="desc"><b>ilu-avo</b><span class="osd">Poucas escolas têm isto.</span></div></div>
+      <div class="shot"><span class="t">4–9s</span><div class="desc"><b>Gravação de ecrã: o chat do site a abrir</b><span class="osd">Uma avó que responde a tudo. A qualquer hora.</span></div></div>
+      <div class="shot"><span class="t">9–14s</span><div class="desc"><b>Escrever "quanto custa?" → resposta a aparecer</b><span class="osd">Preços, horários, adaptação, o almoço…</span></div></div>
+      <div class="shot"><span class="t">14–18s</span><div class="desc"><b>Fecho</b><span class="osd">Pergunte-lhe o que quiser. 🌟 · link na bio</span></div></div>
+    </div>
+    <div class="nota">Este reel é notícia — poucas escolas em Portugal têm um assistente com IA. Ótimo para gerar comentários e partilhas.</div></div>
+
+  <div class="peca"><div class="ph"><span class="chip c-bel">Reel</span><h4>Reel 6 · Reconhece esta escola? (nostalgia)</h4></div>
+    <div class="board">
+      <div class="shot"><span class="t">0–4s</span><div class="desc"><b>O logótipo ANTIGO (4 meninos neon)</b><span class="osd">Lembra-se destes?</span></div></div>
+      <div class="shot"><span class="t">4–8s</span><div class="desc"><b>Transição para o NOVO (recorte)</b><span class="osd">São os mesmos. Só cresceram.</span></div></div>
+      <div class="shot"><span class="t">8–14s</span><div class="desc"><b>Fotos/ilustrações da escola</b><span class="osd">65 anos. Duas, três gerações de famílias.</span></div></div>
+      <div class="shot"><span class="t">14–18s</span><div class="desc"><b>Fecho</b><span class="osd">Marque quem andou cá 👇</span></div></div>
+    </div></div>
+</section>
+
+<!-- LINKEDIN -->
+<section id="linkedin">
+  <div class="eyebrow">7 · LinkedIn</div>
+  <h2>💼 LinkedIn — a página e os artigos</h2>
+  <p class="sub">Onde estão os pais profissionais e das embaixadas de Belém — e onde quase nenhuma escola comunica bem. Serve para atrair famílias <b>e</b> recrutar boas educadoras. Voz mais séria/desenvolvida que no Instagram.</p>
+
+  <div class="grid2">
+    <div class="bloco">
+      <h3>A página — como montar</h3>
+      <ul>
+        <li><b>Nome:</b> Externato Santa Maria de Belém</li>
+        <li><b>Setor:</b> Educação primária e pré-escolar · <b>Dimensão:</b> 2–10</li>
+        <li><b>Slogan:</b> "Um lugar para a criatividade. Há 65 anos a criar crianças felizes em Belém."</li>
+        <li><b>Logo:</b> o novo (meninos, recorte) · <b>Capa:</b> o hero de Belém</li>
+        <li><b>Sobre:</b> ver texto ao lado · <b>Botão:</b> "Saber mais" → site · <b>Localização:</b> Restelo, Lisboa</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Texto "Sobre" (bio da página)</h3>
+      <div class="copy" style="font-size:13.5px">No coração de Belém, desde 1959, o Externato Santa Maria de Belém é uma escola pequena por escolha — Jardim de Infância e 1.º Ciclo, com turmas até 16 alunos, um plano individual para cada criança e um gabinete de psicopedagogia dentro de portas.
+
+Acreditamos que uma criança feliz aprende melhor. Por isso unimos o rigor do currículo nacional ao método "Aprender Mexendo", ao bem-estar e a um bairro inteiro — o de Belém — como sala de aula.
+
+Preçário transparente, horário das 8h às 19h, todo o ano. Marque uma visita: [site]</div>
+    </div>
+  </div>
+
+  <h3 class="subh">Artigo 1 (o de estreia) — completo</h3>
+  <div class="peca"><div class="ph"><span class="chip c-ref">Artigo LinkedIn</span><h4>Uma criança feliz aprende melhor. Levámos 65 anos a prová-lo.</h4></div>
+    <div class="copy">Durante décadas, a educação tratou a felicidade como um extra — algo que vinha <em>depois</em> de aprender, como recompensa. Hoje, a neurociência diz o contrário: o cérebro que se sente seguro é o cérebro que aprende. O medo estreita o pensamento; o afeto abre-o.
+
+No Externato Santa Maria de Belém, uma escola de Belém com 65 anos, nunca precisámos de um estudo para saber isto. Vemo-lo todos os dias, à porta, quando recebemos cada criança pelo nome.
+
+Três coisas que aprendemos a fazer diferente:
+
+1. Turmas pequenas por escolha. Dezasseis alunos, não porque falte procura, mas porque é o que torna possível conhecer verdadeiramente cada criança — o ritmo, os medos, o que a faz rir.
+
+2. Cuidar e ensinar como uma só coisa. Um gabinete de psicopedagogia dentro de portas, em parceria com o Turbilhão Mágico, apanha cedo o que de outra forma se veria tarde.
+
+3. O bairro como sala de aula. O rio, os museus, a Torre — a minutos a pé. Belém não é o passeio de fim de ano; é o prolongamento da aprendizagem.
+
+Criar crianças felizes não é o oposto de rigor. É o que torna o rigor possível — e duradouro.
+
+— A Direção do Externato Santa Maria de Belém</div>
+    <div class="nota">Publicar como artigo nativo do LinkedIn. Reutiliza as reflexões do Caderno da Avó Maria em versão mais séria.</div></div>
+
+  <div class="grid2">
+    <div class="bloco"><h3>Artigo 2 (esboço)</h3><p style="font-size:13.5px;color:var(--ink-soft);margin:0">"Porque é que escondemos os preços da educação?" — um ensaio sobre transparência. Enquanto muitos colégios pedem uma reunião só para revelar quanto custam, defendemos o contrário: preço à vista é respeito pelas famílias. Termina com o nosso simulador.</p></div>
+    <div class="bloco"><h3>Artigo 3 (esboço)</h3><p style="font-size:13.5px;color:var(--ink-soft);margin:0">"Renovar uma marca de 65 anos sem trair a sua alma" — a história da nova identidade (os quatro meninos que cresceram, o recorte de papel). Inspirador, humano, sobre respeitar a herança. Bom para alcance e para recrutamento.</p></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="eyebrow">8 · Newsletter</div>
+  <h2>✉️ «As Cartas da Avó Maria» — mensal</h2>
+  <p class="sub">O canal que não depende de algoritmos. Recolher emails no site (uma caixa "Receba as Cartas da Avó Maria") e no Open Day. Uma carta por mês: uma reflexão + um momento da escola + um convite. Ferramenta: Mailerlite ou o próprio Metricool.</p>
+  <div class="peca"><div class="ph"><span class="chip c-ref">Edição #1</span><h4>Assunto: Uma carta da Avó Maria — sobre crianças felizes 🌿</h4></div>
+    <div class="copy">Cara família,
+
+Chamo-me Avó Maria e sou, digamos, a avó desta casa — a que existe desde que a escola é escola. De vez em quando, vou escrever-lhe uma carta. Sem pressa, sem lições. Só o que aprendi de ver passar tanta criança por aqui.
+
+Começo pela mais importante: <em>uma criança feliz aprende melhor.</em> Não apesar de ser feliz — porque o é. O medo fecha a cabeça; o carinho abre-a. É por isso que, aqui, cuidar e ensinar são a mesma coisa.
+
+Esta semana, na escola, os Peixinhos plantaram feijões num algodão e não há maior cientista do que uma criança de 3 anos à espera que nasça a primeira folha.
+
+Se quiser conhecer-nos por dentro, a porta está aberta — venha num dia normal, que é quando se vê quem somos. [Marcar visita]
+
+Até à próxima carta,
+A Avó Maria 🌿
+Externato Santa Maria de Belém · Belém, Lisboa</div>
+    <div class="nota">Cada edição mensal segue este molde: saudação → uma reflexão (do banco do Caderno) → um momento real da escola → um convite suave.</div></div>
+</section>
+
+<!-- STORIES & ANÚNCIOS -->
+<section id="anuncios">
+  <div class="eyebrow">9 · Stories & anúncios</div>
+  <h2>Stories, Google e Meta Ads</h2>
+  <div class="grid2">
+    <div class="bloco">
+      <h3>Stories — todos os dias</h3>
+      <ul>
+        <li><b>Bastidores:</b> a preparar o ATL, a montar uma sala, a merenda.</li>
+        <li><b>Sondagens:</b> "qual era a vossa brincadeira preferida em criança?"</li>
+        <li><b>Caixa de perguntas:</b> a Avó Maria responde ao vivo.</li>
+        <li><b>Reposts:</b> comentários e partilhas de famílias.</li>
+        <li><b>Contagem:</b> para 31 ago (Matrícula) e para o Open Day.</li>
+        <li><b>Simulador:</b> gravação de ecrã a fazer as contas.</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>Google Business — semanal</h3>
+      <ul>
+        <li>1 publicação/semana (mensagens do plano, mais curtas).</li>
+        <li>Fotos novas do espaço; horário 8h–19h; ligação ao site.</li>
+        <li><b>Campanha de avaliações:</b> pedir a 10 famílias atuais uma avaliação — é o que faz aparecer no mapa.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:15px">
+    <div class="bloco">
+      <h3>Google Ads — copy</h3>
+      <div class="copy" style="font-size:13px"><b>Títulos:</b> Colégio em Belém · Turmas de 16 · Preços à vista · Jardim de Infância e 1.º Ciclo · Desde 1959 · Marque uma visita
+<b>Descrições:</b> Escola pequena por escolha no Restelo. Preçário transparente, gabinete de psicopedagogia, 8h–19h. Marque a sua visita. · Uma criança feliz aprende melhor. Conheça o Externato Santa Maria de Belém.</div>
+    </div>
+    <div class="bloco">
+      <h3>Meta Ads — copy</h3>
+      <div class="copy" style="font-size:13px"><b>Texto:</b> Procura escola em Belém para 2026/27? Turmas até 16, preços à vista, e um bairro inteiro para explorar. Marque uma visita num dia normal.
+<b>Título:</b> Externato Santa Maria de Belém · Restelo
+<b>Segmentos:</b> pais 30–45 Belém/Restelo · remarketing do site · 55+ (avós), criativo "duas gerações".</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTINUAR -->
+<section id="continuar" style="border-bottom:none">
+  <div class="eyebrow">10 · Depois de setembro</div>
+  <h2>Como o colégio continua — e o que falta para arrancar</h2>
+  <div class="handover">
+    <h3 style="color:var(--pinho)">A máquina que fica a rodar</h3>
+    <div class="passos">
+      <div class="passo"><b>A rotina de 5 posts</b>Cinco pilares fixos, um por dia. Não se inventa do zero.</div>
+      <div class="passo"><b>O banco da Avó Maria</b>Tema para anos — a coluna vertebral de tudo (posts, LinkedIn, newsletter).</div>
+      <div class="passo"><b>As ferramentas</b>Metricool agenda; o site é o destino; o formulário recolhe contactos.</div>
+      <div class="passo"><b>O molde de cada peça</b>Formato fixo por pilar. Copiar, adaptar, publicar.</div>
+      <div class="passo"><b>Os canais que ficam</b>Newsletter e boca-a-boca não dependem de algoritmos.</div>
+    </div>
+  </div>
+  <div class="alerta" style="margin-top:20px">
+    <b>Para arrancar dia 27, preciso da Bruna:</b> (1) <b>data do Open Day</b>; (2) <b>sim/não à Matrícula de Verão</b> (inscrição grátis até 31 ago); (3) <b>brandId do Metricool</b> (IG + FB já ligados ✓; falta ligar Google Business); (4) luz verde para criar a <b>página de LinkedIn</b> e a <b>newsletter</b>. Os testemunhos reais já estão no site.
+  </div>
+  <footer>
+    Plano de comunicação e viragem · 27 julho → 30 setembro 2026 · Externato Santa Maria de Belém · Restelo, Lisboa<br>
+    Documento de trabalho interno. Uma escola que cria crianças felizes há 65 anos — agora é preciso que Belém inteira saiba.
+  </footer>
+</section>
+
+</div>
+</body>
+</html>
