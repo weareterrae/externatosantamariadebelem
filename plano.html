@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Plano de Comunicação — Externato Santa Maria de Belém</title>
+<style>
+  :root{
+    --papel:#FDFBF4; --areia:#EAD9B6; --areia-clara:#F6EEDD;
+    --pinho:#3B6B50; --pinho-escuro:#2C5540; --terracota:#C27A66;
+    --azul:#7CA4BC; --ocre:#C9993F; --tinta:#26332B; --tinta-suave:#5C6B60;
+    --linha:#E4DCC9; --cartao:#FFFFFF;
+    --sombra:0 2px 4px rgba(43,58,45,.04), 0 10px 30px rgba(43,58,45,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--papel); color:var(--tinta);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif; line-height:1.62; font-size:16.5px;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 22px}
+  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif}
+  a{color:var(--pinho)}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ocre); display:flex; align-items:center; gap:9px}
+  .eyebrow::before{content:""; width:24px; height:2px; background:var(--ocre); border-radius:2px}
+
+  /* top bar */
+  .topbar{background:var(--pinho); color:#fff; font-size:14px}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:11px 22px}
+  .topbar a{color:#fff; text-decoration:none; font-family:Georgia,serif; font-size:16px; display:flex; align-items:center; gap:8px}
+  .topbar .tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.8}
+
+  /* hero */
+  .hero{background:radial-gradient(120% 90% at 88% -10%, rgba(124,164,188,.16), transparent 55%), radial-gradient(90% 80% at 4% 0%, rgba(194,122,102,.12), transparent 50%), var(--areia-clara); border-bottom:1px solid var(--linha)}
+  .hero .wrap{padding:52px 22px 40px}
+  .crest{width:58px;height:58px;border-radius:50%;background:linear-gradient(180deg,#C6462F 0 34%,#F6EEDD 34% 62%,var(--azul) 62% 100%);border:3px solid #fff;box-shadow:var(--sombra);display:flex;align-items:flex-end;justify-content:center;margin-bottom:18px}
+  .crest span{font-size:22px;margin-bottom:5px}
+  .hero .kick{font-size:13.5px;font-weight:700;color:var(--pinho);margin:0 0 6px}
+  .hero h1{font-size:clamp(34px,6vw,60px);line-height:1.03;color:var(--pinho-escuro);font-weight:600;letter-spacing:-.015em;margin:.05em 0 .3em;text-wrap:balance;max-width:17ch}
+  .hero .lede{font-size:clamp(17px,2.2vw,21px);max-width:46ch;margin:0 0 24px}
+  .hero .lede b{color:var(--terracota)}
+  .facts{display:flex;flex-wrap:wrap;gap:11px}
+  .fact{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:11px 15px;display:flex;align-items:center;gap:11px;box-shadow:var(--sombra)}
+  .fact .n{font-family:Georgia,serif;font-size:25px;font-weight:600;color:var(--pinho);line-height:1;font-variant-numeric:tabular-nums}
+  .fact .l{font-size:12px;color:var(--tinta-suave);line-height:1.25;max-width:16ch}
+
+  section{padding:48px 0}
+  section.tint{background:var(--areia-clara);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .sec-head{max-width:60ch;margin-bottom:26px}
+  .sec-head h2{font-size:clamp(25px,3.6vw,34px);color:var(--pinho-escuro);font-weight:600;margin:.3em 0 .25em;letter-spacing:-.01em;text-wrap:balance}
+  .sec-head p{font-size:17px;color:var(--tinta-suave);margin:0;max-width:58ch}
+
+  /* funnel */
+  .funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .step{background:#fff;border:1px solid var(--linha);border-radius:15px;padding:17px 16px;box-shadow:var(--sombra)}
+  .step .tag{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ocre)}
+  .step h3{font-size:17px;margin:7px 0 5px;color:var(--pinho-escuro)}
+  .step p{margin:0;font-size:14px;color:var(--tinta-suave);line-height:1.45}
+  .step:nth-child(1){border-top:4px solid var(--azul)}
+  .step:nth-child(2){border-top:4px solid var(--ocre)}
+  .step:nth-child(3){border-top:4px solid var(--terracota)}
+  .step:nth-child(4){border-top:4px solid var(--pinho)}
+
+  /* campaigns */
+  .camps{display:flex;flex-direction:column;gap:14px}
+  .camp{background:#fff;border:1px solid var(--linha);border-radius:17px;box-shadow:var(--sombra);display:grid;grid-template-columns:80px 1fr;overflow:hidden}
+  .camp .rail{background:var(--c,#3B6B50);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:16px 6px;text-align:center}
+  .camp .rail .num{font-family:Georgia,serif;font-size:28px;font-weight:600;line-height:1}
+  .camp .body{padding:18px 20px}
+  .camp .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+  .camp h3{margin:0;font-size:20px;color:var(--pinho-escuro)}
+  .camp .status{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+  .status.live{background:color-mix(in srgb,var(--pinho) 18%,transparent);color:var(--pinho-escuro)}
+  .status.plan{background:color-mix(in srgb,var(--azul) 22%,transparent);color:#3d647c}
+  .camp p{margin:2px 0 0;font-size:14.5px;color:var(--tinta-suave);line-height:1.5}
+  .camp .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:12px;background:var(--areia-clara);border:1px solid var(--linha);color:var(--tinta);border-radius:20px;padding:3px 10px}
+
+  /* content library */
+  .filters{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha);padding:12px 0;margin-bottom:6px}
+  .filters .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .fbtn{font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;border:1px solid var(--linha);background:#fff;color:var(--tinta);border-radius:22px;padding:7px 15px;display:inline-flex;align-items:center;gap:7px;transition:all .15s}
+  .fbtn .c{font-variant-numeric:tabular-nums;font-size:12px;background:var(--areia-clara);border-radius:12px;padding:1px 7px;color:var(--tinta-suave)}
+  .fbtn:hover{border-color:var(--pinho)}
+  .fbtn.on{background:var(--pinho);color:#fff;border-color:var(--pinho)}
+  .fbtn.on .c{background:rgba(255,255,255,.22);color:#fff}
+  .fbtn:focus-visible{outline:2px solid var(--ocre);outline-offset:2px}
+
+  .weekhead{margin:30px 0 14px;padding-bottom:9px;border-bottom:2px solid var(--linha);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .weekhead .wn{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ocre)}
+  .weekhead h3{margin:0;font-size:22px;color:var(--pinho-escuro);font-weight:600}
+  .weekhead.hide{display:none}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
+  .item{background:#fff;border:1px solid var(--linha);border-radius:15px;box-shadow:var(--sombra);overflow:hidden;display:flex;flex-direction:column;border-left:5px solid var(--c,#3B6B50)}
+  .item .head{display:flex;align-items:center;gap:9px;padding:13px 16px 0;flex-wrap:wrap}
+  .item .when{font-size:12.5px;font-weight:700;color:var(--tinta);font-variant-numeric:tabular-nums}
+  .item .when .dow{color:var(--tinta-suave);font-weight:600;text-transform:capitalize}
+  .tp{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2.5px 9px;border-radius:20px;color:#fff;background:var(--c,#3B6B50)}
+  .pill{font-size:11px;color:var(--tinta-suave);margin-left:auto}
+  .ribbon{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8a4a10;background:color-mix(in srgb,var(--ocre) 26%,transparent);padding:2.5px 9px;border-radius:20px}
+  .item .body{padding:9px 16px 15px}
+  .item .ttl{font-family:Georgia,serif;font-size:16.5px;color:var(--pinho-escuro);margin:2px 0 6px;line-height:1.28}
+  .item .copy{font-size:13.7px;color:var(--tinta);white-space:pre-wrap;line-height:1.5;margin:0}
+  .item .slides{margin:11px 0 0;padding:11px 0 0;border-top:1px dashed var(--linha)}
+  .item .slides .lab{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:6px}
+  .item .slides ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:4px}
+  .item .slides li{font-size:12.7px;color:var(--tinta-suave);padding-left:26px;position:relative;line-height:1.4}
+  .item .slides li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--areia-clara);color:var(--tinta);font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Segoe UI",sans-serif}
+  .item .tags{font-size:11.5px;color:var(--azul);margin:10px 0 0;line-height:1.5;word-break:break-word}
+  :root[data-theme] .item .tags{color:var(--azul)}
+  .item.hide{display:none}
+
+  /* goals + steps */
+  .goals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .goal{background:#fff;border:1px solid var(--linha);border-radius:15px;padding:20px;box-shadow:var(--sombra);text-align:center}
+  .goal .big{font-family:Georgia,serif;font-size:42px;font-weight:600;color:var(--pinho);line-height:1;font-variant-numeric:tabular-nums}
+  .goal .lab{font-size:13.5px;color:var(--tinta-suave);margin-top:7px}
+  .steps-list{display:flex;flex-direction:column;gap:9px}
+  .todo{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--linha);border-radius:12px;padding:13px 15px;box-shadow:var(--sombra)}
+  .todo .box{flex:none;width:21px;height:21px;border-radius:6px;border:2px solid var(--ocre);color:var(--ocre);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .todo .tx{font-size:14.5px} .todo .tx b{color:var(--pinho-escuro)} .todo .who{font-size:12px;color:var(--tinta-suave)}
+
+  footer{padding:40px 0 56px;text-align:center;color:var(--tinta-suave);font-size:13.5px}
+  footer .m{font-family:Georgia,serif;font-style:italic;font-size:18px;color:var(--pinho);margin-bottom:9px}
+
+  @media (max-width:860px){.funnel{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.goals{grid-template-columns:1fr}}
+  @media (max-width:520px){.funnel{grid-template-columns:1fr}.camp{grid-template-columns:60px 1fr}.fact{flex:1 1 100%}}
+</style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap"><a href="/">🌿 Externato Santa Maria de Belém</a><span class="tag">Plano interno · jul–set 2026</span></div></div>
+
+  <header class="hero"><div class="wrap">
+    <div class="crest"><span>🌿</span></div>
+    <p class="kick">Documento de trabalho · não é uma página pública</p>
+    <h1>O plano de comunicação, ao pormenor</h1>
+    <p class="lede">Cada post, reel, carrossel e story — com o copy completo — e as <b>5 campanhas</b> para encher as salas de 2026/27. De 21 de julho ao Open Day, 12 de setembro.</p>
+    <div class="facts" id="heroFacts"></div>
+  </div></header>
+
+  <!-- ESTRATÉGIA -->
+  <section><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">A estratégia</span><h2>Levar um estranho a marcar uma visita</h2>
+      <p>Cada publicação tem um trabalho. Juntas, conduzem uma família de "nunca ouvi falar" até "quero conhecer".</p></div>
+    <div class="funnel">
+      <div class="step"><span class="tag">1 · Descobrir</span><h3>Que nos conheçam</h3><p>Cara nova, 65 anos, os quatro meninos. Chegamos a quem nunca ouviu falar.</p></div>
+      <div class="step"><span class="tag">2 · Confiar</span><h3>Que acreditem</h3><p>Método, testemunhos de pais reais, preços à vista. Damos razões para confiar.</p></div>
+      <div class="step"><span class="tag">3 · Querer</span><h3>Que sintam falta</h3><p>16 por sala, Belém à porta, inscrição grátis. Criamos desejo e urgência.</p></div>
+      <div class="step"><span class="tag">4 · Agir</span><h3>Que marquem</h3><p>Visita pelo site, DM à Avó Maria, Open Day. Interesse vira inscrição.</p></div>
+    </div>
+  </div></section>
+
+  <!-- CAMPANHAS -->
+  <section class="tint"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">As campanhas para atrair alunos</span><h2>Cinco frentes, a mesma missão</h2>
+      <p>Por baixo do conteúdo do dia a dia, correm cinco campanhas com um único objetivo: encher as salas de 2026/27.</p></div>
+    <div class="camps">
+      <div class="camp" style="--c:var(--ocre)"><div class="rail"><span class="num">1</span></div><div class="body">
+        <div class="row"><h3>Matrícula de Verão</h3><span class="status live">A decorrer</span></div>
+        <p>A oferta que cria urgência: quem reserva o lugar até <b>31 de agosto</b> não paga inscrição — são <b>300€</b> que ficam no bolso. São 16 lugares por sala, não por escola.</p>
+        <div class="meta"><span class="chip">Post de lançamento · 14 ago</span><span class="chip">"Últimos dias" · 28 ago</span><span class="chip">Stories "O convite" diárias</span></div></div></div>
+      <div class="camp" style="--c:var(--terracota)"><div class="rail"><span class="num">2</span></div><div class="body">
+        <div class="row"><h3>Open Day · 12 de setembro</h3><span class="status live">Agendada</span></div>
+        <p>O acontecimento que junta tudo. Portas abertas 10h–13h, no Restelo, com contagem decrescente nas semanas anteriores. É aqui que a visita vira inscrição, cara a cara.</p>
+        <div class="meta"><span class="chip">Anúncio · 7 set</span><span class="chip">"É amanhã" · 11 set</span><span class="chip">"É hoje" · 12 set</span></div></div></div>
+      <div class="camp" style="--c:var(--azul)"><div class="rail"><span class="num">3</span></div><div class="body">
+        <div class="row"><h3>Anúncios Meta (pagos)</h3><span class="status plan">A ligar a conta</span></div>
+        <p>Para chegar a quem ainda não nos segue. Dois públicos: <b>pais 30–45 de Belém/Restelo</b> e <b>avós 55+</b>. Criativos já prontos (Open Day, inscrição grátis, testemunhos), a partir de ~8–12€/dia.</p>
+        <div class="meta"><span class="chip">Objetivo: visitas + mensagens</span><span class="chip">Raio de 3 km</span><span class="chip">Arranca quando a conta ligar</span></div></div></div>
+      <div class="camp" style="--c:var(--pinho)"><div class="rail"><span class="num">4</span></div><div class="body">
+        <div class="row"><h3>A Avó Maria responde</h3><span class="status live">Em produção</span></div>
+        <p>O motor de conversão silencioso. Responde a DMs e comentários em segundos, dia e noite, com a voz da casa e sempre com supervisão humana — e encaminha cada pergunta para uma visita.</p>
+        <div class="meta"><span class="chip">Instagram + Facebook</span><span class="chip">Resposta no próprio dia</span><span class="chip">Reel dedicado · 3 set</span></div></div></div>
+      <div class="camp" style="--c:var(--terracota)"><div class="rail"><span class="num">5</span></div><div class="body">
+        <div class="row"><h3>Motor de partilha (passa-a-palavra)</h3><span class="status live">A rolar</span></div>
+        <p>Pôr os seguidores a trabalhar por nós. Os carrosséis "Guarde &amp; Partilhe" e os cartões reencaminháveis no WhatsApp fazem cada pai levar a escola a outra família — de graça.</p>
+        <div class="meta"><span class="chip">4 carrosséis "Guarde &amp; Partilhe"</span><span class="chip">"Marque um pai que…"</span><span class="chip">Partilha = alcance grátis</span></div></div></div>
+    </div>
+  </div></section>
+
+  <!-- BIBLIOTECA -->
+  <section style="padding-top:40px"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">A biblioteca de conteúdo</span><h2>Tudo o que vai sair, dia a dia</h2>
+      <p>Cada peça já está agendada e a publicar-se sozinha. Filtre por tipo para ver só os posts, os reels, os carrosséis ou as stories.</p></div>
+  </div></section>
+  <div class="filters"><div class="wrap" id="filterBar"></div></div>
+  <section style="padding-top:14px"><div class="wrap" id="feed"></div>
+    <noscript><p style="text-align:center;color:var(--tinta-suave)">Ative o JavaScript para ver a biblioteca completa de conteúdo.</p></noscript>
+  </section>
+
+  <!-- OBJETIVO -->
+  <section class="tint"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">O objetivo</span><h2>Para que serve tudo isto</h2>
+      <p>A comunicação é o meio. O fim é simples: mais crianças felizes nesta casa em setembro.</p></div>
+    <div class="goals">
+      <div class="goal"><div class="big">47&nbsp;→&nbsp;55+</div><div class="lab">alunos: de onde partimos para onde queremos chegar</div></div>
+      <div class="goal"><div class="big">16</div><div class="lab">por sala, nem mais um — a promessa que nos torna diferentes</div></div>
+      <div class="goal"><div class="big">12 set</div><div class="lab">o dia em que tudo converge: o Open Day, de portas abertas</div></div>
+    </div>
+  </div></section>
+
+  <!-- PASSOS -->
+  <section><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">O que falta destravar</span><h2>Três coisas e estamos a 100%</h2>
+      <p>O conteúdo está pronto e a sair sozinho. Faltam apenas estes destravamentos para pôr as campanhas todas em força.</p></div>
+    <div class="steps-list">
+      <div class="todo"><div class="box">1</div><div class="tx"><b>Ligar a conta de anúncios Meta</b> — criar conta + método de pagamento no Meta Business. Depois arrancam os anúncios pagos com os criativos prontos. <span class="who">→ Sandro</span></div></div>
+      <div class="todo"><div class="box">2</div><div class="tx"><b>Apontar o link da bio para o site</b> — pôr <i>externatosantamariadebelem.com</i> no Instagram e Facebook. <span class="who">→ 2 minutos, nas duas apps</span></div></div>
+      <div class="todo"><div class="box">3</div><div class="tx"><b>Confirmar duas peças</b> — a frase de boas-vindas atribuída à Celeste e a arte final do Open Day. <span class="who">→ Bruna + Celeste</span></div></div>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap">
+    <div class="m">"Um lugar para crescer, aprender e ser feliz."</div>
+    Plano de comunicação · julho–setembro 2026 · Externato Santa Maria de Belém 🌿
+  </div></footer>
+
+<script>
+/* ---- Dados: todo o conteúdo agendado (Metricool), por ordem cronológica ---- */
+const T = { post:{lab:"Post",c:"var(--pinho)"}, reel:{lab:"Reel",c:"var(--terracota)"}, carrossel:{lab:"Carrossel",c:"var(--ocre)"}, story:{lab:"Story",c:"var(--azul)"} };
+const WEEKS = [
+  {id:"s0", from:"2026-07-21", to:"2026-07-26", n:"21–26 jul · Pré-lançamento", t:"Estamos de volta. Com cara nova."},
+  {id:"s1", from:"2026-07-27", to:"2026-08-02", n:"27 jul–2 ago · A revelação", t:"Quem somos, com um rosto novo"},
+  {id:"s2", from:"2026-08-03", to:"2026-08-09", n:"3–9 ago · Método & prova", t:"Porque é que isto funciona"},
+  {id:"s3", from:"2026-08-10", to:"2026-08-16", n:"10–16 ago · Diferenciação & oferta", t:"O que mais ninguém dá"},
+  {id:"s4", from:"2026-08-17", to:"2026-08-23", n:"17–23 ago · Confiança & cidade", t:"A prova e a transparência"},
+  {id:"s5", from:"2026-08-24", to:"2026-08-31", n:"24–31 ago · Reta da oferta", t:"Últimos dias para poupar 300€"},
+  {id:"s6", from:"2026-09-01", to:"2026-09-07", n:"1–7 set · Regresso & convite", t:"O regresso e o anúncio do Open Day"},
+  {id:"s7", from:"2026-09-08", to:"2026-09-14", n:"8–14 set · Open Day", t:"Abrir as portas de par em par"}
+];
+const D = [
+  {dt:"2026-07-21",tm:"13:00",ty:"story",pi:"Pré-lançamento",tt:"Estamos de volta. Com cara nova.",cp:"65 anos, um novo rosto, a mesma casa."},
+  {dt:"2026-07-22",tm:"09:30",ty:"story",pi:"Pré-lançamento",tt:"A mesma casa. O mesmo coração.",cp:"Os quatro meninos continuam lá."},
+  {dt:"2026-07-22",tm:"21:00",ty:"reel",pi:"Reels",tt:"Reel-manifesto",cp:"Há 65 anos em Belém, a fazer uma coisa a sério: crianças felizes. 🌟\n\nAgora, com cara nova.\n\nExternato Santa Maria de Belém — um lugar para a criatividade.\n👉 link na bio",tg:"#belém #restelo #lisboa #educação #criançasfelizes #jardimdeinfância #escola #reels #umlugarparaacriatividade"},
+  {dt:"2026-07-23",tm:"09:30",ty:"story",pi:"Pré-lançamento",tt:"A Avó Maria está aqui.",cp:"Tem uma pergunta? Mande DM."},
+  {dt:"2026-07-24",tm:"09:30",ty:"story",pi:"Pré-lançamento",tt:"Guarde a data.",cp:"Open Day, 12 de setembro, 10h–13h."},
+  {dt:"2026-07-25",tm:"09:30",ty:"story",pi:"Pré-lançamento",tt:"Esta semana mostramos tudo.",cp:"Método, salas, equipa, preços."},
+  {dt:"2026-07-26",tm:"09:30",ty:"story",pi:"Pré-lançamento",tt:"65 anos a criar crianças felizes.",cp:"Em Belém. Agora com cara nova."},
+  {dt:"2026-07-27",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó Maria",cp:"Uma casa nova, o mesmo coração."},
+  {dt:"2026-07-27",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #1",tt:"E se a felicidade não atrapalhasse a aprendizagem?",cp:"✨ O Caderno da Avó Maria — Reflexão #1\n\nHá uma ideia antiga de que aprender é coisa séria — e séria quer dizer sem graça. Nós discordamos. O medo fecha a cabeça; o carinho abre-a. Uma criança feliz é uma criança que se abre ao mundo — e é aí que aprende de verdade.\n\nNão aprende apesar de ser feliz. Aprende porque o é. 🌿\n\nArrasta 👉 e guarda para pensar hoje ao jantar.\nHá 65 anos a cuidar e a ensinar em Belém.",sl:["E se a felicidade não atrapalhasse a aprendizagem?","O medo fecha a cabeça. O carinho abre-a.","Não aprende apesar de ser feliz. Aprende porque o é.","Aqui, cuidar e ensinar são a mesma coisa. — A Avó Maria"],tg:"#educação #parentalidade #criançasfelizes #jardimdeinfância #belém #restelo #crescerfeliz"},
+  {dt:"2026-07-28",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"16 crianças por sala.",cp:"Nem mais uma."},
+  {dt:"2026-07-28",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"A escola tem cara nova.",cp:"A escola tem cara nova. 🎨\n\nDepois de 65 anos, o Externato Santa Maria de Belém ganhou um novo rosto — logótipo, site e uma identidade desenhada à mão, em recorte de papel. Não mudámos quem somos. Demos-lhe a cara que merecia.\n\nOs quatro meninos de mãos dadas continuam lá — agora em ilustração.\n\nVenham conhecer 👉 link na bio.",tg:"#belém #restelo #lisboa #educação #jardimdeinfância #escola #primeirociclo #novaimagem"},
+  {dt:"2026-07-29",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"O seu filho aborrece-se às vezes?",cp:"Responda a esta story."},
+  {dt:"2026-07-29",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"Reconhece esta escola?",cp:"Reconhece esta escola? 💛\n\nOs quatro meninos de mãos dadas acompanham gerações de famílias de Belém e do Restelo. Muitos dos pais de hoje foram os meninos de ontem.\n\nAgora, em ilustração — os mesmos de sempre, prontos para os próximos 65 anos.\n\nMarque nos comentários quem andou cá 👇 e faça-nos sorrir.",tg:"#belém #restelo #lisboa #memórias #duasgerações #escola #jardimdeinfância #nostalgia"},
+  {dt:"2026-07-30",tm:"09:30",ty:"story",pi:"Um momento",tt:"Às 9h, o círculo da manhã.",cp:"Um momento cá em casa."},
+  {dt:"2026-07-30",tm:"13:00",ty:"post",pi:"A Escola por Dentro",tt:"65 anos em Belém.",cp:"65 anos em Belém. 🌊\n\nUma casa onde cada criança tem nome, numa rua de portas abertas há mais de meio século — com o rio à porta e a Torre ao fundo. E que continua a abrir todos os dias às 8h, todo o ano.\n\nDo Jardim de Infância ao 1.º Ciclo, sempre no mesmo sítio, com a mesma equipa a conhecer cada família pelo nome.\n\nVenha conhecer a nossa história 👉 link na bio.",tg:"#belém #restelo #lisboa #história #1959 #escola #jardimdeinfância #primeirociclo #torredebelém"},
+  {dt:"2026-07-31",tm:"09:30",ty:"story",pi:"O convite",tt:"Belém é a nossa sala maior.",cp:"Marque a visita."},
+  {dt:"2026-08-01",tm:"09:30",ty:"story",pi:"A frase",tt:"Não aprende apesar de ser feliz.",cp:"Aprende porque o é."},
+  {dt:"2026-08-01",tm:"12:00",ty:"carrossel",pi:"Guarde & Partilhe",tt:"5 frases que mudam tudo.",cp:"🌿 Guarde & Partilhe · O Caderno da Avó Maria\n\nÀs vezes, mudar uma criança começa por mudar uma palavra nossa. Aqui ficam 5 trocas simples — daquelas que só se aprendem com anos de casa:\n\n1. «Não chores» → «Estou aqui. Podes chorar.»\n2. «És tão inteligente» → «Trabalhaste tanto nisto.»\n3. «Despacha-te» → «O que falta para estarmos prontos?»\n4. «Porta-te bem» → «Lembra-te de seres gentil.»\n5. «Não é nada de mais» → «Vejo que isto é importante para ti.»\n\nArrasta para ver o porquê de cada uma 👉\n\n📌 Guarde para os dias difíceis. E envie a um pai ou mãe que precisa de ler isto hoje. 💛\n\n— A Avó Maria",sl:["5 frases que mudam tudo — pequenas trocas, grande diferença.","«Não chores» → «Estou aqui. Podes chorar.»","«És tão inteligente» → «Trabalhaste tanto nisto.»","«Despacha-te» → «O que falta para estarmos prontos?»","«Porta-te bem» → «Lembra-te de seres gentil.»","«Não é nada de mais» → «Vejo que isto é importante para ti.»","Guarde estas cinco. E envie a um pai ou mãe que vai gostar. — A Avó Maria"],tg:"#CadernoDaAvóMaria #parentalidade #educaçãopositiva #criançasfelizes #belém #restelo #dicasparapais #guardeepartilhe"},
+  {dt:"2026-08-02",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"O que mais quer para o seu filho aqui?",cp:"Responda por DM."},
+  {dt:"2026-08-03",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó.",cp:"Uma boa semana começa com calma."},
+  {dt:"2026-08-03",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #2",tt:"O tédio também educa.",cp:"🌿 O Caderno da Avó Maria — Reflexão #2\n\n\"Estou aborrecido!\" — e nós, cheios de amor, corremos a preencher o silêncio. Mas o tédio não é um problema a resolver: é o solo onde nasce a imaginação. É do \"não tenho nada para fazer\" que sai a cabana de almofadas, a história inventada, o jogo que ninguém ensinou.\n\nDa próxima vez, experimente não fazer nada. E veja o que ela inventa.\n\n— A Avó Maria",sl:["O tédio também educa.","'Estou aborrecido!' — e nós corremos a preencher o silêncio.","O tédio é o solo onde nasce a imaginação.","Experimente não fazer nada. E veja o que ela inventa. — A Avó Maria"],tg:"#CadernoDaAvóMaria #imaginação #brincarlivre #parentalidade #belém #restelo #infânciasempressa"},
+  {dt:"2026-08-04",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"A terapia acontece dentro da escola.",cp:"Sem andar a correr a cidade."},
+  {dt:"2026-08-04",tm:"21:00",ty:"carrossel",pi:"A Escola por Dentro",tt:"Três salas, uma grande aventura.",cp:"Cada sala do Jardim de Infância tem o nome de uma etapa da descoberta. 🧭\n\nDos Exploradores (3 anos) aos Descobridores (5 anos), passando pelos Aventureiros — a mesma equipa a acompanhar cada passo da grande aventura de crescer. E 16 por sala, nem mais uma.\n\nArrasta para conhecer 👉 e venha visitar-nos pelo link na bio.",sl:["Três salas, uma grande aventura.","Sala dos Exploradores · 3 anos","Sala dos Aventureiros · 4 anos","Sala dos Descobridores · 5 anos","16 por sala. Nem mais uma."],tg:"#exploradores #aventureiros #descobridores #jardimdeinfância #belém #restelo #turmaspequenas"},
+  {dt:"2026-08-05",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"Quando o viu absorto a brincar?",cp:"Conte-nos."},
+  {dt:"2026-08-05",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Carolina, mãe do Francisco (2.º ano)",cp:"💛 A prova dos pais\n\n\"Há escolas que ensinam a ler, a escrever e a contar. E há escolas que, além disso, deixam uma marca no coração. Esta é uma delas. Aqui, os meus filhos crescem felizes, seguros e valorizados. Obrigada por cuidarem, ensinarem e acreditarem neles todos os dias.\"\n\n— Carolina, mãe do Francisco (2.º ano) 🌿",tg:"#aprovadospais #famílias #belém #restelo #educação #testemunho #jardimdeinfância"},
+  {dt:"2026-08-06",tm:"09:30",ty:"story",pi:"Um momento",tt:"12h, o almoço à mesa.",cp:"Com tempo e conversa."},
+  {dt:"2026-08-06",tm:"13:00",ty:"post",pi:"A Escola por Dentro",tt:"A nossa tem Belém.",cp:"Há escolas com um pátio. A nossa tem Belém. 🏛️\n\nO rio, os Jerónimos, o CCB, o Jardim Botânico Tropical, a Torre. Para as nossas crianças não é o passeio de fim de ano — é o prolongamento da sala de aula. A minutos a pé, sem autocarro, sem produção.\n\nA sala de aula maior de Lisboa. 👉 link na bio.",tg:"#belém #restelo #jardimbotânicotropical #ccb #torredebelém #educação #lisboa"},
+  {dt:"2026-08-07",tm:"09:30",ty:"story",pi:"O convite",tt:"ATL de verão a acontecer.",cp:"Ainda há lugares."},
+  {dt:"2026-08-07",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"Venha num dia normal.",cp:"Venha num dia normal. 🚪\n\nNão venha a um dia preparado — é num dia comum que se vê quem somos. 45 minutos, com a Direção, a escola a funcionar e o seu filho ao lado. Sem compromisso, sem pressa.\n\n👉 Marque no link na bio. Respondemos no próprio dia útil.",tg:"#marqueumavisita #belém #restelo #jardimdeinfância #primeirociclo #escola #lisboa"},
+  {dt:"2026-08-08",tm:"09:30",ty:"story",pi:"A frase",tt:"As crianças precisam de tempo vazio…",cp:"…como precisam de comer."},
+  {dt:"2026-08-08",tm:"12:00",ty:"carrossel",pi:"Guarde & Partilhe",tt:"\"Não quero ir à escola.\"",cp:"🌿 Guarde & Partilhe · O Caderno da Avó Maria\n\nAntes de insistir, respire. O \"não quero ir\" quase nunca é sobre a escola. Aqui fica o que dizer (e o que evitar) para transformar a manhã difícil:\n\n1️⃣ Não é birra — é uma mensagem para descodificar\n2️⃣ Ajoelhe: \"o que é que te preocupa?\"\n3️⃣ Nomeie a emoção: \"sentes a barriga apertada?\"\n4️⃣ Dê a âncora: \"eu volto sempre\"\n5️⃣ Evite: \"já és crescido\", \"não é nada\"\n\nArrasta para o porquê de cada passo 👉\n\n📌 Guarde para a próxima manhã difícil. E envie a um pai ou mãe que anda a lutar às 8h. 💛\n\n— A Avó Maria",sl:["Não quero ir à escola: o que dizer e o que evitar.","Não é uma birra. É uma mensagem.","Ajoelhe: o que é que te preocupa?","Nomeie a emoção: sentes a barriga apertada?","Dê a âncora: eu volto sempre.","Evite: já és crescido, não é nada.","A separação também se aprende, com calma e verdade. — A Avó Maria"],tg:"#CadernoDaAvóMaria #parentalidade #adaptação #ansiedadedeseparação #dicasparapais #belém #restelo #guardeepartilhe"},
+  {dt:"2026-08-09",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"Se a infância dele tivesse um cheiro…",cp:"…qual seria?"},
+  {dt:"2026-08-09",tm:"18:00",ty:"post",pi:"A frase (Caderno)",tt:"O medo fecha a cabeça. O carinho abre-a.",cp:"🌿 O medo fecha a cabeça. O carinho abre-a.\n\nUma criança segura e acarinhada aprende melhor. É por isso que, cá em casa, cuidar e ensinar são a mesma coisa — há 65 anos.\n\n💛 Guarde. E partilhe com quem precisa de ouvir isto hoje.\n\n— A Avó Maria",tg:"#CadernoDaAvóMaria #criançasfelizes #parentalidade #educaçãocomamor #belém #restelo #frasesparapais"},
+  {dt:"2026-08-10",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó.",cp:"Hoje deixe uma tarde vazia e veja o que ele inventa."},
+  {dt:"2026-08-10",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #3",tt:"24 horas, não 30 atividades.",cp:"🌿 O Caderno da Avó Maria — Reflexão #3\n\nNatação à segunda, música à terça, inglês à quarta, ballet à quinta… e ao domingo, exaustos, perguntamos porque estão tão irritados. Uma agenda cheia parece amor. Muitas vezes é o contrário. As crianças precisam de tempo vazio como precisam de comer.\n\nMenos é mais. Uma tarde sem plano também é um presente.\n\n— A Avó Maria",sl:["24 horas, não 30 atividades.","Uma agenda cheia parece amor. Muitas vezes é o contrário.","As crianças precisam de tempo vazio como precisam de comer.","Uma tarde sem plano também é um presente. — A Avó Maria"],tg:"#CadernoDaAvóMaria #infânciasempressa #parentalidade #belém #restelo #brincarlivre #criançasfelizes"},
+  {dt:"2026-08-11",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"O nosso método chama-se Aprender Mexendo.",cp:""},
+  {dt:"2026-08-11",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"16.",cp:"16. 🌿\n\nÉ o número máximo de crianças numa sala nossa. Menos de metade do habitual.\n\nNão é falta de procura — é uma escolha. É o que torna possível saber o nome, o ritmo e a história de cada criança. Todos os dias, não só nas reuniões.\n\nPequena por escolha. Próxima por natureza.",tg:"#turmaspequenas #educaçãocomtempo #belém #restelo #jardimdeinfância #escola #lisboa"},
+  {dt:"2026-08-12",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"O que é que o seu filho já lhe ensinou a si?",cp:""},
+  {dt:"2026-08-12",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Pais do Francisco e do Guilherme",cp:"💛 A prova dos pais\n\n\"O Francisco entrou com 2 aninhos e faz agora 8; o Guilherme entrou também com 2 e faz 4. Estes anos foram incríveis. As festas, os passeios, as atividades — tudo é feito com tanto carinho que se nota em cada detalhe. Foi aqui que eles cresceram, aprenderam e fizeram memórias para a vida.\"\n\n— Pais do Francisco e do Guilherme 🌿",tg:"#aprovadospais #duasgerações #famílias #belém #restelo #educação #testemunho"},
+  {dt:"2026-08-13",tm:"09:30",ty:"story",pi:"Um momento",tt:"No atelier, as mãos também pensam.",cp:""},
+  {dt:"2026-08-13",tm:"13:00",ty:"post",pi:"Caderno da Avó · aos avós",tt:"Uma conversa da Avó Maria… para os avós.",cp:"🌿 Uma conversa da Avó Maria… para os avós.\n\nAos avós, que muitas vezes vão buscar os netos e ficam a ouvir o dia todo ao lanche: vocês são a memória viva desta casa. Muitos de vós trouxeram cá os vossos filhos — e hoje trazem os netos.\n\nObrigada por confiarem em nós duas gerações seguidas. Não há elogio maior.\n\n— A Avó Maria",tg:"#avós #duasgerações #belém #restelo #memórias #65anos #família #educação"},
+  {dt:"2026-08-14",tm:"09:30",ty:"story",pi:"O convite",tt:"A melhor forma de saber é vir cá.",cp:"Marque a visita."},
+  {dt:"2026-08-14",tm:"21:00",ty:"post",pi:"Campanha · Matrícula de Verão",camp:1,tt:"Matrícula de Verão — inscrição GRÁTIS.",cp:"☀️ Matrícula de Verão — inscrição GRÁTIS.\n\nQuem reservar o lugar do seu filho até 31 de agosto não paga a inscrição — são 300€ que ficam no seu bolso. E lembre-se: são 16 lugares por sala, não por escola. Quando enchem, começa a lista de espera.\n\n👉 Reserve a sua visita no link na bio.",tg:"#MatrículaDeVerão #inscriçãográtis #belém #restelo #educação #jardimdeinfância #vagaslimitadas"},
+  {dt:"2026-08-15",tm:"09:30",ty:"story",pi:"A frase",tt:"O medo fecha a cabeça, o carinho abre-a.",cp:""},
+  {dt:"2026-08-16",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"Num domingo perfeito com o seu filho…",cp:"…o que estão a fazer?"},
+  {dt:"2026-08-17",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó.",cp:"O não firme e calmo também é amor."},
+  {dt:"2026-08-17",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #4",tt:"Dizer \"não\" é dizer \"amo-te\".",cp:"🌿 O Caderno da Avó Maria — Reflexão #4\n\nCusta dizer que não. Vemos a carinha desiludida e o coração aperta. Mas os limites não são o contrário do amor — são uma das suas formas mais altas. Uma criança sem limites é uma criança sozinha a decidir coisas grandes demais para ela. O \"não\" firme e calmo diz-lhe: \"podes ser só criança.\"\n\nDizer não, com carinho, é dizer: confia, que eu seguro-te.\n\n— A Avó Maria",sl:["Dizer 'não' é dizer 'amo-te'.","Os limites são uma das formas mais altas do amor.","O 'não' firme e calmo: podes ser só criança.","Confia, que eu seguro-te. — A Avó Maria"],tg:"#CadernoDaAvóMaria #limites #parentalidade #criançasseguras #belém #restelo #educação"},
+  {dt:"2026-08-18",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"Belém é a nossa sala maior.",cp:"A minutos a pé."},
+  {dt:"2026-08-18",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"A equipa dentro de portas.",cp:"A equipa dentro de portas. 🧩\n\nPsicólogo. Terapeuta da fala. Educação especial. Dentro da escola, em parceria com o Turbilhão Mágico. A terapia acontece aqui, com o terapeuta a falar diretamente com a professora — e a família não anda a correr a cidade entre consultas.\n\nNão é um extra. É a equipa inteira à volta de cada criança.",tg:"#psicopedagogia #terapiadafala #belém #restelo #educação #educaçãoespecial #jardimdeinfância"},
+  {dt:"2026-08-19",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"Qual foi a birra mais difícil desta semana?",cp:""},
+  {dt:"2026-08-19",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Aurel & Mariana, pais da Lavínia (2.º ano)",cp:"💛 A prova dos pais\n\n\"Saímos da primeira visita com uma confiança que não tínhamos sentido em mais lado nenhum. Soubemos que tínhamos encontrado o lugar certo para a Lavínia. Todos os dias vemos o amor e a dedicação que a equipa investe nas crianças. É muito mais do que uma escola — é uma comunidade.\"\n\n— Aurel & Mariana, pais da Lavínia (2.º ano) 🌿\n\nObrigada pela confiança.",tg:"#aprovadospais #famílias #belém #restelo #educação #testemunho #comunidade"},
+  {dt:"2026-08-20",tm:"09:30",ty:"story",pi:"Um momento",tt:"Fim do dia, uma história antes de ir.",cp:""},
+  {dt:"2026-08-20",tm:"13:00",ty:"post",pi:"A Escola por Dentro",tt:"Os museus à porta.",cp:"Os museus à porta. 🏛️\n\nOs Jerónimos, o CCB, o Jardim Botânico Tropical, o Planetário. A minutos a pé, sem autocarro. Para as nossas crianças, a cultura não é uma visita de estudo de fim de ano — é uma quarta-feira qualquer.\n\nAprender com a cidade à porta. 👉 link na bio.",tg:"#belém #restelo #jerónimos #ccb #jardimbotânicotropical #cultura #educação #lisboa"},
+  {dt:"2026-08-21",tm:"09:30",ty:"story",pi:"O convite",tt:"Setembro está a chegar.",cp:"Garanta já uma visita."},
+  {dt:"2026-08-21",tm:"21:00",ty:"reel",pi:"Reels",tt:"A nossa tem Belém.",cp:"Há escolas com um pátio. A nossa tem Belém. 🌊\n\nO rio, os Jerónimos, o CCB, a Torre — a minutos a pé, sem autocarro. Para as nossas crianças, é a sala de aula maior de Lisboa.\n\n👉 Marque a sua visita no link na bio.",tg:"#belém #restelo #lisboa #reels #educação #jardimdeinfância #torredebelém #jerónimos #ccb"},
+  {dt:"2026-08-22",tm:"09:30",ty:"story",pi:"A frase",tt:"Brincar não é a pausa da aprendizagem.",cp:"É a aprendizagem."},
+  {dt:"2026-08-22",tm:"12:00",ty:"carrossel",pi:"Guarde & Partilhe",tt:"5 formas de dizer \"não\"… com amor.",cp:"🌿 Guarde & Partilhe · O Caderno da Avó Maria\n\nOs limites não são o contrário do amor — são uma das suas formas mais altas. Mas dizer \"não\" custa. Aqui ficam 5 formas de o dizer com firmeza e carinho:\n\n1. «Porque não, e pronto!» → «A resposta é não. E eu sei que custa.»\n2. Ofereça o sim escondido: «Agora não. Depois do jantar, sim.»\n3. Valide antes: «Percebo que querias. E hoje não pode ser.»\n4. Diga uma vez — depois repita-se, sem discurso\n5. Um \"não\" seguro hoje é um \"sim\" à segurança dele amanhã\n\nArrasta 👉\n\n📌 Guarde. E envie a quem, como todos nós, custa dizer não. 💛\n\n— A Avó Maria",sl:["5 formas de dizer não com amor.","A resposta é não. E eu sei que custa.","Agora não. Depois do jantar, sim.","Percebo que querias. E hoje não pode ser.","Diga uma vez, depois repita-se sem discurso.","Um não seguro hoje é um sim à segurança dele amanhã.","Dizer não, com carinho, é dizer: confia, que eu seguro-te. — A Avó Maria"],tg:"#CadernoDaAvóMaria #limites #parentalidadepositiva #dicasparapais #criançasseguras #belém #restelo #guardeepartilhe"},
+  {dt:"2026-08-23",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"Se pudesse dar uma coisa ao seu filho para a vida toda…",cp:"…qual seria?"},
+  {dt:"2026-08-23",tm:"18:00",ty:"post",pi:"A frase (Caderno)",tt:"Aprende porque é feliz.",cp:"🌿 Não aprende apesar de ser feliz. Aprende porque o é.\n\nHá quem ache que primeiro se aprende, e a felicidade vem depois — como recompensa. Eu, que já vi passar tanta criança por esta casa, aprendi o contrário.\n\n💛 Guarde. E envie a um pai ou mãe que vai gostar.\n\n— A Avó Maria",tg:"#CadernoDaAvóMaria #criançasfelizes #aprendizagem #parentalidade #belém #restelo #frasesparapais"},
+  {dt:"2026-08-24",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó.",cp:"Última semana de agosto, o regresso aproxima-se com colo."},
+  {dt:"2026-08-24",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #5",tt:"Quando ele não quer ir à escola.",cp:"🌿 O Caderno da Avó Maria — Reflexão #5\n\n\"Não quero ir.\" E a manhã transforma-se numa batalha. Mas o \"não quero ir\" quase nunca é sobre a escola: é saudade, é um amigo que magoou, é uma mudança em casa, é um medo que não sabe dizer por palavras. Não é uma birra para vencer — é uma mensagem para descodificar.\n\nÀs vezes, o melhor é ajoelhar, olhar nos olhos e perguntar: \"o que é que te preocupa?\"\n\n— A Avó Maria",sl:["Quando ele não quer ir à escola.","O 'não quero ir' quase nunca é sobre a escola.","Não é uma birra para vencer — é uma mensagem para descodificar.","'O que é que te preocupa?' — A Avó Maria"],tg:"#CadernoDaAvóMaria #emoções #adaptação #parentalidade #belém #restelo #educação #criançasfelizes"},
+  {dt:"2026-08-25",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"Abertos das 8h às 19h, todo o ano.",cp:""},
+  {dt:"2026-08-25",tm:"21:00",ty:"carrossel",pi:"A Escola por Dentro",tt:"Quanto custa? Dizemo-lo em voz alta.",cp:"Enquanto muitos pedem que marque uma reunião só para saber o preço, nós dizemo-lo em voz alta. 💬\n\n390€ no pré-escolar. 425€ no 1.º Ciclo. E um simulador para fazer as contas ao seu mês, ao cêntimo. Sem formulário, sem reunião, sem letras pequenas.\n\nA confiança de uma família começa aqui. Arrasta 👉 e faça as contas no link na bio.",sl:["Quanto custa? Não vai gostar da resposta… porque é simples.","Pré-escolar · 390€ por mês · 3 a 5 anos","1.º Ciclo · 425€ por mês · 6 a 10 anos","Sem formulário. Sem reunião. Sem letras pequenas.","A confiança começa aqui."],tg:"#transparência #semletraspequenas #belém #restelo #educação #preçário #jardimdeinfância #primeirociclo"},
+  {dt:"2026-08-26",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"O seu filho está pronto para o regresso?",cp:""},
+  {dt:"2026-08-26",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Sandro, pai do Martim (antigo aluno)",cp:"💛 A prova dos pais\n\n\"O Martim já saiu do colégio e, ainda assim, não falha um único ATL — Páscoa, Natal, verão — só para voltar a estar com a família do Externato. Foi sempre tão bem tratado que ganhou amor a toda a gente, das auxiliares às educadoras. Uma escola de que os antigos alunos têm saudades diz tudo.\"\n\n— Sandro, pai do Martim (antigo aluno) 🌿",tg:"#aprovadospais #antigosalunos #atl #belém #restelo #educação #testemunho #saudades"},
+  {dt:"2026-08-27",tm:"09:30",ty:"story",pi:"Um momento",tt:"Na hortinha, esperar que a semente cresça.",cp:""},
+  {dt:"2026-08-27",tm:"13:00",ty:"post",pi:"A Escola por Dentro",tt:"Duas gerações, a mesma casa.",cp:"Duas gerações, a mesma casa. 💛\n\nMuitos dos pais de hoje foram os meninos de ontem. Os mesmos quatro de mãos dadas — agora a trazer os seus próprios filhos.\n\n👉 Marque nos comentários alguém que andou no Externato Santa Maria de Belém.",tg:"#duasgerações #memórias #belém #restelo #65anos #família #educação #nostalgia"},
+  {dt:"2026-08-28",tm:"09:30",ty:"story",pi:"O convite",tt:"Em setembro abrimos as portas de par em par.",cp:""},
+  {dt:"2026-08-28",tm:"21:00",ty:"post",pi:"Campanha · Matrícula de Verão",camp:1,tt:"Últimos dias.",cp:"⏳ Últimos dias.\n\nA inscrição grátis (poupança de 300€) acaba a 31 de agosto. Faltam poucos dias para garantir o lugar do seu filho sem pagar inscrição — em setembro, as vagas que sobrarem enchem depressa.\n\n👉 Reserve já no link na bio.",tg:"#MatrículaDeVerão #últimosdias #inscriçãográtis #belém #restelo #educação #vagaslimitadas"},
+  {dt:"2026-08-29",tm:"09:30",ty:"story",pi:"A frase",tt:"Aqui, cuidar e ensinar são a mesma coisa.",cp:""},
+  {dt:"2026-08-30",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"O que quer que o seu filho sinta ao entrar em setembro?",cp:""},
+  {dt:"2026-08-31",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia da Avó.",cp:"Setembro à porta, uma casa de 65 anos pronta para vos receber."},
+  {dt:"2026-08-31",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #6",tt:"Deixe-o cair (com a rede por perto).",cp:"🌿 O Caderno da Avó Maria — Reflexão #6\n\nO nosso instinto é aparar todas as quedas. Mas a criança que nunca cai nunca aprende a levantar-se. A resiliência não se ensina por palavras — treina-se a errar, a falhar, a tentar outra vez. Proteger de mais é, sem querer, desproteger.\n\nDeixe-o tentar. Fique perto. E resista a resolver tudo.\n\n— A Avó Maria",sl:["Deixe-o cair (com a rede por perto).","A criança que nunca cai nunca aprende a levantar-se.","Proteger de mais é, sem querer, desproteger.","Deixe-o tentar. Fique perto. — A Avó Maria"],tg:"#CadernoDaAvóMaria #resiliência #parentalidade #belém #restelo #educação #criançasfelizes #crescer"},
+  {dt:"2026-09-01",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"Abertos das 8h às 19h, todo o ano.",cp:""},
+  {dt:"2026-09-01",tm:"21:00",ty:"post",pi:"A Escola por Dentro",tt:"Aprender Mexendo.",cp:"Aprender Mexendo. 🔨\n\nAs crianças não aprendem a olhar. Aprendem a fazer: constrói-se, experimenta-se, pergunta-se, apresenta-se à família. Currículo nacional, com autonomia e paralelismo pedagógico — cumprimos o programa, ensinamos à nossa maneira.\n\nEnsinar a pensar, nunca o que pensar.",tg:"#aprendermexendo #aprendizagemativa #1ºciclo #belém #restelo #educação #método #escola"},
+  {dt:"2026-09-02",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"Como correu o primeiro dia do seu filho?",cp:""},
+  {dt:"2026-09-02",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Sara, mãe da Maria",cp:"💛 A prova dos pais\n\n\"Há escolas que ensinam, e há escolas que marcam vidas. É uma escola verdadeiramente familiar, onde cada criança é acolhida como é, respeitada na sua individualidade e valorizada pelas suas diferenças. Foi um privilégio ver a nossa filha crescer num ambiente onde foi tão feliz e incentivada a ser a melhor versão de si própria.\"\n\n— Sara, mãe da Maria 🌿",tg:"#aprovadospais #famílias #belém #restelo #educação #testemunho #inclusão #jardimdeinfância"},
+  {dt:"2026-09-03",tm:"09:30",ty:"story",pi:"Um momento",tt:"9h, o círculo da manhã.",cp:""},
+  {dt:"2026-09-03",tm:"21:00",ty:"reel",pi:"Reels · Campanha Avó Maria",tt:"A Avó Maria responde.",cp:"Tem uma pergunta sobre a escola? A Avó Maria responde. 🌿\n\nPreços, salas, horários, método — ela sabe tudo desta casa, a qualquer hora, no nosso site. É a nossa avó digital, sempre pronta para si.\n\n👉 Fale com a Avó Maria no link na bio.",tg:"#belém #restelo #inovação #educação #reels #jardimdeinfância #avómaria #inteligênciaartificial #lisboa"},
+  {dt:"2026-09-04",tm:"09:30",ty:"story",pi:"O convite",tt:"Ainda a decidir a escola?",cp:"Venha conhecer-nos."},
+  {dt:"2026-09-04",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Venha ser a próxima família.",cp:"Venha ser a próxima família. 💛\n\nSete famílias já nos contaram porquê — pode lê-las no site. Mas a melhor forma de saber se é o lugar certo para o seu filho é vir cá, num dia normal.\n\n👉 Marque a sua visita no link na bio.",tg:"#aprovadospais #marqueumavisita #belém #restelo #educação #jardimdeinfância #primeirociclo"},
+  {dt:"2026-09-05",tm:"09:30",ty:"story",pi:"A frase",tt:"Uma criança feliz é uma criança que aprende.",cp:""},
+  {dt:"2026-09-05",tm:"12:00",ty:"carrossel",pi:"Guarde & Partilhe",tt:"— Como correu a escola? — …Bem.",cp:"🌿 Guarde & Partilhe · O Caderno da Avó Maria\n\nConhece esta conversa? 😅 O segredo não é insistir — é perguntar melhor. Aqui ficam 3 perguntas que abrem mesmo a conversa ao jantar:\n\n1. «Qual foi a melhor parte do teu dia?»\n2. «Fizeste alguém rir hoje? Ou alguém te fez rir a ti?»\n3. «Houve algum momento aborrecido? E o que fizeste?»\n\nO truque: perguntas concretas, não de sim ou não.\n\nArrasta 👉\n\n📌 Guarde para o jantar de hoje. E envie a um pai ou mãe que só ouve \"…bem\". 💛\n\n— A Avó Maria",sl:["Como correu a escola? Bem. 3 perguntas que abrem a conversa.","Qual foi a melhor parte do teu dia?","Fizeste alguém rir hoje?","Houve algum momento aborrecido? E o que fizeste?","O segredo: perguntas concretas, não sim ou não. — A Avó Maria"],tg:"#CadernoDaAvóMaria #parentalidade #conversaremfamília #dicasparapais #regressoàsaulas #belém #restelo #guardeepartilhe"},
+  {dt:"2026-09-06",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"Como quer que o seu filho descreva a escola dele?",cp:""},
+  {dt:"2026-09-06",tm:"18:00",ty:"post",pi:"A frase (Caderno)",tt:"Confia, que eu seguro-te.",cp:"🌿 Dizer não, com carinho, é dizer: confia, que eu seguro-te.\n\nOs limites não são o contrário do amor — são uma das suas formas mais altas. Uma criança sem limites é uma criança sozinha a decidir coisas grandes demais para ela.\n\n💛 Guarde. E partilhe com quem precisa de coragem para dizer não.\n\n— A Avó Maria",tg:"#CadernoDaAvóMaria #limites #parentalidadepositiva #criançasseguras #belém #restelo #frasesparapais"},
+  {dt:"2026-09-07",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia.",cp:"Uma semana especial, sábado é Open Day."},
+  {dt:"2026-09-07",tm:"13:00",ty:"post",pi:"Campanha · Open Day",camp:1,tt:"Guarde a data: Open Day, 12 de setembro.",cp:"🌟 Guarde a data: Open Day, sábado 12 de setembro.\n\nDas 10h às 13h, abrimos as portas de par em par. Venha conhecer as salas, a equipa e a Avó Maria — e traga também os avós. As crianças são bem-vindas. Vai ver o preçário à vista e, se quiser, sair já com o lugar do seu filho garantido.\n\n👉 Inscreva-se no link na bio. As vagas são poucas.",tg:"#OpenDay #PortasAbertas #belém #restelo #educação #jardimdeinfância #primeirociclo #lisboa #12setembro"},
+  {dt:"2026-09-08",tm:"09:30",ty:"story",pi:"Sabia que?",tt:"São 16 por sala, não por escola.",cp:""},
+  {dt:"2026-09-08",tm:"21:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #7",tt:"Brincar é a coisa mais séria do mundo.",cp:"🌿 O Caderno da Avó Maria — Reflexão #7\n\n\"Ele só brinca.\" Como se fosse pouco. Quando uma criança brinca, treina a linguagem, negoceia com os outros, resolve problemas, inventa e domina os seus medos. Brincar não é a pausa da aprendizagem — é a aprendizagem, na sua forma mais pura.\n\nPor isso, aqui, levamos o brincar muito a sério.\n\n— A Avó Maria",sl:["Brincar é a coisa mais séria do mundo.","'Ele só brinca.' Como se fosse pouco.","A brincar, treina a linguagem, resolve, inventa.","Brincar não é a pausa da aprendizagem. É a aprendizagem. — A Avó Maria"],tg:"#CadernoDaAvóMaria #brincar #aprendizagem #parentalidade #belém #restelo #educação #criançasfelizes"},
+  {dt:"2026-09-09",tm:"09:30",ty:"story",pi:"A pergunta da Avó",tt:"O que perguntaria a uma escola antes de a escolher?",cp:""},
+  {dt:"2026-09-09",tm:"13:00",ty:"post",pi:"A Escola por Dentro",tt:"O primeiro dia.",cp:"O primeiro dia. 🎒\n\nMochilas novas, sapatos a estrear e um bocadinho de nervoso miudinho — nos pais também. Setembro tem sempre este friozinho na barriga.\n\nCá estamos, com colo e calma, para começar bem. Bem-vindos de volta. 🌿",tg:"#regressoàsaulas #setembro #belém #restelo #educação #jardimdeinfância #primeirociclo #lisboa"},
+  {dt:"2026-09-10",tm:"09:30",ty:"story",pi:"Um momento",tt:"No atelier, as mãos também pensam.",cp:""},
+  {dt:"2026-09-10",tm:"21:00",ty:"post",pi:"A Prova dos Pais",tt:"Ana, mãe da Mariana",cp:"💛 A prova dos pais\n\n\"A Mariana andou aqui no Jardim de Infância e adorou cada dia. Saía de casa feliz e entrava em casa feliz — todos os dias, sem exceção. Para uma mãe, não há prova maior: uma filha que gosta tanto de ir à escola como de voltar para casa.\"\n\n— Ana, mãe da Mariana 🌿",tg:"#aprovadospais #famílias #belém #restelo #educação #testemunho #jardimdeinfância"},
+  {dt:"2026-09-11",tm:"09:30",ty:"story",pi:"O convite",tt:"É amanhã! Open Day, sábado, 10h–13h.",cp:""},
+  {dt:"2026-09-11",tm:"21:00",ty:"post",pi:"Campanha · Open Day",camp:1,tt:"É AMANHÃ — Open Day!",cp:"🌟 É AMANHÃ — Open Day!\n\nSábado, 12 de setembro, das 10h às 13h, as portas abrem de par em par. Venha conhecer as salas, a equipa e a Avó Maria. Traga os avós e as crianças — vai ver o preçário à vista e, se quiser, sair já com o lugar do seu filho garantido.\n\nAté amanhã! 👉 link na bio.",tg:"#OpenDay #PortasAbertas #belém #restelo #educação #jardimdeinfância #12setembro"},
+  {dt:"2026-09-12",tm:"09:00",ty:"story",pi:"Campanha · Open Day",camp:1,tt:"É hoje! Open Day, 10h–13h.",cp:"As portas estão abertas."},
+  {dt:"2026-09-13",tm:"09:30",ty:"story",pi:"Uma palavra",tt:"Veio ao Open Day? Diga-me o que sentiu.",cp:""},
+  {dt:"2026-09-14",tm:"09:30",ty:"story",pi:"O Dia a Dia",tt:"Bom-Dia.",cp:"Obrigada a quem veio no sábado."},
+  {dt:"2026-09-14",tm:"13:00",ty:"carrossel",pi:"Caderno da Avó · Reflexão #8",tt:"O ecrã não é o problema. A ausência é.",cp:"🌿 O Caderno da Avó Maria — Reflexão #8\n\nUm ecrã entretém. Mas não abraça, não pergunta, não ouve. O que fica de uma infância não são os vídeos — é o colo, a conversa, o tempo de quem esteve presente.\n\nNão precisa de ser perfeito. Só precisa de estar lá. É isso que ele vai lembrar.\n\n— A Avó Maria",sl:["O ecrã não é o problema. A ausência é.","Um ecrã entretém, mas não abraça nem ouve.","O que fica é o colo, a conversa, o tempo.","Esteja presente. É isso que ele vai lembrar. — A Avó Maria"],tg:"#CadernoDaAvóMaria #ecrãs #presença #parentalidade #belém #restelo #educação #criançasfelizes"}
+];
+
+/* ---- Render ---- */
+const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const fmtDate = iso => { const d=new Date(iso+"T12:00:00"); const dow=d.toLocaleDateString("pt-PT",{weekday:"short"}).replace(".",""); const dd=d.getDate(); const mm=d.toLocaleDateString("pt-PT",{month:"short"}).replace(".",""); return {dow, label:dd+" "+mm}; };
+const hhmm = t => t.replace(":","h").replace("h00","h");
+function weekOf(iso){ for(const w of WEEKS){ if(iso>=w.from && iso<=w.to) return w.id; } return "s7"; }
+
+const feed = document.getElementById("feed");
+let curWeek="", grid=null;
+D.forEach(it=>{
+  const wk = weekOf(it.dt);
+  if(wk!==curWeek){ curWeek=wk; const w=WEEKS.find(x=>x.id===wk);
+    const wh=document.createElement("div"); wh.className="weekhead"; wh.dataset.wk=wk;
+    wh.innerHTML=`<span class="wn">${w.n}</span><h3>${esc(w.t)}</h3>`; feed.appendChild(wh);
+    grid=document.createElement("div"); grid.className="grid"; grid.dataset.wk=wk; feed.appendChild(grid);
+  }
+  const meta=T[it.ty]; const fd=fmtDate(it.dt);
+  const camp = it.camp ? `<span class="ribbon">Campanha</span>` : "";
+  const slides = it.sl ? `<div class="slides"><div class="lab">${it.sl.length} cartões do carrossel</div><ol>${it.sl.map(s=>`<li>${esc(s)}</li>`).join("")}</ol></div>` : "";
+  const copy = it.cp ? `<p class="copy">${esc(it.cp)}</p>` : "";
+  const tags = it.tg ? `<div class="tags">${esc(it.tg)}</div>` : "";
+  const art=document.createElement("article"); art.className="item"; art.dataset.ty=it.ty; art.style.setProperty("--c",meta.c);
+  art.innerHTML=`<div class="head"><span class="tp" style="background:${meta.c}">${meta.lab}</span><span class="when">${fd.label} · <span class="dow">${fd.dow}</span> · ${hhmm(it.tm)}</span>${camp}<span class="pill">${esc(it.pi)}</span></div><div class="body"><div class="ttl">${esc(it.tt)}</div>${copy}${slides}${tags}</div>`;
+  grid.appendChild(art);
+});
+
+/* ---- Counts + hero facts + filters ---- */
+const counts = {post:0,reel:0,carrossel:0,story:0};
+D.forEach(it=>counts[it.ty]++);
+const total = D.length;
+document.getElementById("heroFacts").innerHTML =
+  `<div class="fact"><span class="n">${total}</span><span class="l">peças agendadas e a sair sozinhas</span></div>
+   <div class="fact"><span class="n">${counts.post}</span><span class="l">posts no feed</span></div>
+   <div class="fact"><span class="n">${counts.carrossel}</span><span class="l">carrosséis (para guardar e partilhar)</span></div>
+   <div class="fact"><span class="n">${counts.story}</span><span class="l">stories diárias</span></div>
+   <div class="fact"><span class="n">${counts.reel}</span><span class="l">reels em vídeo</span></div>`;
+
+const F = [
+  {k:"all",lab:"Tudo",c:total},
+  {k:"post",lab:"Posts",c:counts.post},
+  {k:"carrossel",lab:"Carrosséis",c:counts.carrossel},
+  {k:"story",lab:"Stories",c:counts.story},
+  {k:"reel",lab:"Reels",c:counts.reel}
+];
+const fbar=document.getElementById("filterBar");
+fbar.innerHTML = F.map((f,i)=>`<button class="fbtn${i===0?" on":""}" data-k="${f.k}">${f.lab} <span class="c">${f.c}</span></button>`).join("");
+fbar.addEventListener("click",e=>{
+  const b=e.target.closest(".fbtn"); if(!b) return;
+  fbar.querySelectorAll(".fbtn").forEach(x=>x.classList.toggle("on",x===b));
+  const k=b.dataset.k;
+  document.querySelectorAll(".item").forEach(it=>{ it.classList.toggle("hide", k!=="all" && it.dataset.ty!==k); });
+  // hide empty week sections
+  document.querySelectorAll('.grid').forEach(g=>{
+    const vis=[...g.querySelectorAll(".item")].some(it=>!it.classList.contains("hide"));
+    g.style.display = vis? "" : "none";
+    const wh=g.previousElementSibling;
+    if(wh&&wh.classList.contains("weekhead")) wh.classList.toggle("hide",!vis);
+  });
+});
+</script>
+</body>
+</html>
