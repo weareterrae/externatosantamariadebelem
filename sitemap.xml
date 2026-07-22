@@ -34,6 +34,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://externatosantamariadebelem.com/atl</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://externatosantamariadebelem.com/precario</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externatosantamariadebelem.com/familias</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://externatosantamariadebelem.com/contactos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://externatosantamariadebelem.com/en.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

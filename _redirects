@@ -4,14 +4,16 @@
 
 /externato/            /a-escola           301
 /a-escola/             /a-escola           301
-/precario/             /#precario          301
-/precário/             /#precario          301
+/precario/             /precario           301
+/precário/             /precario           301
 /inscricao/            /marcar-visita      301
 /inscrição/            /marcar-visita      301
 /marcar-visita/        /marcar-visita      301
-/localizacao/          /#contactos         301
-/localização/          /#contactos         301
-/contactos/            /#contactos         301
+/localizacao/          /contactos          301
+/localização/          /contactos          301
+/contactos/            /contactos          301
+/familias/             /familias           301
+/famílias/             /familias           301
 /psicopedagogia/       /#valencias         301
 /jardim-de-infancia/   /jardim-de-infancia 301
 /jardim-de-infância/   /jardim-de-infancia 301
@@ -19,7 +21,7 @@
 /1-ciclo/              /1o-ciclo           301
 /1o-ciclo/             /1o-ciclo           301
 /primeiro-ciclo/       /1o-ciclo           301
-/atl/                  /#atl               301
+/atl/                  /atl                301
 /metodo/               /metodo             301
 /método/               /metodo             301
 /historia/             /#historia          301
