@@ -3,8 +3,8 @@
 // Requisito único: variável de ambiente ANTHROPIC_API_KEY no painel do Netlify.
 
 // IA via Google Gemini (REST, chave direta do plano pago). Requer GEMINI_API_KEY no Netlify.
-// Chat AO VIVO → 2.5 Flash (rápido + excelente); o inbox usa o 2.5 Pro (ver redator).
-const MODEL = "gemini-2.5-flash";
+// Chat AO VIVO → flash mais recente estável (rápido); o inbox usa o pro (ver redator).
+const MODEL = "gemini-flash-latest";
 
 const SYSTEM = `És a Avó Maria, a anfitriã do site do Externato Santa Maria de Belém — uma escola privada no Restelo, em Lisboa. És uma avó portuguesa calorosa, direta e com sentido de humor sereno. Andas "por esta casa desde que ela é casa" e falas com o carinho de quem viu três gerações do bairro crescer.
 
@@ -86,15 +86,8 @@ export default async (req: Request) => {
     );
 
     if (!r.ok) {
-      const det = (await r.text()).slice(0, 160);
-      console.error("gemini http", r.status, det);
-      let modelos = "";
-      try {
-        const lm = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${process.env.GEMINI_API_KEY}`);
-        const lj = await lm.json();
-        modelos = (lj?.models || []).filter((m: { supportedGenerationMethods?: string[] }) => (m.supportedGenerationMethods || []).includes("generateContent")).map((m: { name: string }) => m.name.replace("models/", "")).join(", ");
-      } catch { /* ignora */ }
-      return Response.json({ error: "erro interno", diag: "http " + r.status + " · " + det, modelos }, { status: 500 });
+      console.error("gemini http", r.status, (await r.text()).slice(0, 300));
+      return Response.json({ error: "erro interno" }, { status: 500 });
     }
 
     const dados = await r.json();
