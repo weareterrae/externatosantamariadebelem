@@ -11,23 +11,40 @@
   /* ============================================================
      (2) MEDIÇÃO GA4 — PARA ATIVAR: cole aqui o ID (formato "G-XXXXXXXXXX").
      Enquanto estiver vazio, NÃO é carregado nada e nenhum cookie é criado.
-     A medição só arranca depois de o visitante clicar "Aceitar todos".
+     Com ID: usa Consent Mode v2 — a etiqueta carrega sempre (detetável), mas por
+     defeito sem cookies; a medição completa só entra com "Aceitar todos".
      ============================================================ */
   var GA_ID = 'G-J89HG6QXL4';   // GA4 do Externato Santa Maria de Belém (ligado 22/07/2026)
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
 
-  var analyticsCarregado = false;
-  function carregarAnalytics() {
-    if (analyticsCarregado || !GA_ID) return;
-    analyticsCarregado = true;
+  var gtagCarregado = false;
+  function carregarGtag() {
+    if (gtagCarregado || !GA_ID) return;
+    gtagCarregado = true;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
     document.head.appendChild(s);
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
+  }
+  // Consent Mode v2 — só concedemos a medição (analytics). Os sinais de anúncios
+  // ficam sempre negados (o banner só pede "cookies de medição").
+  function atualizarConsent(concede) {
+    gtag('consent', 'update', { analytics_storage: concede ? 'granted' : 'denied' });
+  }
+  // A etiqueta arranca SEMPRE (fica detetável), mas por defeito nada é guardado
+  // nem ninguém é identificado. A medição completa só entra com "Aceitar todos".
+  function iniciarMedicao() {
+    if (!GA_ID) return;
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied'
+    });
+    if (consentimento() === 'all') atualizarConsent(true);
+    carregarGtag();
   }
 
   // Evento de conversão — seguro mesmo sem GA ligado (fica no dataLayer).
@@ -41,9 +58,7 @@
   function consentimento() { try { return localStorage.getItem('cookieConsent'); } catch (e) { return null; } }
   function guardarConsent(v) { try { localStorage.setItem('cookieConsent', v); } catch (e) {} }
 
-  function aplicarConsent(v) {
-    if (v === 'all') carregarAnalytics();
-  }
+  function aplicarConsent(v) { atualizarConsent(v === 'all'); }
 
   function mostrarBanner() {
     if (document.getElementById('cookie-banner')) return;
@@ -120,8 +135,8 @@
   }
 
   function init() {
-    var c = consentimento();
-    if (c) aplicarConsent(c); else mostrarBanner();
+    iniciarMedicao();
+    if (!consentimento()) mostrarBanner();
     barraMovel();
     ligarEventos();
   }
