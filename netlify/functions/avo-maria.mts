@@ -2,9 +2,8 @@
 // Deploy: automático com o push (Netlify Functions).
 // Requisito único: variável de ambiente ANTHROPIC_API_KEY no painel do Netlify.
 
-import Anthropic from "@anthropic-ai/sdk";
-
-const MODEL = "claude-opus-4-8";
+// IA via Google Gemini (REST). Requer a variável de ambiente GEMINI_API_KEY no Netlify.
+const MODEL = "gemini-2.0-flash";
 
 const SYSTEM = `És a Avó Maria, a anfitriã do site do Externato Santa Maria de Belém — uma escola privada no Restelo, em Lisboa. És uma avó portuguesa calorosa, direta e com sentido de humor sereno. Andas "por esta casa desde que ela é casa" e falas com o carinho de quem viu três gerações do bairro crescer.
 
@@ -61,19 +60,45 @@ export default async (req: Request) => {
       return Response.json({ error: "mensagem em falta" }, { status: 400 });
     }
 
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const resposta = await anthropic.messages.create({
-      model: MODEL,
-      max_tokens: 400,
-      system: SYSTEM,
-      messages: mensagens,
-    });
+    const contents = mensagens.map((m: { role: string; content: string }) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content }],
+    }));
 
-    const texto = resposta.content
-      .filter((b) => b.type === "text")
-      .map((b) => (b as { text: string }).text)
+    const r = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: SYSTEM }] },
+          contents,
+          generationConfig: { maxOutputTokens: 400, temperature: 0.7 },
+          safetySettings: [
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+          ],
+        }),
+      },
+    );
+
+    if (!r.ok) {
+      console.error("gemini http", r.status, (await r.text()).slice(0, 300));
+      return Response.json({ error: "erro interno" }, { status: 500 });
+    }
+
+    const dados = await r.json();
+    const texto = (dados?.candidates?.[0]?.content?.parts || [])
+      .map((p: { text?: string }) => p?.text || "")
       .join("")
       .trim();
+
+    if (!texto) {
+      console.error("gemini sem texto", JSON.stringify(dados).slice(0, 300));
+      return Response.json({ error: "erro interno" }, { status: 500 });
+    }
 
     return Response.json({ reply: texto });
   } catch (erro) {
