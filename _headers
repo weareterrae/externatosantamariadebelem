@@ -7,12 +7,14 @@
   Strict-Transport-Security: max-age=31536000
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
-# Assets com hash/versão podem ter cache longa.
+# Imagens/ilustrações (com ?v= no HTML) podem ter cache longa.
 /assets/*
   Cache-Control: public, max-age=31536000
+# CSS/JS partilhados: revalidar sempre para as atualizações chegarem já
+# (o servidor responde 304 se nada mudou — rápido e sempre fresco).
 /estilos.css
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /avo-widget.js
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /site.js
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
