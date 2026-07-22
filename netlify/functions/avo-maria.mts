@@ -78,7 +78,7 @@ export default async (req: Request) => {
     return Response.json({ reply: texto });
   } catch (erro) {
     console.error("avo-maria:", erro);
-    return Response.json({ error: "erro interno", diag: String((erro as { message?: string })?.message || erro).slice(0, 300) }, { status: 500 });
+    return Response.json({ error: "erro interno" }, { status: 500 });
   }
 };
 
