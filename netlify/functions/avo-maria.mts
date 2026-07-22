@@ -86,8 +86,9 @@ export default async (req: Request) => {
     );
 
     if (!r.ok) {
-      console.error("gemini http", r.status, (await r.text()).slice(0, 300));
-      return Response.json({ error: "erro interno" }, { status: 500 });
+      const det = (await r.text()).slice(0, 350);
+      console.error("gemini http", r.status, det);
+      return Response.json({ error: "erro interno", diag: "m=" + MODEL + " http " + r.status + " · " + det }, { status: 500 });
     }
 
     const dados = await r.json();
