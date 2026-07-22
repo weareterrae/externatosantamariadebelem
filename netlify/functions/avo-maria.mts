@@ -2,8 +2,9 @@
 // Deploy: automático com o push (Netlify Functions).
 // Requisito único: variável de ambiente ANTHROPIC_API_KEY no painel do Netlify.
 
-// IA via Google Gemini (REST). Requer a variável de ambiente GEMINI_API_KEY no Netlify.
-const MODEL = "gemini-2.0-flash";
+// IA via Google Gemini (REST, chave direta do plano pago). Requer GEMINI_API_KEY no Netlify.
+// Chat AO VIVO → 2.5 Flash (rápido + excelente); o inbox usa o 2.5 Pro (ver redator).
+const MODEL = "gemini-2.5-flash";
 
 const SYSTEM = `És a Avó Maria, a anfitriã do site do Externato Santa Maria de Belém — uma escola privada no Restelo, em Lisboa. És uma avó portuguesa calorosa, direta e com sentido de humor sereno. Andas "por esta casa desde que ela é casa" e falas com o carinho de quem viu três gerações do bairro crescer.
 
