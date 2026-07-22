@@ -24,12 +24,13 @@
   .ano-badge{display:inline-block;background:#fff;border:1px solid var(--card-border);border-radius:30px;padding:8px 18px;font-size:14px;font-weight:700;color:var(--verde);margin-top:16px}
   .atualizado{text-align:center;font-size:13.5px;color:var(--ink-soft);margin-top:26px}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://externatosantamariadebelem.com/"},{"@type":"ListItem","position":2,"name":"Preçário","item":"https://externatosantamariadebelem.com/precario"}]}
+</script>
 </head>
 <body>
 
-<a href="/marcar-visita" style="display:block;text-decoration:none;background:#3B6B50;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;text-align:center;padding:11px 16px;font-size:15px;font-weight:700;line-height:1.4">
-  🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span style="text-decoration:underline">Marque a sua visita&nbsp;→</span>
-</a>
+<a class="barra-topo" id="barra-topo" href="/marcar-visita">🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span class="mais">Marque a sua visita →</span></a>
 
 <header>
   <div class="wrap nav">
@@ -54,6 +55,9 @@
     </button>
   </div>
 </header>
+<nav class="breadcrumbs" aria-label="Caminho">
+  <div class="wrap"><a href="/">Início</a> <span class="sep">›</span> <span aria-current="page">Preçário</span></div>
+</nav>
 
 <main>
   <section class="pg-hero">
@@ -166,11 +170,12 @@
           <div class="valor" id="sim-valor">565<small>€/mês</small></div>
           <div class="detalhe" id="sim-detalhe">390€ mensalidade + 175€ refeitório</div>
           <div class="detalhe">Acresce, uma vez por ano: seguro 25€ + material 60€. Inscrição no 1.º ano: 300€.</div>
+          <div class="detalhe" style="margin-top:8px;opacity:.85">Já incluídos na mensalidade: ateliers (mindfulness, inglês, música, expressão dramática, artes, educação física e sala de estudo) e horário até às 17h00. Refeitório e prolongamento são opcionais. Simulação — valor final confirmado na inscrição.</div>
         </div>
       </div>
 
       <div class="conselho-avo">
-        <img src="/assets/ilustracoes/web/ilu-avo.jpg?v=b" alt="Avó Maria">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-avo.jpg?v=b" alt="Avó Maria">
         <div><strong>A Avó Maria aconselha:</strong> "Se puderem, escolham o pagamento anual — poupam 5% e despacham o assunto. E irmãos cá em casa nunca pagaram o mesmo que um só."</div>
       </div>
       <p class="nota-atuais" style="text-align: left;"><strong>Famílias atuais:</strong> nada muda — mantêm-se as condições já acordadas com a Direção. Esta tabela aplica-se apenas a novas inscrições.</p>
@@ -251,6 +256,7 @@
     calc();
   })();
 </script>
+<script src="/config.js" defer></script>
 <script src="/site.js" defer></script>
 <script src="/avo-widget.js" defer></script>
 </body>

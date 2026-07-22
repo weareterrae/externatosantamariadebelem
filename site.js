@@ -34,6 +34,23 @@
   // ficam sempre negados (o banner só pede "cookies de medição").
   function atualizarConsent(concede) {
     gtag('consent', 'update', { analytics_storage: concede ? 'granted' : 'denied' });
+    if (concede) carregarPixel();
+  }
+
+  /* Meta Pixel — DORMENTE. Para ativar: pôr o ID (só dígitos) em META_PIXEL_ID.
+     Só carrega com "Aceitar todos". Precisa de facebook no CSP (já preparado). */
+  var META_PIXEL_ID = '';
+  var pixelCarregado = false;
+  function carregarPixel() {
+    if (pixelCarregado || !META_PIXEL_ID) return;
+    pixelCarregado = true;
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', META_PIXEL_ID);
+    window.fbq('track', 'PageView');
   }
   // A etiqueta arranca SEMPRE (fica detetável), mas por defeito nada é guardado
   // nem ninguém é identificado. A medição completa só entra com "Aceitar todos".
@@ -123,20 +140,83 @@
       var ev = a.getAttribute('data-ev');
       if (ev) { window.track(ev); return; }
       if (href.indexOf('tel:') === 0) window.track('telefone');
-      else if (href.indexOf('wa.me') !== -1) window.track('whatsapp');
+      else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) window.track('whatsapp');
+      else if (href.indexOf('mailto:') === 0) window.track('email');
+      else if (href.indexOf('maps.google') !== -1 || href.indexOf('google.com/maps') !== -1) window.track('mapa');
       else if (href.indexOf('marcar-visita') !== -1) window.track('cta_visita');
     });
-    // submissão de formulários de pedido → lead
+    // formulários: início (1.º foco) e submissão → lead
+    var iniciado = {};
+    document.addEventListener('focusin', function (e) {
+      var f = e.target && e.target.form;
+      if (!f) return;
+      var id = f.getAttribute('name') || f.id || 'form';
+      if (iniciado[id]) return; iniciado[id] = 1;
+      window.track('form_start', { form: id });
+    });
     document.addEventListener('submit', function (e) {
       var f = e.target;
-      if (f && (f.getAttribute('name') === 'pedido-visita' || f.id === 'form-info'))
+      if (f && (f.getAttribute('name') === 'pedido-visita' || f.id === 'form-info' || f.id === 'form-visita'))
         window.track('lead', { form: f.getAttribute('name') || f.id });
     }, true);
+    // simulador e seleção de interesse
+    document.addEventListener('change', function (e) {
+      var t = e.target; if (!t) return;
+      if (t.id && t.id.indexOf('sim-') === 0) window.track('simulador', { campo: t.id });
+      if (t.id === 'f-interesse' || t.name === 'interesse') {
+        var v = (t.value || '').toLowerCase();
+        if (v.indexOf('jardim') !== -1 || v.indexOf('escolar') !== -1) window.track('sel_pre_escolar');
+        else if (v.indexOf('ciclo') !== -1) window.track('sel_1ciclo');
+        else if (v.indexOf('atl') !== -1) window.track('sel_atl');
+      }
+    });
+  }
+
+  /* ============================================================
+     BARRA DE TOPO (campanha) — texto vindo de config.js, expira sozinha
+     ============================================================ */
+  function dataDe(s) { var p = (s || '').split('-'); return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : null; }
+  function barraTopo() {
+    var bar = document.getElementById('barra-topo');
+    if (!bar) return;
+    var c = (window.SITE_CONFIG && window.SITE_CONFIG.campanha) || null;
+    var mostrar = !!(c && c.ativo);
+    if (mostrar) {
+      var hoje = new Date();
+      var ini = dataDe(c.inicio), fim = dataDe(c.fim);
+      if (ini && hoje < ini) mostrar = false;
+      if (fim) { var limite = new Date(fim.getFullYear(), fim.getMonth(), fim.getDate(), 23, 59, 59); if (hoje > limite) mostrar = false; }
+    }
+    if (!mostrar) { bar.parentNode && bar.parentNode.removeChild(bar); return; }
+    // texto a partir da config (fonte única)
+    if (c.url) bar.setAttribute('href', c.url);
+    bar.setAttribute('data-ev', 'openday');
+    bar.innerHTML = '<b>' + c.titulo + '</b>' + (c.texto ? ' &nbsp;' + c.texto : '') +
+                    (c.cta ? ' <span class="mais">' + c.cta + '</span>' : '');
+  }
+  function estadoVagas() {
+    var pill = document.querySelector('.vagas-pill');
+    if (!pill || !window.SITE_CONFIG) return;
+    var ano = window.SITE_CONFIG.anoLetivo || '';
+    var map = {
+      abertas: 'Inscrições abertas para ' + ano + ' — turmas de 16',
+      ultimas: 'Últimas vagas para ' + ano + ' — turmas de 16, por escolha',
+      lista_espera: 'Algumas turmas em lista de espera — fale connosco',
+      completa: 'Turmas completas — contacte-nos para disponibilidade',
+      contactar: 'Contacte-nos para saber a disponibilidade de vagas'
+    };
+    var txt = map[window.SITE_CONFIG.vagas || 'ultimas'];
+    if (!txt) return;
+    var ponto = pill.querySelector('.ponto');
+    pill.textContent = ' ' + txt;
+    if (ponto) pill.insertBefore(ponto, pill.firstChild);
   }
 
   function init() {
     iniciarMedicao();
     if (!consentimento()) mostrarBanner();
+    barraTopo();
+    estadoVagas();
     barraMovel();
     ligarEventos();
   }

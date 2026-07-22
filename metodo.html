@@ -27,12 +27,13 @@
   .bloco-txt p{margin:0 0 14px}
   @media (max-width:720px){.duo{grid-template-columns:1fr}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://externatosantamariadebelem.com/"},{"@type":"ListItem","position":2,"name":"O Método","item":"https://externatosantamariadebelem.com/metodo"}]}
+</script>
 </head>
 <body>
 
-<a href="/marcar-visita" style="display:block;text-decoration:none;background:#3B6B50;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;text-align:center;padding:11px 16px;font-size:15px;font-weight:700;line-height:1.4">
-  🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span style="text-decoration:underline">Marque a sua visita&nbsp;→</span>
-</a>
+<a class="barra-topo" id="barra-topo" href="/marcar-visita">🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span class="mais">Marque a sua visita →</span></a>
 
 <header>
   <div class="wrap nav">
@@ -57,6 +58,9 @@
     </button>
   </div>
 </header>
+<nav class="breadcrumbs" aria-label="Caminho">
+  <div class="wrap"><a href="/">Início</a> <span class="sep">›</span> <span aria-current="page">O Método</span></div>
+</nav>
 
 <main>
   <section class="pg-hero">
@@ -70,7 +74,7 @@
   <section class="metodo">
     <div class="wrap metodo-grid">
       <div class="metodo-foto">
-        <img src="/assets/ilustracoes/web/ilu-metodo.jpg?v=b" alt="Ilustração: crianças a construir uma torre de blocos e a observar uma planta com lupa">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-metodo.jpg?v=b" alt="Ilustração: crianças a construir uma torre de blocos e a observar uma planta com lupa">
       </div>
       <div>
         <span class="eyebrow">Os três tempos</span>
@@ -101,10 +105,10 @@
       <h2>O método, hora a hora</h2>
       <p class="lead">Não é uma teoria no papel — vê-se ao longo do dia, do círculo da manhã ao recreio.</p>
       <div class="dia-strip" style="text-align: left;">
-        <div class="dia-card"><span class="hora">9h00</span><img src="/assets/ilustracoes/web/ilu-circulo.jpg?v=b" alt="Ilustração: círculo da manhã com a educadora"><div class="corpo"><h3>O círculo da manhã</h3><p>Sentados em roda: o que vamos descobrir hoje? Cada voz conta.</p></div></div>
-        <div class="dia-card"><span class="hora">10h30</span><img src="/assets/ilustracoes/web/ilu-metodo.jpg?v=b" alt="Ilustração: crianças a aprender mexendo"><div class="corpo"><h3>Aprender Mexendo</h3><p>Blocos, lupas, tintas e perguntas. É aqui que o método acontece.</p></div></div>
-        <div class="dia-card"><span class="hora">15h00</span><img src="/assets/ilustracoes/web/ilu-hortinha.jpg?v=b" alt="Ilustração: recreio e hortinha"><div class="corpo"><h3>Recreio e hortinha</h3><p>Areia, corrida e joaninhas na hortinha. O recreio também é sala de aula.</p></div></div>
-        <div class="dia-card"><span class="hora">16h00</span><img src="/assets/ilustracoes/web/ilu-areia.jpg?v=b" alt="Ilustração: crianças em brincadeira livre no recreio"><div class="corpo"><h3>Brincadeira livre</h3><p>A partir das 16h, o tempo é para brincar à vontade — a brincadeira também é aprendizagem.</p></div></div>
+        <div class="dia-card"><span class="hora">9h00</span><img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-circulo.jpg?v=b" alt="Ilustração: círculo da manhã com a educadora"><div class="corpo"><h3>O círculo da manhã</h3><p>Sentados em roda: o que vamos descobrir hoje? Cada voz conta.</p></div></div>
+        <div class="dia-card"><span class="hora">10h30</span><img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-metodo.jpg?v=b" alt="Ilustração: crianças a aprender mexendo"><div class="corpo"><h3>Aprender Mexendo</h3><p>Blocos, lupas, tintas e perguntas. É aqui que o método acontece.</p></div></div>
+        <div class="dia-card"><span class="hora">15h00</span><img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-hortinha.jpg?v=b" alt="Ilustração: recreio e hortinha"><div class="corpo"><h3>Recreio e hortinha</h3><p>Areia, corrida e joaninhas na hortinha. O recreio também é sala de aula.</p></div></div>
+        <div class="dia-card"><span class="hora">16h00</span><img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-areia.jpg?v=b" alt="Ilustração: crianças em brincadeira livre no recreio"><div class="corpo"><h3>Brincadeira livre</h3><p>A partir das 16h, o tempo é para brincar à vontade — a brincadeira também é aprendizagem.</p></div></div>
       </div>
       <p class="dia-dica">← Deslize para percorrer o dia →</p>
     </div>
@@ -208,6 +212,7 @@
     if(h&&m){h.addEventListener('click',function(){var o=m.classList.toggle('aberto');h.setAttribute('aria-expanded',o);});}
   })();
 </script>
+<script src="/config.js" defer></script>
 <script src="/site.js" defer></script>
 <script src="/avo-widget.js" defer></script>
 </body>

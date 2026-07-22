@@ -816,3 +816,24 @@
   .doc li { margin-bottom: 8px; }
   .doc .atualizado { margin-top: 44px; font-size: 13px; color: var(--ink-soft); }
   .doc .btn-linha { display: inline-block; background: none; border: none; padding: 0; font: inherit; color: var(--verde); font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+  /* ===================== BARRA DE TOPO (campanha, config-driven) ===================== */
+  .barra-topo {
+    display: block; text-decoration: none;
+    background: var(--verde); color: #fff;
+    font-family: "Nunito Sans", system-ui, sans-serif;
+    text-align: center; padding: 11px 16px; font-size: 15px; font-weight: 700; line-height: 1.4;
+  }
+  .barra-topo .mais { text-decoration: underline; }
+  .barra-topo[hidden] { display: none; }
+
+  /* honeypot anti-spam: fora do ecrã, fora do tab, invisível a leitores de ecrã */
+  .hp { position: absolute !important; left: -9999px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+  /* ===================== BREADCRUMBS ===================== */
+  .breadcrumbs { background: var(--paper); border-bottom: 1px solid var(--card-border); font-size: 13.5px; }
+  .breadcrumbs .wrap { padding: 9px 24px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .breadcrumbs a { color: var(--verde); text-decoration: none; font-weight: 700; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+  .breadcrumbs .sep { color: var(--card-border); }
+  .breadcrumbs [aria-current] { color: var(--ink-soft); }

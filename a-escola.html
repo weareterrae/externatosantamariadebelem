@@ -28,12 +28,13 @@
   .inst-grid .v{font-size:16.5px;color:var(--ink);margin-top:3px}
   @media (max-width:640px){.inst-grid{grid-template-columns:1fr}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://externatosantamariadebelem.com/"},{"@type":"ListItem","position":2,"name":"A Escola","item":"https://externatosantamariadebelem.com/a-escola"}]}
+</script>
 </head>
 <body>
 
-<a href="/marcar-visita" style="display:block;text-decoration:none;background:#3B6B50;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;text-align:center;padding:11px 16px;font-size:15px;font-weight:700;line-height:1.4">
-  🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span style="text-decoration:underline">Marque a sua visita&nbsp;→</span>
-</a>
+<a class="barra-topo" id="barra-topo" href="/marcar-visita">🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span class="mais">Marque a sua visita →</span></a>
 
 <header>
   <div class="wrap nav">
@@ -58,6 +59,9 @@
     </button>
   </div>
 </header>
+<nav class="breadcrumbs" aria-label="Caminho">
+  <div class="wrap"><a href="/">Início</a> <span class="sep">›</span> <span aria-current="page">A Escola</span></div>
+</nav>
 
 <main>
   <section class="pg-hero">
@@ -119,7 +123,7 @@
         <li><span class="ano">2015</span><p>Nova gerência, instalações modernizadas e um modelo pedagógico renovado: nasce o Aprender Mexendo.</p></li>
       </ul>
       <div class="mural">
-        <img src="/assets/ilustracoes/web/ilu-historia-aguarela.jpg?v=b" alt="Ilustração: rua antiga de Belém com o elétrico amarelo, a Torre de Belém ao fundo e uma família a chegar à porta da escola">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-historia-aguarela.jpg?v=b" alt="Ilustração: rua antiga de Belém com o elétrico amarelo, a Torre de Belém ao fundo e uma família a chegar à porta da escola">
       </div>
     </div>
   </section>
@@ -130,7 +134,7 @@
       <h2>Quem recebe o seu filho todos os dias</h2>
       <div class="direcao-card">
         <div class="direcao-foto">
-          <img src="/assets/ilustracoes/web/ilu-diretora.jpg?v=b" alt="Ilustração: a educadora a receber uma criança à porta da escola de manhã">
+          <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-diretora.jpg?v=b" alt="Ilustração: a educadora a receber uma criança à porta da escola de manhã">
         </div>
         <div class="direcao-texto">
           <p class="quote">"Todas as manhãs, fico à porta à espera deles. Há sempre um que chega a correr, outro ainda com sono ao colo do pai, outro a estender-me uma flor apanhada no caminho. Recebo-os um a um, pelo nome — porque numa escola pequena por escolha nenhuma criança é 'mais um'. Vejo-os chegar pequeninos, de galochas nos dias de chuva, e vejo-os partir aos dez anos, confiantes e prontos para o mundo. No meio, faço uma coisa só: cuidar para que cresçam felizes, seguros e a pensar pela própria cabeça."</p>
@@ -139,7 +143,7 @@
         </div>
       </div>
       <div class="equipa-grid">
-        <img src="/assets/ilustracoes/web/ilu-equipa.jpg?v=b" alt="Ilustração: a equipa da escola, de braços abertos">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-equipa.jpg?v=b" alt="Ilustração: a equipa da escola, de braços abertos">
         <div style="text-align: left;">
           <h3>Uma equipa inteira à volta de cada criança</h3>
           <ul class="equipa-lista">
@@ -222,6 +226,7 @@
     if(h&&m){h.addEventListener('click',function(){var o=m.classList.toggle('aberto');h.setAttribute('aria-expanded',o);});}
   })();
 </script>
+<script src="/config.js" defer></script>
 <script src="/site.js" defer></script>
 <script src="/avo-widget.js" defer></script>
 </body>

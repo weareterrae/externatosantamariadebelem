@@ -104,6 +104,7 @@
       if (lembrar) { try { sessionStorage.setItem('avoPeek', '1'); } catch (e) {} }
     }
     function abrir(pergunta) {
+      if (window.track) window.track('avo_abrir');
       esconderPeek(true);
       chat.classList.add('aberto');
       botao.classList.add('avo-quieto');

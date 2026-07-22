@@ -27,12 +27,13 @@
   .bloco-txt p{margin:0 0 14px}
   @media (max-width:720px){.duo{grid-template-columns:1fr}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://externatosantamariadebelem.com/"},{"@type":"ListItem","position":2,"name":"1.º Ciclo","item":"https://externatosantamariadebelem.com/1o-ciclo"}]}
+</script>
 </head>
 <body>
 
-<a href="/marcar-visita" style="display:block;text-decoration:none;background:#3B6B50;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;text-align:center;padding:11px 16px;font-size:15px;font-weight:700;line-height:1.4">
-  🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span style="text-decoration:underline">Marque a sua visita&nbsp;→</span>
-</a>
+<a class="barra-topo" id="barra-topo" href="/marcar-visita">🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span class="mais">Marque a sua visita →</span></a>
 
 <header>
   <div class="wrap nav">
@@ -57,6 +58,9 @@
     </button>
   </div>
 </header>
+<nav class="breadcrumbs" aria-label="Caminho">
+  <div class="wrap"><a href="/">Início</a> <span class="sep">›</span> <span aria-current="page">1.º Ciclo</span></div>
+</nav>
 
 <main>
   <section class="pg-hero">
@@ -81,8 +85,8 @@
         <p class="pciclo-mote">Rigor não é o contrário de felicidade — é o que a torna duradoura.</p>
       </div>
       <div class="pciclo-ilu">
-        <img src="/assets/ilustracoes/web/pciclo-estudo.jpg?v=b" alt="Ilustração: aluno do 1.º ciclo concentrado a escrever no caderno">
-        <img src="/assets/ilustracoes/web/pciclo-ciencia.jpg?v=b" alt="Ilustração: dois alunos a observar uma plântula com uma lupa e a tomar notas">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/pciclo-estudo.jpg?v=b" alt="Ilustração: aluno do 1.º ciclo concentrado a escrever no caderno">
+        <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/pciclo-ciencia.jpg?v=b" alt="Ilustração: dois alunos a observar uma plântula com uma lupa e a tomar notas">
       </div>
     </div>
   </section>
@@ -174,6 +178,7 @@
     if(h&&m){h.addEventListener('click',function(){var o=m.classList.toggle('aberto');h.setAttribute('aria-expanded',o);});}
   })();
 </script>
+<script src="/config.js" defer></script>
 <script src="/site.js" defer></script>
 <script src="/avo-widget.js" defer></script>
 </body>

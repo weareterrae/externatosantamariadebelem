@@ -25,12 +25,13 @@
   .com-duo .card h3{margin-bottom:8px}
   @media (max-width:720px){.com-duo{grid-template-columns:1fr}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://externatosantamariadebelem.com/"},{"@type":"ListItem","position":2,"name":"Famílias","item":"https://externatosantamariadebelem.com/familias"}]}
+</script>
 </head>
 <body>
 
-<a href="/marcar-visita" style="display:block;text-decoration:none;background:#3B6B50;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif;text-align:center;padding:11px 16px;font-size:15px;font-weight:700;line-height:1.4">
-  🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span style="text-decoration:underline">Marque a sua visita&nbsp;→</span>
-</a>
+<a class="barra-topo" id="barra-topo" href="/marcar-visita">🌟 <b>Open Day — sábado, 12 de setembro, 10h–13h.</b> &nbsp;E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€). <span class="mais">Marque a sua visita →</span></a>
 
 <header>
   <div class="wrap nav">
@@ -55,6 +56,9 @@
     </button>
   </div>
 </header>
+<nav class="breadcrumbs" aria-label="Caminho">
+  <div class="wrap"><a href="/">Início</a> <span class="sep">›</span> <span aria-current="page">Famílias</span></div>
+</nav>
 
 <main>
   <section class="pg-hero">
@@ -133,7 +137,7 @@
       <p class="lead">Há mais de sessenta anos que esta casa recebe famílias. A Avó Maria já ouviu todas as perguntas — e responde sem rodeios.</p>
       <div class="faq-grid" style="text-align: left;">
         <div class="avo-card">
-          <img src="/assets/ilustracoes/web/ilu-avo.jpg?v=b" alt="Ilustração: a Avó Maria, anfitriã do site, sentada na sua poltrona com um livro">
+          <img loading="lazy" decoding="async" src="/assets/ilustracoes/web/ilu-avo.jpg?v=b" alt="Ilustração: a Avó Maria, anfitriã do site, sentada na sua poltrona com um livro">
           <p class="avo-fala">"Sou a Avó Maria. Ando por esta casa desde que ela é casa. Perguntem-me tudo."</p>
         </div>
         <div class="faq-lista">
@@ -203,6 +207,7 @@
     if(h&&m){h.addEventListener('click',function(){var o=m.classList.toggle('aberto');h.setAttribute('aria-expanded',o);});}
   })();
 </script>
+<script src="/config.js" defer></script>
 <script src="/site.js" defer></script>
 <script src="/avo-widget.js" defer></script>
 </body>
