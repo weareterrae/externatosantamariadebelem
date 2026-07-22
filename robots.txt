@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Páginas internas / de trabalho — não indexar
+Disallow: /plano
+Disallow: /plano/
+Disallow: /inbox.html
+Disallow: /obrigado.html
+Disallow: /assets/campanha/
+Disallow: /AVO-IA-SETUP.md
+Disallow: /DEPLOY.md
+
+Sitemap: https://externatosantamariadebelem.com/sitemap.xml
