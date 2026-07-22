@@ -86,9 +86,15 @@ export default async (req: Request) => {
     );
 
     if (!r.ok) {
-      const det = (await r.text()).slice(0, 400);
+      const det = (await r.text()).slice(0, 160);
       console.error("gemini http", r.status, det);
-      return Response.json({ error: "erro interno", diag: "http " + r.status + " · key=" + (process.env.GEMINI_API_KEY ? "presente" : "AUSENTE") + " · " + det }, { status: 500 });
+      let modelos = "";
+      try {
+        const lm = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${process.env.GEMINI_API_KEY}`);
+        const lj = await lm.json();
+        modelos = (lj?.models || []).filter((m: { supportedGenerationMethods?: string[] }) => (m.supportedGenerationMethods || []).includes("generateContent")).map((m: { name: string }) => m.name.replace("models/", "")).join(", ");
+      } catch { /* ignora */ }
+      return Response.json({ error: "erro interno", diag: "http " + r.status + " · " + det, modelos }, { status: 500 });
     }
 
     const dados = await r.json();
