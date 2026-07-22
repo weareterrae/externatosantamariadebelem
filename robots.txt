@@ -7,7 +7,9 @@ Disallow: /plano/
 Disallow: /inbox.html
 Disallow: /obrigado.html
 Disallow: /assets/campanha/
+Disallow: /externato-prototipo
 Disallow: /AVO-IA-SETUP.md
 Disallow: /DEPLOY.md
+Disallow: /PRECOS.md
 
 Sitemap: https://externatosantamariadebelem.com/sitemap.xml
