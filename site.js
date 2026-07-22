@@ -13,7 +13,7 @@
      Enquanto estiver vazio, NÃO é carregado nada e nenhum cookie é criado.
      A medição só arranca depois de o visitante clicar "Aceitar todos".
      ============================================================ */
-  var GA_ID = '';   // ← p.ex. 'G-ABCD123456'
+  var GA_ID = 'G-J89HG6QXL4';   // GA4 do Externato Santa Maria de Belém (ligado 22/07/2026)
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
