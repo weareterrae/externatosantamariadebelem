@@ -2,7 +2,8 @@
 # (Quando existirem páginas próprias — A Escola, Método, JI, 1.º Ciclo, ATL, Preçário —
 #  atualizar estes destinos para as novas rotas.)
 
-/externato/            /#escola            301
+/externato/            /a-escola           301
+/a-escola/             /a-escola           301
 /precario/             /#precario          301
 /precário/             /#precario          301
 /inscricao/            /marcar-visita      301
