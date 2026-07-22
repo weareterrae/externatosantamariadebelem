@@ -387,14 +387,85 @@
   }
   .avo-botao:hover { transform: scale(1.08); }
   .avo-botao img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; }
+  /* pulsação suave para chamar a atenção (pára quando abre ou é dispensada) */
+  .avo-botao::after {
+    content: ""; position: absolute; inset: -3px; border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(59, 107, 80, 0.5); animation: avo-pulso 2.4s ease-out infinite;
+  }
+  .avo-botao.avo-quieto::after { animation: none; content: none; }
+  @keyframes avo-pulso {
+    0% { box-shadow: 0 0 0 0 rgba(59, 107, 80, 0.45); }
+    70% { box-shadow: 0 0 0 16px rgba(59, 107, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 107, 80, 0); }
+  }
   .avo-chat {
     position: fixed; right: 20px; bottom: 96px; z-index: 91;
-    width: min(360px, calc(100vw - 40px)); max-height: min(520px, calc(100vh - 130px));
+    width: min(370px, calc(100vw - 40px)); max-height: min(540px, calc(100vh - 130px));
     background: #fff; border: 1px solid var(--card-border); border-radius: 20px;
     box-shadow: 0 18px 50px rgba(38, 51, 43, 0.28);
-    display: none; flex-direction: column; overflow: hidden;
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; visibility: hidden; transform: translateY(14px) scale(0.97);
+    transform-origin: bottom right; transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s;
   }
-  .avo-chat.aberto { display: flex; }
+  .avo-chat.aberto { opacity: 1; visibility: visible; transform: none; }
+
+  /* balão-convite (peek) junto ao lançador */
+  .avo-peek {
+    position: fixed; right: 20px; bottom: 96px; z-index: 92;
+    width: 232px; background: #fff; color: var(--ink);
+    border: 1px solid var(--card-border); border-radius: 18px; border-bottom-right-radius: 5px;
+    padding: 14px 16px 15px; box-shadow: 0 14px 40px rgba(38, 51, 43, 0.22);
+    font-size: 14.5px; line-height: 1.5; cursor: pointer;
+    opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.96);
+    transform-origin: bottom right; transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s;
+  }
+  .avo-peek.mostra { opacity: 1; visibility: visible; transform: none; }
+  .avo-peek strong { font-family: "Fraunces", Georgia, serif; color: var(--verde); font-weight: 600; }
+  .avo-peek::after {
+    content: ""; position: absolute; right: 30px; bottom: -8px; width: 15px; height: 15px;
+    background: #fff; border-right: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+    transform: rotate(45deg);
+  }
+  .avo-peek-x {
+    position: absolute; top: 5px; right: 8px; border: none; background: none;
+    font-size: 17px; color: var(--ink-soft); cursor: pointer; line-height: 1; padding: 2px;
+  }
+
+  /* secção de destaque da Avó Maria (homepage) */
+  .avo-destaque {
+    background: radial-gradient(130% 150% at 82% 0%, #fff 0%, var(--areia) 100%);
+    border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+  }
+  .avo-destaque-grid {
+    display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 40px; align-items: center; padding: 54px 0;
+  }
+  .avo-destaque-ilu { position: relative; justify-self: center; }
+  .avo-destaque-ilu img {
+    width: 100%; max-width: 300px; border-radius: 26px; border: 5px solid #fff;
+    box-shadow: 0 16px 44px rgba(38, 51, 43, 0.18);
+  }
+  .avo-destaque-selo {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    background: #fff; border: 1px solid var(--card-border); border-radius: 999px;
+    padding: 6px 14px; font-size: 13px; font-weight: 700; color: var(--verde);
+    box-shadow: 0 6px 18px rgba(38, 51, 43, 0.14); white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .avo-destaque-selo .pisca {
+    width: 8px; height: 8px; border-radius: 50%; background: #4caf7d;
+    box-shadow: 0 0 0 0 rgba(76, 175, 125, 0.6); animation: avo-pulso 2s ease-out infinite;
+  }
+  .avo-destaque-txt { text-align: left; }
+  .avo-destaque-txt h2 { margin-bottom: 10px; }
+  .avo-destaque-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+  .avo-destaque-chips button {
+    font: inherit; font-weight: 700; font-size: 13.5px; cursor: pointer;
+    background: #fff; border: 1.5px solid var(--card-border); border-radius: 999px;
+    padding: 9px 16px; color: var(--ink); transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .avo-destaque-chips button:hover { border-color: var(--verde); transform: translateY(-1px); }
+  .avo-destaque-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .avo-destaque-ctas .btn { cursor: pointer; }
   .avo-chat-topo { background: var(--verde); color: #fff; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
   .avo-chat-topo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center 12%; border: 2px solid #fff; }
   .avo-chat-topo .titulo { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2; }
@@ -671,6 +742,14 @@
     .foot-grid { gap: 26px; }
     .avo-chat { bottom: 88px; max-height: min(480px, calc(100vh - 110px)); }
     .avo-botao { width: 58px; height: 58px; right: 16px; bottom: 16px; }
+    .avo-peek { right: 16px; bottom: 84px; width: 210px; }
+    .avo-destaque-grid { grid-template-columns: 1fr; gap: 26px; padding: 40px 0; text-align: center; }
+    .avo-destaque-txt { text-align: center; }
+    .avo-destaque-chips, .avo-destaque-ctas { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .avo-botao::after, .avo-destaque-selo .pisca { animation: none; }
+    .avo-chat, .avo-peek { transition: opacity 0.2s ease, visibility 0.2s; transform: none; }
   }
 
   body > footer { background: #1C2B22; color: #C9D4CC; padding: 56px 0 32px; font-size: 15px; }
