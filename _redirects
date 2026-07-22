@@ -24,7 +24,19 @@
 /atl/                  /atl                301
 /metodo/               /metodo             301
 /método/               /metodo             301
-/historia/             /#historia          301
-/história/             /#historia          301
+/historia/             /a-escola           301
+/história/             /a-escola           301
 
-# Artefactos técnicos do WordPress: deixar 404 (página tratada) — sinal honesto de "já não existe".
+# Artefactos técnicos do WordPress sem equivalente → 410 Gone (removido definitivamente).
+/wp-admin/*            /  410
+/wp-login.php          /  410
+/wp-json/*             /  410
+/wp-content/*          /  410
+/wp-includes/*         /  410
+/xmlrpc.php            /  410
+/feed/                 /  410
+/comments/feed/        /  410
+/author/*              /  410
+/category/*            /  410
+/tag/*                 /  410
+/wp-sitemap.xml        /  410
