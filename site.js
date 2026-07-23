@@ -32,25 +32,72 @@
   }
   // Consent Mode v2 — só concedemos a medição (analytics). Os sinais de anúncios
   // ficam sempre negados (o banner só pede "cookies de medição").
+  // Com "Aceitar todos" concedemos medição E publicidade (para os anúncios medirem
+  // conversões e remarketing). "Só essenciais" mantém tudo negado.
   function atualizarConsent(concede) {
-    gtag('consent', 'update', { analytics_storage: concede ? 'granted' : 'denied' });
-    if (concede) carregarPixel();
+    var e = concede ? 'granted' : 'denied';
+    gtag('consent', 'update', {
+      analytics_storage: e, ad_storage: e, ad_user_data: e, ad_personalization: e
+    });
+    if (concede) { carregarPixel(); carregarGoogleAds(); }
   }
+  function cfgAds() { return (window.SITE_CONFIG && window.SITE_CONFIG.ads) || {}; }
 
-  /* Meta Pixel — DORMENTE. Para ativar: pôr o ID (só dígitos) em META_PIXEL_ID.
-     Só carrega com "Aceitar todos". Precisa de facebook no CSP (já preparado). */
-  var META_PIXEL_ID = '';
+  /* Meta Pixel — DORMENTE até config.ads.metaPixelId. Só carrega com "Aceitar todos". */
   var pixelCarregado = false;
   function carregarPixel() {
-    if (pixelCarregado || !META_PIXEL_ID) return;
+    var id = cfgAds().metaPixelId || '';
+    if (pixelCarregado || !id) return;
     pixelCarregado = true;
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
       t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq('init', META_PIXEL_ID);
+    window.fbq('init', id);
     window.fbq('track', 'PageView');
+  }
+
+  /* Google Ads — DORMENTE até config.ads.googleAdsId ('AW-...'). Reusa o gtag do GA4. */
+  var adsCarregado = false;
+  function carregarGoogleAds() {
+    var awid = cfgAds().googleAdsId || '';
+    if (adsCarregado || !awid) return;
+    adsCarregado = true;
+    if (!GA_ID) { var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(awid); document.head.appendChild(s); gtag('js', new Date()); }
+    gtag('config', awid);
+  }
+
+  /* Conversão de lead — dispara GA4 + Google Ads + Meta (o que estiver configurado). */
+  window.conversao = function (nome) {
+    nome = nome || 'lead';
+    try { gtag('event', nome); } catch (e) {}
+    try { var a = cfgAds(); if (a.googleAdsId && a.googleAdsLabel) gtag('event', 'conversion', { send_to: a.googleAdsId + '/' + a.googleAdsLabel }); } catch (e) {}
+    try { if (window.fbq) window.fbq('track', 'Lead'); } catch (e) {}
+  };
+
+  /* Origem do tráfego (UTM/gclid/fbclid/referrer) — guardar e injetar nos formulários. */
+  var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+  function capturarOrigem() {
+    var dados = {};
+    try { dados = JSON.parse(sessionStorage.getItem('origem') || '{}'); } catch (e) { dados = {}; }
+    try {
+      var q = new URLSearchParams(location.search), mudou = false;
+      UTM_KEYS.forEach(function (k) { var v = q.get(k); if (v) { dados[k] = v.slice(0, 120); mudou = true; } });
+      if (!dados.referrer && document.referrer && document.referrer.indexOf(location.host) === -1) { dados.referrer = document.referrer.slice(0, 200); mudou = true; }
+      if (mudou) sessionStorage.setItem('origem', JSON.stringify(dados));
+    } catch (e) {}
+    return dados;
+  }
+  function preencherOrigem() {
+    var dados = capturarOrigem();
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      for (var k in dados) {
+        var inp = forms[i].querySelector('input[name="' + k + '"]');
+        if (inp) inp.value = dados[k];
+      }
+    }
   }
   // A etiqueta arranca SEMPRE (fica detetável), mas por defeito nada é guardado
   // nem ninguém é identificado. A medição completa só entra com "Aceitar todos".
@@ -85,7 +132,7 @@
     b.setAttribute('role', 'dialog');
     b.setAttribute('aria-label', 'Aviso de cookies');
     b.innerHTML =
-      '<p>Usamos cookies essenciais para o site funcionar e, com a sua autorização, cookies de medição para o melhorarmos. ' +
+      '<p>Usamos cookies essenciais para o site funcionar e, com a sua autorização, cookies de medição e de publicidade para melhorar o site e as nossas campanhas. ' +
       '<a href="/cookies.html">Saber mais</a>.</p>' +
       '<div class="cookie-acoes">' +
         '<button type="button" class="btn ghost" data-cookie="essential">Só essenciais</button>' +
@@ -157,7 +204,8 @@
     document.addEventListener('submit', function (e) {
       var f = e.target;
       if (f && (f.getAttribute('name') === 'pedido-visita' || f.id === 'form-info' || f.id === 'form-visita'))
-        window.track('lead', { form: f.getAttribute('name') || f.id });
+        window.track('form_submit', { form: f.getAttribute('name') || f.id });
+      // A conversão "lead" (fiável) dispara na página /obrigado.html ao carregar.
     }, true);
     // simulador e seleção de interesse
     document.addEventListener('change', function (e) {
@@ -219,6 +267,8 @@
     estadoVagas();
     barraMovel();
     ligarEventos();
+    preencherOrigem();
+    if (window.CONVERSAO_AO_CARREGAR) window.conversao(window.CONVERSAO_AO_CARREGAR);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

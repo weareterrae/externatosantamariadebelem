@@ -24,5 +24,16 @@ window.SITE_CONFIG = {
 
   /* Estado das vagas (aparece na pastilha do topo da homepage).
      Valores: 'abertas' | 'ultimas' | 'lista_espera' | 'completa' | 'contactar' */
-  vagas: 'ultimas'
+  vagas: 'ultimas',
+
+  /* PUBLICIDADE / MEDIÇÃO DE ANÚNCIOS — preencher quando as contas existirem.
+     Tudo consent-gated (só arranca com "Aceitar todos"). Enquanto vazio, nada carrega.
+     - metaPixelId: ID do Meta Pixel (só dígitos), do Gestor de Eventos da Meta.
+     - googleAdsId: 'AW-XXXXXXXXXX' (Google Ads → Ferramentas → Conversões).
+     - googleAdsLabel: rótulo da conversão de "lead" (o texto a seguir à barra em send_to). */
+  ads: {
+    metaPixelId: '',
+    googleAdsId: '',
+    googleAdsLabel: ''
+  }
 };
