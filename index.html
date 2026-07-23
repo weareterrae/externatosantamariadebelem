@@ -377,9 +377,9 @@
             <li>Sem compromisso e sem pressa</li>
           </ul>
         </div>
-        <form class="form-info" id="form-info" name="pedido-informacoes" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="site-web" novalidate>
+        <form class="form-info" id="form-info" name="pedido-informacoes" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="pedido-informacoes">
-          <p class="hp" aria-hidden="true"><label>Se é humano, deixe este campo vazio: <input name="site-web" tabindex="-1" autocomplete="off"></label></p>
+          <p class="hp" aria-hidden="true"><label>Se é humano, deixe este campo vazio: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <!-- Origem do tráfego (preenchido pelo site.js; registado pelo Netlify Forms) -->
       <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid"><input type="hidden" name="referrer">
           <div class="form-linha">
@@ -529,7 +529,7 @@
   var emNetlify = /^https?:$/.test(location.protocol) && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1';
   if (form) {
     form.addEventListener('submit', function (ev) {
-      if (emNetlify) return; // no Netlify o formulário submete nativamente (Netlify Forms)
+      if (emNetlify) { try { sessionStorage.setItem('leadEnviado', '1'); } catch (e) {} return; } // Netlify: submete nativamente
       ev.preventDefault();
       if (!form.reportValidity()) return;
       var d = new FormData(form);

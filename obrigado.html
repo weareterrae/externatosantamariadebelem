@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/estilos.css">
 <!-- Esta página só é alcançada após submeter o formulário → é a confirmação da conversão. -->
-<script>window.CONVERSAO_AO_CARREGAR = 'lead';</script>
+<script>try{ if(sessionStorage.getItem('leadEnviado')){ window.CONVERSAO_AO_CARREGAR='lead'; sessionStorage.removeItem('leadEnviado'); } }catch(e){ window.CONVERSAO_AO_CARREGAR='lead'; }</script>
 <style>
   .obg { min-height: 68vh; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
   .obg .caixa { max-width: 560px; text-align: center; }

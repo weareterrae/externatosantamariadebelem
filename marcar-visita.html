@@ -87,9 +87,9 @@
     <h2 style="text-align:center">Peça a sua visita</h2>
     <p class="lead" style="text-align:center;max-width:48ch;margin:10px auto 30px">Deixe os seus dados e escolhemos juntos o melhor dia. Respondemos no próprio dia útil.</p>
 
-    <form class="form-info" id="form-visita" name="pedido-visita" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="site-web" novalidate>
+    <form class="form-info" id="form-visita" name="pedido-visita" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" novalidate>
       <input type="hidden" name="form-name" value="pedido-visita">
-      <p class="hp" aria-hidden="true"><label>Se é humano, deixe este campo vazio: <input name="site-web" tabindex="-1" autocomplete="off"></label></p>
+      <p class="hp" aria-hidden="true"><label>Se é humano, deixe este campo vazio: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <!-- Origem do tráfego (preenchido pelo site.js; registado pelo Netlify Forms) -->
       <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid"><input type="hidden" name="referrer">
 
@@ -237,7 +237,8 @@
           var er=c.parentElement.querySelector('.form-erro'); if(er) er.style.display='block';
         } else { c.removeAttribute('aria-invalid'); var er=c.parentElement.querySelector('.form-erro'); if(er) er.style.display='none'; }
       });
-      if(!ok){ e.preventDefault(); var first=f.querySelector('[aria-invalid="true"]'); if(first) first.focus(); }
+      if(!ok){ e.preventDefault(); var first=f.querySelector('[aria-invalid="true"]'); if(first) first.focus(); return; }
+      try{ sessionStorage.setItem('leadEnviado','1'); }catch(err){}
     });
   })();
 </script>
