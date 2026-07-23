@@ -15,16 +15,18 @@ window.SITE_CONFIG = {
   campanha: {
     ativo: true,
     inicio: '2026-07-01',
-    fim: '2026-09-12',
-    titulo: '🌟 Open Day — sábado, 12 de setembro, 10h–13h.',
-    texto: 'E até 31 de agosto, <b>inscrição grátis</b> (poupe 300€).',
-    cta: 'Marque a sua visita →',
+    fim: '2026-08-31',
+    titulo: '🌟 Até 31 de agosto, <b>inscrição grátis</b> (poupe 300€).',
+    texto: 'Marque a sua visita e conheça a escola num dia normal.',
+    cta: 'Marcar visita →',
     url: '/marcar-visita'
+    // Open Day de setembro: data por confirmar pela Direção. Quando fechar,
+    // repor aqui o titulo/fim (ex.: 'Open Day — sábado, DD de setembro, 10h–13h').
   },
 
   /* Estado das vagas (aparece na pastilha do topo da homepage).
      Valores: 'abertas' | 'ultimas' | 'lista_espera' | 'completa' | 'contactar' */
-  vagas: 'ultimas',
+  vagas: 'abertas',
 
   /* PUBLICIDADE / MEDIÇÃO DE ANÚNCIOS — preencher quando as contas existirem.
      Tudo consent-gated (só arranca com "Aceitar todos"). Enquanto vazio, nada carrega.
