@@ -32,7 +32,7 @@ window.SITE_CONFIG = {
      - googleAdsId: 'AW-XXXXXXXXXX' (Google Ads → Ferramentas → Conversões).
      - googleAdsLabel: rótulo da conversão de "lead" (o texto a seguir à barra em send_to). */
   ads: {
-    metaPixelId: '',
+    metaPixelId: '1422189753074648',
     googleAdsId: '',
     googleAdsLabel: ''
   }
