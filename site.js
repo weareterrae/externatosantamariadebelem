@@ -30,16 +30,17 @@
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
   }
-  // Consent Mode v2 — só concedemos a medição (analytics). Os sinais de anúncios
-  // ficam sempre negados (o banner só pede "cookies de medição").
-  // Com "Aceitar todos" concedemos medição E publicidade (para os anúncios medirem
-  // conversões e remarketing). "Só essenciais" mantém tudo negado.
-  function atualizarConsent(concede) {
-    var e = concede ? 'granted' : 'denied';
+  // Consent Mode v2 por CATEGORIA (padrão RGPD): "medicao" controla o Analytics,
+  // "publicidade" controla Meta Pixel + Google Ads. Tudo negado por defeito;
+  // só se concede o que a pessoa autorizar no banner.
+  function atualizarConsent(c) {
+    c = c || {};
+    var m = c.medicao ? 'granted' : 'denied';
+    var p = c.publicidade ? 'granted' : 'denied';
     gtag('consent', 'update', {
-      analytics_storage: e, ad_storage: e, ad_user_data: e, ad_personalization: e
+      analytics_storage: m, ad_storage: p, ad_user_data: p, ad_personalization: p
     });
-    if (concede) { carregarPixel(); carregarGoogleAds(); }
+    if (c.publicidade) { carregarPixel(); carregarGoogleAds(); }
   }
   function cfgAds() { return (window.SITE_CONFIG && window.SITE_CONFIG.ads) || {}; }
 
@@ -68,12 +69,31 @@
     gtag('config', awid);
   }
 
-  /* Conversão de lead — dispara GA4 + Google Ads + Meta (o que estiver configurado). */
-  window.conversao = function (nome) {
+  /* API única de medição — window.esmbTrack(evento, props):
+     manda o evento ao GA4 (gtag) e ao Meta Pixel (fbq). Eventos "standard" do
+     Pixel (Lead/Contact) vão como track; o resto como trackCustom. Só chega às
+     ferramentas se elas tiverem sido carregadas COM consentimento — sem
+     consentimento fica apenas no dataLayer (Consent Mode v2, sem cookies). */
+  window.esmbTrack = function (evento, props) {
+    props = props || {};
+    try { gtag('event', evento, props); } catch (e) {}
+    try {
+      if (window.fbq) {
+        var std = { lead: 'Lead', generate_lead: 'Lead', click_contact: 'Contact', contact: 'Contact' };
+        if (std[evento]) window.fbq('track', std[evento], props);
+        else window.fbq('trackCustom', evento, props);
+      }
+    } catch (e) {}
+  };
+
+  /* Conversão de lead — dispara GA4 (lead + generate_lead) + Google Ads + Meta Lead.
+     props opcionais (ex.: { content_name: 'Open Day' }) distinguem a origem. */
+  window.conversao = function (nome, props) {
     nome = nome || 'lead';
-    try { gtag('event', nome); } catch (e) {}
+    props = props || {};
+    try { if (nome !== 'lead') gtag('event', nome, props); else gtag('event', 'lead', props); } catch (e) {}
+    window.esmbTrack('generate_lead', props);
     try { var a = cfgAds(); if (a.googleAdsId && a.googleAdsLabel) gtag('event', 'conversion', { send_to: a.googleAdsId + '/' + a.googleAdsLabel }); } catch (e) {}
-    try { if (window.fbq) window.fbq('track', 'Lead'); } catch (e) {}
   };
 
   /* Origem do tráfego (UTM/gclid/fbclid/referrer) — guardar e injetar nos formulários. */
@@ -107,7 +127,8 @@
       ad_storage: 'denied', ad_user_data: 'denied',
       ad_personalization: 'denied', analytics_storage: 'denied'
     });
-    if (consentimento() === 'all') atualizarConsent(true);
+    var c = consentimento();
+    if (c) atualizarConsent(c);
     carregarGtag();
   }
 
@@ -119,40 +140,82 @@
   /* ============================================================
      (1) CONSENTIMENTO DE COOKIES
      ============================================================ */
-  function consentimento() { try { return localStorage.getItem('cookieConsent'); } catch (e) { return null; } }
-  function guardarConsent(v) { try { localStorage.setItem('cookieConsent', v); } catch (e) {} }
+  // Consentimento guardado como { medicao: bool, publicidade: bool } em
+  // 'cookieConsent2'. Migra o formato antigo ('all'/'essential') sem voltar
+  // a incomodar quem já tinha escolhido.
+  function consentimento() {
+    try {
+      var v2 = localStorage.getItem('cookieConsent2');
+      if (v2) return JSON.parse(v2);
+      var v1 = localStorage.getItem('cookieConsent');
+      if (v1 === 'all') return { medicao: true, publicidade: true };
+      if (v1 === 'essential') return { medicao: false, publicidade: false };
+    } catch (e) {}
+    return null;
+  }
+  function guardarConsent(c) {
+    try { localStorage.setItem('cookieConsent2', JSON.stringify(c)); localStorage.removeItem('cookieConsent'); } catch (e) {}
+  }
 
-  function aplicarConsent(v) { atualizarConsent(v === 'all'); }
+  function aplicarConsent(c) {
+    // retirar um consentimento depois de o script já ter carregado exige recarregar
+    if ((pixelCarregado && !c.publicidade) || (adsCarregado && !c.publicidade)) { location.reload(); return; }
+    atualizarConsent(c);
+  }
 
-  function mostrarBanner() {
-    if (document.getElementById('cookie-banner')) return;
-    var b = document.createElement('div');
-    b.className = 'cookie-banner';
-    b.id = 'cookie-banner';
-    b.setAttribute('role', 'dialog');
-    b.setAttribute('aria-label', 'Aviso de cookies');
-    b.innerHTML =
-      '<p>Usamos cookies essenciais para o site funcionar e, com a sua autorização, cookies de medição e de publicidade para melhorar o site e as nossas campanhas. ' +
-      '<a href="/cookies.html">Saber mais</a>.</p>' +
-      '<div class="cookie-acoes">' +
-        '<button type="button" class="btn ghost" data-cookie="essential">Só essenciais</button>' +
-        '<button type="button" class="btn" data-cookie="all">Aceitar todos</button>' +
-      '</div>';
-    document.body.appendChild(b);
+  function mostrarBanner(abrirPrefs) {
+    var b = document.getElementById('cookie-banner');
+    if (!b) {
+      b = document.createElement('div');
+      b.className = 'cookie-banner';
+      b.id = 'cookie-banner';
+      b.setAttribute('role', 'dialog');
+      b.setAttribute('aria-label', 'Aviso de cookies');
+      b.innerHTML =
+        '<p>Cá em casa pedimos licença antes de entrar: usamos cookies essenciais para o site funcionar e, só com a sua autorização, cookies de <b>medição</b> (para percebermos o que ajuda os pais) e de <b>publicidade</b> (para as nossas campanhas). ' +
+        '<a href="/cookies.html">Saber mais</a>.</p>' +
+        '<div class="cookie-prefs" id="cookie-prefs" hidden>' +
+          '<label><input type="checkbox" checked disabled> <b>Essenciais</b> — o site a funcionar e a sua escolha guardada (sempre ativos)</label>' +
+          '<label><input type="checkbox" id="ck-medicao"> <b>Medição</b> — Google Analytics, de forma agregada</label>' +
+          '<label><input type="checkbox" id="ck-publicidade"> <b>Publicidade</b> — Meta Pixel e Google Ads, para medir as campanhas</label>' +
+        '</div>' +
+        '<div class="cookie-acoes">' +
+          '<button type="button" class="btn ghost" data-cookie="essential">Só essenciais</button>' +
+          '<button type="button" class="btn ghost" data-cookie="prefs">Escolher</button>' +
+          '<button type="button" class="btn" data-cookie="all">Aceitar todos</button>' +
+          '<button type="button" class="btn" data-cookie="save" hidden>Guardar a minha escolha</button>' +
+        '</div>';
+      document.body.appendChild(b);
+      b.addEventListener('click', function (e) {
+        var alvo = e.target.closest('[data-cookie]');
+        if (!alvo) return;
+        var acao = alvo.getAttribute('data-cookie');
+        if (acao === 'prefs') { abrirPreferencias(b); return; }
+        var escolha;
+        if (acao === 'all') escolha = { medicao: true, publicidade: true };
+        else if (acao === 'essential') escolha = { medicao: false, publicidade: false };
+        else escolha = { medicao: !!document.getElementById('ck-medicao').checked, publicidade: !!document.getElementById('ck-publicidade').checked };
+        guardarConsent(escolha);
+        b.classList.remove('mostra');
+        setTimeout(function () { b.remove(); }, 300);
+        aplicarConsent(escolha);
+      });
+    }
     requestAnimationFrame(function () { b.classList.add('mostra'); });
-    b.addEventListener('click', function (e) {
-      var alvo = e.target.closest('[data-cookie]');
-      if (!alvo) return;
-      var escolha = alvo.getAttribute('data-cookie');
-      guardarConsent(escolha);
-      aplicarConsent(escolha);
-      b.classList.remove('mostra');
-      setTimeout(function () { b.remove(); }, 300);
-    });
+    if (abrirPrefs) abrirPreferencias(b);
+  }
+  function abrirPreferencias(b) {
+    var atual = consentimento() || { medicao: false, publicidade: false };
+    var prefs = b.querySelector('#cookie-prefs');
+    b.querySelector('#ck-medicao').checked = !!atual.medicao;
+    b.querySelector('#ck-publicidade').checked = !!atual.publicidade;
+    prefs.hidden = false;
+    b.querySelector('[data-cookie="prefs"]').hidden = true;
+    b.querySelector('[data-cookie="save"]').hidden = false;
   }
 
   // Permitir reabrir as preferências (link "Gerir cookies" nas páginas legais)
-  window.gerirCookies = function () { try { localStorage.removeItem('cookieConsent'); } catch (e) {} mostrarBanner(); };
+  window.gerirCookies = function () { mostrarBanner(true); };
 
   /* ============================================================
      (4) BARRA DE AÇÕES RÁPIDAS (telemóvel)
@@ -186,8 +249,8 @@
       var href = a.getAttribute('href') || '';
       var ev = a.getAttribute('data-ev');
       if (ev) { window.track(ev); return; }
-      if (href.indexOf('tel:') === 0) window.track('telefone');
-      else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) window.track('whatsapp');
+      if (href.indexOf('tel:') === 0) { window.track('telefone'); window.esmbTrack('click_contact', { method: 'telefone' }); }
+      else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) { window.track('whatsapp'); window.esmbTrack('click_contact', { method: 'whatsapp' }); }
       else if (href.indexOf('mailto:') === 0) window.track('email');
       else if (href.indexOf('maps.google') !== -1 || href.indexOf('google.com/maps') !== -1) window.track('mapa');
       else if (href.indexOf('marcar-visita') !== -1) window.track('cta_visita');
@@ -203,7 +266,7 @@
     });
     document.addEventListener('submit', function (e) {
       var f = e.target;
-      if (f && (f.getAttribute('name') === 'pedido-visita' || f.id === 'form-info' || f.id === 'form-visita'))
+      if (f && (f.getAttribute('name') === 'pedido-visita' || f.getAttribute('name') === 'open-day' || f.id === 'form-info' || f.id === 'form-visita' || f.id === 'form-open-day'))
         window.track('form_submit', { form: f.getAttribute('name') || f.id });
       // A conversão "lead" (fiável) dispara na página /obrigado.html ao carregar.
     }, true);
@@ -268,7 +331,7 @@
     barraMovel();
     ligarEventos();
     preencherOrigem();
-    if (window.CONVERSAO_AO_CARREGAR) window.conversao(window.CONVERSAO_AO_CARREGAR);
+    if (window.CONVERSAO_AO_CARREGAR) window.conversao(window.CONVERSAO_AO_CARREGAR, window.CONVERSAO_PROPS || {});
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

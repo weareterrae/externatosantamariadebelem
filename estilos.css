@@ -777,8 +777,12 @@
   .cookie-banner.mostra { opacity: 1; transform: none; }
   .cookie-banner p { margin: 0; flex: 1 1 300px; font-size: 14px; line-height: 1.5; color: var(--ink); }
   .cookie-banner a { color: var(--verde); font-weight: 700; text-decoration: underline; }
-  .cookie-acoes { display: flex; gap: 10px; flex: 0 0 auto; }
+  .cookie-acoes { display: flex; gap: 10px; flex: 0 0 auto; flex-wrap: wrap; }
   .cookie-acoes .btn { padding: 9px 16px; font-size: 14px; cursor: pointer; }
+  .cookie-prefs { flex: 1 1 100%; display: grid; gap: 8px; padding: 10px 12px; background: var(--areiaC, #F6EEDD); border: 1px solid var(--card-border); border-radius: 12px; }
+  .cookie-prefs label { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; line-height: 1.45; color: var(--ink); cursor: pointer; }
+  .cookie-prefs input { margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: var(--verde); }
+  .cookie-prefs input:disabled { opacity: 0.6; }
 
   /* ===================== BARRA DE AÇÕES (telemóvel) ===================== */
   .barra-movel { display: none; }
