@@ -82,9 +82,12 @@
     background: var(--verde); color: #fff;
     padding: 12px 26px; border-radius: 999px;
     box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28);
-    transition: transform 0.15s ease, background 0.15s ease;
+    transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.55, 1), background 0.2s ease, box-shadow 0.3s ease;
   }
-  .btn:hover { background: #185936; transform: translateY(-2px); }
+  /* hover caloroso: o botão levanta como papel e a sombra ganha o calor da terracota */
+  .btn:hover { background: #2C5540; transform: translateY(-2px) rotate(-0.6deg); box-shadow: 0 9px 24px rgba(194, 122, 102, 0.34), 0 3px 10px rgba(30, 110, 66, 0.22); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+  @media (prefers-reduced-motion: reduce) { .btn:hover, .btn:active { transform: none; } }
   .btn:focus-visible, a:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
   .btn.ghost {
     background: transparent; color: var(--verde);
@@ -168,6 +171,54 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ---------- colagem que se monta: os cartões assentam como peças de papel ----------
+     A classe .reveal é posta por JS (sem JS, tudo fica visível). Só transform/opacity/sombra:
+     a peça desliza 24px, roda ~1.7° até à rotação final e a sombra de papel suaviza. */
+  .card.reveal, .prova-card.reveal, .sala-card.reveal, .od-card.reveal {
+    transform: translateY(24px) rotate(-1.7deg);
+    box-shadow: 0 20px 40px rgba(38, 51, 43, 0.16);
+    transition: opacity 0.55s ease, transform 0.72s cubic-bezier(0.3, 1.3, 0.55, 1), box-shadow 0.72s ease;
+  }
+  .cards .card.reveal:nth-child(even), .prova-grid .prova-card.reveal:nth-child(even),
+  .salas-cards .sala-card.reveal:nth-child(even), .od-cards .od-card.reveal:nth-child(even) {
+    transform: translateY(24px) rotate(1.9deg);
+  }
+  .card.reveal.in, .prova-card.reveal.in, .sala-card.reveal.in, .od-card.reveal.in {
+    transform: none; box-shadow: var(--shadow);
+  }
+  /* repor o hover (a regra .in acima ganharia em especificidade) */
+  .card.reveal.in:hover, .prova-card.reveal.in:hover, .sala-card.reveal.in:hover {
+    transform: translateY(-6px); box-shadow: 0 16px 36px rgba(38, 51, 43, 0.13);
+  }
+  .od-card.reveal.in:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(38, 51, 43, 0.12); }
+  @media (prefers-reduced-motion: reduce) {
+    .card.reveal, .prova-card.reveal, .sala-card.reveal, .od-card.reveal {
+      opacity: 1; transform: none; transition: none; box-shadow: var(--shadow);
+    }
+  }
+
+  /* ---------- estrela do logótipo que se desenha (heros do index e do Open Day) ---------- */
+  .estrela-hero { display: block; width: 54px; height: 54px; margin-bottom: 14px; }
+  .od-hero .estrela-hero { margin: 0 auto 12px; }
+  .estrela-hero svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .estrela-hero path { stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+  .estrela-hero .e-pinho { fill: #2F6B4A; stroke: #2F6B4A; }
+  .estrela-hero .e-ocre { fill: #C7A25A; stroke: #C7A25A; }
+  .estrela-hero .e-miolo { fill: #E0A300; }
+  @media (max-width: 700px) { .estrela-hero { width: 44px; height: 44px; margin-bottom: 10px; } }
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes tracar { from { stroke-dashoffset: var(--traco); } to { stroke-dashoffset: 0; } }
+    @keyframes encher { from { fill-opacity: 0; } to { fill-opacity: 1; } }
+    .estrela-hero .e-pinho { --traco: 100; stroke-dasharray: 100; animation: tracar 1s cubic-bezier(0.45, 0, 0.35, 1) 0.15s both, encher 0.55s ease 1.15s both; }
+    .estrela-hero .e-ocre { --traco: 63; stroke-dasharray: 63; animation: tracar 0.85s cubic-bezier(0.45, 0, 0.35, 1) 0.45s both, encher 0.55s ease 1.3s both; }
+    .estrela-hero .e-miolo { animation: encher 0.45s ease 1.5s both; }
+  }
+  /* flutuação suave da estrela — só desktop */
+  @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+    @keyframes pairar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .estrela-hero { animation: pairar 7s ease-in-out infinite 2.2s; }
+  }
 
   /* ---------- onda ---------- */
   .onda { display: block; height: 54px; margin-bottom: -1px; overflow: hidden; }
@@ -841,3 +892,14 @@
   .breadcrumbs a:hover { text-decoration: underline; }
   .breadcrumbs .sep { color: var(--card-border); }
   .breadcrumbs [aria-current] { color: var(--ink-soft); }
+
+  /* ===================== TRANSIÇÕES ENTRE PÁGINAS (View Transitions API) =====================
+     Fade cross-document nos navegadores que suportam; nos restantes, navegação normal.
+     Desativado por completo com prefers-reduced-motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+    @keyframes vt-sair { to { opacity: 0; } }
+    @keyframes vt-entrar { from { opacity: 0; } }
+    ::view-transition-old(root) { animation: vt-sair 0.18s ease both; }
+    ::view-transition-new(root) { animation: vt-entrar 0.24s ease 0.05s both; }
+  }

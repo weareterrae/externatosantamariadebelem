@@ -323,6 +323,31 @@
     if (ponto) pill.insertBefore(ponto, pill.firstChild);
   }
 
+  /* ============================================================
+     COLAGEM QUE SE MONTA — cartões entram como peças de papel.
+     Só para páginas SEM observer próprio (o index já trata dos seus
+     .reveal); sem JS ou com prefers-reduced-motion, fica tudo visível.
+     ============================================================ */
+  function colagem() {
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+      var els = [];
+      var lista = document.querySelectorAll('.sala-card, .od-card');
+      for (var i = 0; i < lista.length; i++) {
+        if (!lista[i].classList.contains('reveal')) els.push(lista[i]);
+      }
+      if (!els.length) return;
+      els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 90 + 'ms'; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    } catch (e) {}
+  }
+
   function init() {
     iniciarMedicao();
     if (!consentimento()) mostrarBanner();
@@ -331,6 +356,7 @@
     barraMovel();
     ligarEventos();
     preencherOrigem();
+    colagem();
     if (window.CONVERSAO_AO_CARREGAR) window.conversao(window.CONVERSAO_AO_CARREGAR, window.CONVERSAO_PROPS || {});
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
