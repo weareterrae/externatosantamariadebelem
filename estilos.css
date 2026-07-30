@@ -1,5 +1,6 @@
 /* Externato Santa Maria de Belém — folha de estilo partilhada. Extraída da homepage (Fase 2). */
 :root {
+    color-scheme: light; /* controlos nativos (selects, checkboxes, autofill) sempre em claro — não invertem em modo escuro */
     --paper: #FDFBF4;
     --ink: #26332B;
     --ink-soft: #5A685E;
