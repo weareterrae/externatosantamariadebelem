@@ -48,9 +48,22 @@
           '<input id="avo-input" type="text" placeholder="Escreva a sua pergunta…" aria-label="A sua pergunta">' +
           '<button id="avo-enviar">Enviar</button>' +
         '</div>' +
-        '<div class="avo-aviso">Assistente simples do site — não guarda dados. Para falar com pessoas: formulário ou 213 011 343.</div>' +
+        '<div class="avo-aviso">Para marcar visita, deixe o contacto e a escola liga-lhe — ou ligue 213 011 343.</div>' +
       '</div>';
     while (wrap.firstChild) document.body.appendChild(wrap.firstChild);
+
+    // estilos do mini-formulário de lead (contidos no widget)
+    var estilo = document.createElement('style');
+    estilo.textContent =
+      '.avo-leadcard{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid #E4DCC9;border-radius:14px;padding:14px;max-width:92%}' +
+      '.avo-lead-t{font-family:"Fraunces",Georgia,serif;font-weight:600;color:#3B6B50;font-size:16px}' +
+      '.avo-lead-i{padding:10px 12px;border:1px solid #d8cfb8;border-radius:10px;font-size:16px;font-family:inherit;width:100%}' +
+      '.avo-lead-c{font-size:12.5px;display:flex;gap:7px;align-items:flex-start;color:#26332B;line-height:1.35}' +
+      '.avo-lead-c input{margin-top:2px;flex:0 0 auto}' +
+      '.avo-lead-b{background:#3B6B50;color:#fff;border:0;border-radius:999px;padding:11px;font-weight:800;font-size:15px;cursor:pointer}' +
+      '.avo-lead-b:disabled{opacity:.6;cursor:default}' +
+      '.avo-lead-err{color:#b3261e;font-size:12.5px}';
+    document.head.appendChild(estilo);
 
     var botao = document.getElementById('avo-botao');
     var peek = document.getElementById('avo-peek');
@@ -73,9 +86,16 @@
           if (p.indexOf(RESPOSTAS[i].chaves[j]) !== -1) return RESPOSTAS[i].texto;
       return 'Essa até a mim me escapa! Deixe os seus dados no formulário de pedido de informações, ou ligue 213 011 343 — respondemos no próprio dia útil.';
     }
+    var ultimaPergunta = '';
+    var formAberto = false;
+    function marcaVisita(t) { return /\[\[\s*VISITA\s*\]\]/i.test(t); }
+    function limpaMarca(t) { return t.replace(/\s*\[\[\s*VISITA\s*\]\]\s*/ig, ' ').trim(); }
+
     function responde(pergunta) {
       fala(pergunta, true);
+      ultimaPergunta = pergunta;
       historico.push({ role: 'user', content: pergunta });
+      if (window.track) window.track('mensagem_enviada');
       var typing = fala('A Avó Maria está a escrever…', false);
       typing.style.opacity = '0.6';
       typing.style.fontStyle = 'italic';
@@ -87,16 +107,77 @@
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function (d) {
           typing.remove();
-          var t = (d && d.reply) ? d.reply : achaLocal(pergunta);
+          var bruto = (d && d.reply) ? d.reply : achaLocal(pergunta);
+          var quer = marcaVisita(bruto);
+          var t = limpaMarca(bruto);
           fala(t, false);
           historico.push({ role: 'assistant', content: t });
+          if (quer) mostrarFormVisita();
         })
         .catch(function () {
           typing.remove();
           var t = achaLocal(pergunta);
           fala(t, false);
           historico.push({ role: 'assistant', content: t });
+          if (/visit|marcar|conhec|inscri/i.test(pergunta)) mostrarFormVisita();
         });
+    }
+
+    // Proposta direta de visita (chip ou CTA) — funciona mesmo sem IA.
+    function propoeVisita() {
+      if (window.track) window.track('mensagem_enviada', { tipo: 'visita' });
+      fala('Com todo o gosto! Deixe-me só o seu nome e um contacto, aqui mesmo, que a escola liga-lhe no próximo dia útil. 🌿', false);
+      mostrarFormVisita();
+    }
+
+    // Mini-formulário de lead DENTRO da conversa (nome + telemóvel + consentimento).
+    function mostrarFormVisita() {
+      if (formAberto) return;
+      formAberto = true;
+      var card = document.createElement('div');
+      card.className = 'avo-msg dela avo-leadcard';
+      card.innerHTML =
+        '<div class="avo-lead-t">Marcar visita — a escola liga-lhe</div>' +
+        '<input class="avo-lead-i" id="avo-l-nome" type="text" placeholder="O seu nome" autocomplete="name">' +
+        '<input class="avo-lead-i" id="avo-l-tel" type="tel" inputmode="tel" placeholder="Telemóvel" autocomplete="tel">' +
+        '<input class="avo-lead-i" id="avo-l-email" type="email" placeholder="Email (opcional)" autocomplete="email">' +
+        '<label class="avo-lead-c"><input type="checkbox" id="avo-l-ok"> Autorizo que o Externato me contacte sobre a visita.</label>' +
+        '<button class="avo-lead-b" id="avo-l-enviar">Enviar à escola</button>' +
+        '<div class="avo-lead-err" id="avo-l-err" role="alert"></div>';
+      msgs.appendChild(card);
+      msgs.scrollTop = msgs.scrollHeight;
+      document.getElementById('avo-l-enviar').addEventListener('click', enviarLead);
+      var n = document.getElementById('avo-l-nome'); if (n) n.focus();
+    }
+
+    function enviarLead() {
+      var nome = (document.getElementById('avo-l-nome').value || '').trim();
+      var tel = (document.getElementById('avo-l-tel').value || '').trim();
+      var email = (document.getElementById('avo-l-email').value || '').trim();
+      var ok = document.getElementById('avo-l-ok').checked;
+      var err = document.getElementById('avo-l-err');
+      if (nome.length < 2 || tel.replace(/\D/g, '').length < 9) { err.textContent = 'Deixe o nome e um telemóvel válido, por favor.'; return; }
+      if (!ok) { err.textContent = 'Precisa de autorizar o contacto para continuarmos.'; return; }
+      err.textContent = '';
+      var btn = document.getElementById('avo-l-enviar'); btn.disabled = true; btn.textContent = 'A enviar…';
+      var origem = {}; try { origem = JSON.parse(sessionStorage.getItem('origem') || '{}'); } catch (e) {}
+      var body = new URLSearchParams();
+      body.set('form-name', 'lead-avo');
+      body.set('nome', nome); body.set('telefone', tel); body.set('email', email);
+      body.set('mensagem', ultimaPergunta ? ('Via chat da Avó Maria. Última pergunta: ' + ultimaPergunta) : 'Pedido de visita via chat da Avó Maria.');
+      body.set('origem', 'Avó Maria (chat)');
+      for (var k in origem) { if (origem[k]) body.set(k, origem[k]); }
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
+        .then(function () { concluiLead(); })
+        .catch(function () { concluiLead(); });
+    }
+
+    function concluiLead() {
+      try { if (window.conversao) window.conversao('lead', { content_name: 'Avó Maria (chat)' }); } catch (e) {}
+      try { if (window.track) window.track('lead_assistente'); } catch (e) {}
+      var card = document.querySelector('.avo-leadcard'); if (card) card.remove();
+      formAberto = false;
+      fala('Está tratado! 🌿 A escola liga-lhe no próximo dia útil. Se preferir não esperar, ligue 213 011 343. Palavra da Avó Maria.', false);
     }
     function esconderPeek(lembrar) {
       if (peek) peek.classList.remove('mostra');
@@ -139,7 +220,7 @@
     SUGESTOES.forEach(function (s) {
       var b = document.createElement('button');
       b.textContent = s;
-      b.addEventListener('click', function () { responde(s); });
+      b.addEventListener('click', function () { if (/marcar/i.test(s)) propoeVisita(); else responde(s); });
       chips.appendChild(b);
     });
 

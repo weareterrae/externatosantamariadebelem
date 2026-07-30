@@ -21,5 +21,25 @@
   <input type="text" name="created_time">
   <input type="text" name="bot-field">
 </form>
+
+<!-- Formulário OCULTO "lead-avo": leads captados na conversa com a Avó Maria
+     (chat do site). A Avó injeta aqui o pedido de visita → cai nas notificações
+     de email do Netlify ("Any form"), o MESMO destino do formulário do site. -->
+<form name="lead-avo" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nome">
+  <input type="text" name="telefone">
+  <input type="email" name="email">
+  <input type="text" name="mensagem">
+  <input type="text" name="origem">
+  <input type="text" name="utm_source">
+  <input type="text" name="utm_medium">
+  <input type="text" name="utm_campaign">
+  <input type="text" name="utm_term">
+  <input type="text" name="utm_content">
+  <input type="text" name="gclid">
+  <input type="text" name="fbclid">
+  <input type="text" name="referrer">
+  <input type="text" name="bot-field">
+</form>
 </body>
 </html>
