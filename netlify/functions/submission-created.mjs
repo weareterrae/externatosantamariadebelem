@@ -70,6 +70,19 @@ export const handler = async (event) => {
         mensagem: d.mensagem || "",
       },
     };
+  } else if (form === "captacao") {
+    body = {
+      token,
+      nome: d.nome || null,
+      telefone: d.telefone || null,
+      email: d.email || null,
+      origem: "captacao",
+      fonte_detalhe: "Página de captação (link)",
+      campos: {
+        idade_crianca: d.idade_crianca || "",
+        quando_vaga: d.quando_vaga || "",
+      },
+    };
   } else {
     return { statusCode: 200 }; // outro formulário — ignora
   }

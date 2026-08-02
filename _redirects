@@ -40,3 +40,6 @@
 /category/*            /  410
 /tag/*                 /  410
 /wp-sitemap.xml        /  410
+
+# Página de captação (destino dos anúncios)
+/quero-visitar   /captacao.html   200
