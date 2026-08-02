@@ -115,7 +115,14 @@ export const handler = async (event) => {
       campos: { idade_crianca: d.idade_crianca || "", quando_vaga: d.quando_vaga || "" },
     };
   } else {
-    return { statusCode: 200 }; // outro formulário — ignora
+    // Qualquer outro formulário do site — nunca perder a lead.
+    const { "bot-field": _bf, "form-name": _fn, nome, name, telefone, tel, phone, email, ...resto } = d;
+    canal = form ? form.replace(/[-_]/g, " ") : "Site";
+    body = {
+      token, nome: nome || name || null, telefone: telefone || tel || phone || null, email: email || null,
+      origem: form || "site", fonte_detalhe: `Formulário: ${form || "site"}`,
+      campos: resto,
+    };
   }
 
   // 1) Reenviar para o CRM
