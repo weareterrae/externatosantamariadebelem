@@ -132,11 +132,15 @@ export const handler = async (event) => {
   // 2) Email com a cara da escola (Bruna + Sandro)
   const RESEND = process.env.RESEND_API_KEY;
   const para = (process.env.LEAD_EMAILS || "geral@externatosantamariadebelem.com").split(",").map((s) => s.trim()).filter(Boolean);
-  if (RESEND && para.length) {
+  if (!RESEND) {
+    console.error("[submission-created] FALTA RESEND_API_KEY — email não enviado.");
+  } else if (!para.length) {
+    console.error("[submission-created] LEAD_EMAILS vazio — email não enviado.");
+  } else {
     const nome = body.nome || body.email || "Sem nome";
     const html = emailHtml({ nome, tel: body.telefone, email: body.email, canal, campos: body.campos });
     try {
-      await fetch("https://api.resend.com/emails", {
+      const r = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: { authorization: `Bearer ${RESEND}`, "content-type": "application/json" },
         body: JSON.stringify({
@@ -147,8 +151,14 @@ export const handler = async (event) => {
           html,
         }),
       });
+      const txt = await r.text();
+      if (!r.ok) {
+        console.error(`[submission-created] RESEND FALHOU ${r.status}: ${txt}`);
+      } else {
+        console.log(`[submission-created] RESEND OK para ${para.join(", ")}: ${txt}`);
+      }
     } catch (e) {
-      console.error("[submission-created] email:", e.message);
+      console.error("[submission-created] email erro de rede:", e.message);
     }
   }
 
