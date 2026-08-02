@@ -100,7 +100,8 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--card-border);
   }
-  .nav { display: flex; align-items: center; gap: 20px; padding: 12px 0; }
+  .nav { display: flex; align-items: center; gap: 18px; padding: 12px 0; }
+  .wrap.nav { max-width: 1300px; } /* o cabeçalho precisa de mais largura que o conteúdo (mais itens de menu) */
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
   .brand-mark { height: 48px; width: auto; border-radius: 12px; }
   .brand-nome { display: flex; flex-direction: column; line-height: 1.05; white-space: nowrap; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); }
@@ -109,12 +110,11 @@
     .brand-mark { height: 44px; }
     .brand-nome { display: none; }
   }
-  nav.menu { display: flex; gap: 16px; }
+  nav.menu { display: flex; gap: 13px; }
   nav.menu a {
-    text-decoration: none; color: var(--ink); font-weight: 700; font-size: 15px; white-space: nowrap;
+    text-decoration: none; color: var(--ink); font-weight: 700; font-size: 14px; white-space: nowrap;
     border-bottom: 3px solid transparent; padding: 4px 0;
   }
-  @media (max-width: 1120px) { nav.menu { gap: 13px; } nav.menu a { font-size: 14px; } }
   nav.menu a:hover { border-bottom-color: var(--amarelo); }
   .btn {
     display: inline-block; text-decoration: none; text-align: center;
@@ -138,7 +138,7 @@
   /* ---------- menu mobile (hambúrguer) ---------- */
   .hamburguer { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
   .hamburguer svg { display: block; width: 26px; height: 26px; stroke: var(--verde); stroke-width: 2.4; stroke-linecap: round; fill: none; }
-  @media (max-width: 860px) {
+  @media (max-width: 1240px) {
     .nav { gap: 10px; }
     .nav > .btn { padding: 10px 18px; font-size: 15px; }
     .hamburguer { display: block; }
