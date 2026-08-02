@@ -83,7 +83,8 @@
   </section>
 
   <section class="insc-wrap wrap" id="form">
-    <form class="form-info" id="form-inscricao" method="POST" action="/.netlify/functions/inscricao" novalidate>
+    <form class="form-info" id="form-inscricao" name="inscricao" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+      <input type="hidden" name="form-name" value="inscricao">
       <p class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label>Se é humano, deixe vazio: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
       <!-- A criança -->
@@ -178,8 +179,14 @@
         </div>
       </div>
 
-      <div class="nota-docs">
-        📎 <b>Documentos:</b> a certidão de nascimento, o boletim de vacinas e uma fotografia serão pedidos na <b>confirmação da inscrição</b> — não precisa de os enviar agora.
+      <!-- Documentos -->
+      <div class="insc-sec">
+        <span class="eyebrow">Documentos (opcional)</span>
+        <div class="campo">
+          <label for="i-docs">Certidão de nascimento, boletim de vacinas, fotografia…</label>
+          <input id="i-docs" name="documentos" type="file" multiple accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+        <p class="nota-docs">📎 Pode enviar agora ou trazê-los na confirmação da inscrição. Formatos: PDF, JPG ou PNG (até 8&nbsp;MB cada).</p>
       </div>
 
       <label class="consent">
