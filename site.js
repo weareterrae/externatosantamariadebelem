@@ -30,6 +30,20 @@
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
   }
+
+  /* Metricool — tracker de site (mede visitas/comportamento; cria cookies próprios).
+     Não tem Consent Mode, por isso só carrega DEPOIS do consentimento de "medição". */
+  var metricoolCarregado = false;
+  function carregarMetricool() {
+    if (metricoolCarregado) return;
+    metricoolCarregado = true;
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'https://tracker.metricool.com/resources/be.js';
+    s.onload = function () { try { beTracker.t({ hash: '8bb20586e5873a5efc226603330cad80' }); } catch (e) {} };
+    document.getElementsByTagName('head')[0].appendChild(s);
+  }
   // Consent Mode v2 por CATEGORIA (padrão RGPD): "medicao" controla o Analytics,
   // "publicidade" controla Meta Pixel + Google Ads. Tudo negado por defeito;
   // só se concede o que a pessoa autorizar no banner.
@@ -40,6 +54,7 @@
     gtag('consent', 'update', {
       analytics_storage: m, ad_storage: p, ad_user_data: p, ad_personalization: p
     });
+    if (c.medicao) { carregarMetricool(); }
     if (c.publicidade) { carregarPixel(); carregarGoogleAds(); }
   }
   function cfgAds() { return (window.SITE_CONFIG && window.SITE_CONFIG.ads) || {}; }
