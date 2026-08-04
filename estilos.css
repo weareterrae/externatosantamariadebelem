@@ -874,6 +874,13 @@
   .cookie-prefs label { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; line-height: 1.45; color: var(--ink); cursor: pointer; }
   .cookie-prefs input { margin-top: 2px; width: 16px; height: 16px; flex: none; accent-color: var(--verde); }
   .cookie-prefs input:disabled { opacity: 0.6; }
+  /* Telemóvel: banner compacto — não tapar o formulário da landing */
+  @media (max-width: 640px) {
+    .cookie-banner { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; gap: 8px 10px; }
+    .cookie-banner p { font-size: 12.5px; line-height: 1.4; flex: 1 1 100%; }
+    .cookie-acoes { width: 100%; gap: 8px; }
+    .cookie-acoes .btn { flex: 1 1 auto; padding: 9px 12px; font-size: 13px; }
+  }
 
   /* ===================== BARRA DE AÇÕES (telemóvel) ===================== */
   .barra-movel { display: none; }

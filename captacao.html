@@ -93,8 +93,8 @@
             <span class="form-erro">Indique o telefone.</span>
           </div>
           <div class="campo">
-            <label for="c-email">E-mail *</label>
-            <input id="c-email" name="email" type="email" required autocomplete="email">
+            <label for="c-email">E-mail <span style="font-weight:400;color:var(--ink-soft)">(opcional)</span></label>
+            <input id="c-email" name="email" type="email" autocomplete="email">
             <span class="form-erro">Indique um e-mail válido.</span>
           </div>
         </div>
@@ -146,6 +146,7 @@
         else { c.removeAttribute('aria-invalid'); }
       });
       if(!ok){ e.preventDefault(); var first=f.querySelector('[aria-invalid="true"]'); if(first) first.focus(); }
+      else { try{ sessionStorage.setItem('leadEnviado','1'); }catch(_){} }
     });
   })();
 </script>
