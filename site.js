@@ -187,8 +187,7 @@
       b.setAttribute('role', 'dialog');
       b.setAttribute('aria-label', 'Aviso de cookies');
       b.innerHTML =
-        '<p>Cá em casa pedimos licença antes de entrar: usamos cookies essenciais para o site funcionar e, só com a sua autorização, cookies de <b>medição</b> (para percebermos o que ajuda os pais) e de <b>publicidade</b> (para as nossas campanhas). ' +
-        '<a href="/cookies.html">Saber mais</a>.</p>' +
+        '<p>Usamos cookies essenciais e, com a sua autorização, de <b>medição</b> e <b>publicidade</b>. <a href="/cookies.html">Saber mais</a>.</p>' +
         '<div class="cookie-prefs" id="cookie-prefs" hidden>' +
           '<label><input type="checkbox" checked disabled> <b>Essenciais</b> — o site a funcionar e a sua escolha guardada (sempre ativos)</label>' +
           '<label><input type="checkbox" id="ck-medicao"> <b>Medição</b> — Google Analytics, de forma agregada</label>' +
