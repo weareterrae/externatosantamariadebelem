@@ -36,6 +36,7 @@ const ROTULO = {
   observacoes: "Observações",
   mensagem: "Mensagem",
   documentos: "Documentos",
+  indicado_por: "Indicado por (amigo)",
 };
 
 function emailHtml({ nome, tel, email, canal, campos }) {
@@ -95,6 +96,7 @@ export const handler = async (event) => {
         programa: d.programa || "", ano_letivo: d.ano_letivo || "", atl_periodo: d.atl_periodo || "",
         extracurriculares: j(d.extracurriculares), observacoes: d.observacoes || "",
         parentesco: d.parentesco || "", documentos: urlsDe(d.documentos),
+        indicado_por: d.indicado_por || "",
       },
     };
   } else if (form === "pedido-visita") {
@@ -105,6 +107,7 @@ export const handler = async (event) => {
       campos: {
         idade: d.idade || "", ano_letivo: d["ano-letivo"] || "", interesse: d.interesse || "",
         periodo: d.periodo || "", contacto_preferido: d["contacto-preferido"] || "", mensagem: d.mensagem || "",
+        indicado_por: d.indicado_por || "",
       },
     };
   } else if (form === "captacao") {
@@ -112,7 +115,7 @@ export const handler = async (event) => {
     body = {
       token, nome: d.nome || null, telefone: d.telefone || null, email: d.email || null,
       origem: "captacao", fonte_detalhe: "Página de captação (link)",
-      campos: { idade_crianca: d.idade_crianca || "", quando_vaga: d.quando_vaga || "" },
+      campos: { idade_crianca: d.idade_crianca || "", quando_vaga: d.quando_vaga || "", indicado_por: d.indicado_por || "" },
     };
   } else {
     // Qualquer outro formulário do site — nunca perder a lead.
