@@ -61,6 +61,12 @@ export default async (req) => {
     if (v != null && String(v).trim()) campos[k] = String(v).trim();
   }
 
+  // Prioridade (tier) a partir da resposta de prazo — vai no ASSUNTO do email à escola.
+  const quando = g("quando");
+  const TIER = /setemb|imediat|urgent|j[áa]\b/i.test(quando) ? "🔴 LIGAR HOJE · "
+    : /ao longo|durante|pr[óo]ximo|qualquer/i.test(quando) ? "🟡 "
+    : /informar|s[óo] a|curios/i.test(quando) ? "⚪ " : "";
+
   // 1) CRM
   try {
     await fetch(CRM, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, nome, telefone: tel, email, origem: "meta_lead_ads", fonte_detalhe: "Instant Form (intenção)", campos }) });
@@ -71,9 +77,26 @@ export default async (req) => {
   const para = (process.env.LEAD_EMAILS || "geral@externatosantamariadebelem.com").split(",").map((s) => s.trim()).filter(Boolean);
   if (RESEND && para.length) {
     try {
-      const r = await fetch("https://api.resend.com/emails", { method: "POST", headers: { authorization: `Bearer ${RESEND}`, "content-type": "application/json" }, body: JSON.stringify({ from: REMETENTE, to: para, reply_to: email || undefined, subject: `🌟 Nova lead — ${nome || email || "Sem nome"} · Anúncio`, html: emailHtml({ nome: nome || email || "Sem nome", tel, email, campos }) }) });
+      const r = await fetch("https://api.resend.com/emails", { method: "POST", headers: { authorization: `Bearer ${RESEND}`, "content-type": "application/json" }, body: JSON.stringify({ from: REMETENTE, to: para, reply_to: email || undefined, subject: `${TIER}🌟 Nova lead — ${nome || email || "Sem nome"} · Anúncio`, html: emailHtml({ nome: nome || email || "Sem nome", tel, email, campos }) }) });
       if (!r.ok) console.error("[lead-hook] resend", r.status, await r.text());
     } catch (e) { console.error("[lead-hook] email:", e.message); }
+  }
+
+  // 3) 1.º toque automático ao encarregado — voz da Avó Maria (segura a lead até à chamada)
+  if (RESEND && email) {
+    const primeiro = (nome || "").trim().split(/\s+/)[0] || "";
+    const ackHtml = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;background:#F6EFDE">
+      <div style="background:#3B6B50;color:#fff;border-radius:0 0 16px 16px;padding:22px 26px">
+        <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E8C36A;font-weight:700">Externato Santa Maria de Belém</div>
+        <h1 style="margin:6px 0 0;font-size:23px;color:#fff">Olá${primeiro ? " " + esc(primeiro) : ""}! 🌿</h1></div>
+      <div style="padding:20px 26px;color:#26332B;font-size:15px;line-height:1.65">
+        <p style="margin:0">Recebemos o seu pedido, com muito gosto. A escola liga-lhe ainda no próximo dia útil — palavra da Avó Maria.</p>
+        <p style="margin:14px 0 0">E guarde já a data: <b>Open Day, sábado 12 de setembro, 10h–13h</b>. Venha conhecer a nossa casa em Belém — e traga o seu filho, que a visita também é dele.</p>
+        <p style="margin:16px 0 0">Com carinho,<br><b>A Avó Maria</b><br><span style="color:#7E9C88;font-size:13px">Externato Santa Maria de Belém · Restelo, Lisboa · 213 011 343</span></p>
+      </div></div>`;
+    try {
+      await fetch("https://api.resend.com/emails", { method: "POST", headers: { authorization: `Bearer ${RESEND}`, "content-type": "application/json" }, body: JSON.stringify({ from: REMETENTE, to: [email], reply_to: "geral@externatosantamariadebelem.com", subject: "Recebido, com muito gosto 🌿", html: ackHtml }) });
+    } catch (e) { console.error("[lead-hook] ack:", e.message); }
   }
 
   return new Response(JSON.stringify({ ok: true }), { status: 200, headers: { "content-type": "application/json" } });
