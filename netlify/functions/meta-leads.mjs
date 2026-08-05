@@ -102,13 +102,7 @@ async function resend(to, subject, html, reply) {
 
 async function processarLead(leadgenId) {
   const lead = await fetchLead(leadgenId);
-  if (!lead.ok) {
-    console.error("[meta-leads] fetchLead:", lead.detail);
-    // DIAG: prova que o webhook CHEGOU (só a leitura da lead falhou) — remover depois
-    if (CRM_TOKEN) try { await fetch(CRM, { method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ token: CRM_TOKEN, nome: "DIAG · webhook chegou, fetchLead falhou", telefone: "", email: "", origem: "diag", fonte_detalhe: "DIAG meta-leads: " + lead.detail, campos: {} }) }); } catch {}
-    return;
-  }
+  if (!lead.ok) { console.error("[meta-leads] fetchLead:", lead.detail); return; }
   const val = (n) => (lead.fields.find((f) => f.name === n)?.values?.[0]) || "";
   const nome = val("full_name"), tel = val("phone_number"), email = val("email");
   const campos = {};
@@ -136,7 +130,6 @@ async function processarLead(leadgenId) {
 }
 
 function validSig(sig, raw) {
-  return true; // ⚠️ TEMP DIAGNÓSTICO — reativar validação depois de confirmar o caminho
   if (!APP_SECRET) return true; // sem secret configurado ainda → não bloquear (fase de setup)
   if (!sig) return false;
   const esperado = "sha256=" + crypto.createHmac("sha256", APP_SECRET).update(raw, "utf8").digest("hex");
