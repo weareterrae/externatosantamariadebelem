@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bruna — Diretora Geral · Externato Santa Maria de Belém</title>
+<meta name="description" content="Bruna, Diretora Geral do Externato Santa Maria de Belém. Contacto directo, WhatsApp e guardar contacto.">
+<style>
+  :root{
+    --papel:#F5EEDD; --card:#FDFBF4; --verde:#3B6B50; --verde-esc:#2C5540;
+    --ocre:#C9993F; --terra:#C27A66; --areia:#EAD9B6; --tinta:#26332B; --sage:#6f8a78;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+  body{
+    font-family:"Nunito Sans",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--tinta); background:var(--papel);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:Georgia,"Times New Roman",serif}
+  .wrap{max-width:480px;margin:0 auto;padding:0 18px 120px}
+  /* header */
+  header{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 0 6px}
+  header img{width:40px;height:40px;object-fit:contain}
+  header .nm{font-family:Georgia,serif;color:var(--verde-esc);font-weight:bold;font-size:14px;line-height:1.1}
+  header .nm small{display:block;color:var(--ocre);font-weight:bold;letter-spacing:.18em;font-size:8.5px}
+  /* hero */
+  .hero{position:relative;margin-top:8px;border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(44,85,64,.16)}
+  .hero img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
+  .hero .grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(38,51,43,.72),rgba(38,51,43,.05) 46%,transparent 70%)}
+  .hero .cap{position:absolute;left:18px;right:18px;bottom:16px;color:#fff}
+  .hero .cap h1{font-family:Georgia,serif;font-size:34px;margin:0;line-height:1}
+  .hero .cap .role{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.02em}
+  .hero .cap .role b{color:#F4D98A}
+  /* tagline */
+  .tag{font-family:Georgia,serif;font-style:italic;color:var(--terra);font-size:19px;text-align:center;margin:20px 6px 4px}
+  .intro{color:#3f4a42;font-size:15.5px;text-align:center;margin:10px 2px 0}
+  /* section */
+  h2.sec{font-family:Georgia,serif;color:var(--verde);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+  h2.sec::after{content:"";flex:1;height:1px;background:var(--areia)}
+  .princ{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid #ece0c4;border-radius:14px;padding:13px 14px;margin-bottom:10px}
+  .princ .dot{flex:none;width:30px;height:30px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:15px;margin-top:1px}
+  .princ h3{margin:0;font-family:Georgia,serif;font-size:16px;color:var(--verde-esc)}
+  .princ p{margin:3px 0 0;font-size:13.5px;color:#5a6159}
+  /* candid */
+  .candid{margin:22px 0 4px;border-radius:18px;overflow:hidden;box-shadow:0 10px 24px rgba(44,85,64,.12)}
+  .candid img{display:block;width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 30%}
+  /* quote */
+  .quote{background:var(--verde-esc);color:#f3ead6;border-radius:18px;padding:20px 20px 18px;margin:22px 0;text-align:center}
+  .quote p{font-family:Georgia,serif;font-style:italic;font-size:18px;color:#fff;margin:0}
+  .quote span{display:block;margin-top:10px;font-size:12px;letter-spacing:.16em;color:#E7C05A;text-transform:uppercase;font-style:normal}
+  /* comercial */
+  .c-lead{color:#3f4a42;font-size:14.5px;margin:2px 2px 14px}
+  .offer{display:flex;gap:8px;margin-bottom:14px}
+  .opill{flex:1;min-width:0;background:var(--card);border:1px solid #ece0c4;border-radius:14px;padding:11px 6px;text-align:center}
+  .opill b{display:block;font-family:Georgia,serif;color:var(--verde-esc);font-size:13px;line-height:1.12}
+  .opill small{display:block;color:var(--sage);font-size:10.5px;margin-top:3px}
+  .highs{list-style:none;padding:0;margin:0 0 16px}
+  .highs li{position:relative;padding:8px 0 8px 26px;font-size:14px;border-bottom:1px solid #efe6cf}
+  .highs li:last-child{border-bottom:0}
+  .highs li::before{content:"✓";position:absolute;left:2px;top:8px;color:var(--ocre);font-weight:800}
+  .cta{background:var(--verde-esc);color:#eadfc6;border-radius:18px;padding:18px 18px 16px;text-align:center}
+  .cta .ctatag{color:#F4D98A;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .cta p{color:#f2ead7;font-size:14px;margin:0 0 14px}
+  .btnp{display:block;background:var(--ocre);color:#3a2c07;font-weight:800;text-decoration:none;padding:13px;border-radius:12px;font-size:15px}
+  .btng{display:block;margin-top:8px;color:#fff;text-decoration:none;padding:11px;border-radius:12px;font-size:13.5px;border:1px solid rgba(255,255,255,.4)}
+  /* footer */
+  footer{text-align:center;color:var(--sage);font-size:12px;margin-top:26px;border-top:1px solid var(--areia);padding-top:14px;line-height:1.6}
+  footer .desde{color:var(--ocre);letter-spacing:.18em;font-weight:700;font-size:10px}
+  /* action bar */
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(44,85,64,.97);backdrop-filter:blur(6px);overflow:hidden;
+       box-shadow:0 -6px 20px rgba(0,0,0,.18);padding:8px 2px calc(8px + env(safe-area-inset-bottom))}
+  .bar .inner{max-width:480px;width:100%;margin:0 auto;display:flex}
+  .bar button,.bar a{flex:1 1 0;background:none;border:0;color:#fff;font:inherit;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;cursor:pointer;border-radius:12px;min-width:0}
+  .bar button:active,.bar a:active{background:rgba(255,255,255,.12)}
+  .bar svg{width:21px;height:21px}
+  .bar .lbl{font-size:9px;font-weight:700;letter-spacing:0;white-space:nowrap}
+  .bar .wa{color:#fff}
+  .bar .save svg{color:#F4D98A}
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%) translateY(10px);background:var(--tinta);color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="emblem.png" alt="Externato Santa Maria de Belém">
+    <div class="nm"><small>EXTERNATO</small>Santa Maria de Belém</div>
+  </header>
+
+  <section class="hero">
+    <img src="bruna.jpg" alt="Bruna, Diretora Geral">
+    <div class="grad"></div>
+    <div class="cap">
+      <h1 class="serif">Bruna Sousa</h1>
+      <div class="role">Diretora Geral · <b>Externato Santa Maria de Belém</b></div>
+    </div>
+  </section>
+
+  <p class="tag">"Há quase oito anos a fazer do Externato uma casa."</p>
+  <p class="intro">Mãe de dois e apaixonada por crianças, a Bruna é o rosto e o coração do Externato Santa Maria de Belém. Dirige o colégio há quase oito anos, conhece cada família pelo nome e está presente todos os dias — porque acredita que é nos pequenos gestos que a educação acontece.</p>
+
+  <h2 class="sec">O que a move</h2>
+  <div class="princ"><div class="dot">1</div><div><h3>Cada criança tem um nome</h3><p>Atenção verdadeira a cada aluno. Aqui ninguém é um número.</p></div></div>
+  <div class="princ"><div class="dot">2</div><div><h3>Porta sempre aberta</h3><p>Para as famílias, para as dúvidas e para os miúdos. Sempre.</p></div></div>
+  <div class="princ"><div class="dot">3</div><div><h3>Uma casa, não uma instituição</h3><p>Um ambiente onde toda a gente se sente em família.</p></div></div>
+  <div class="princ"><div class="dot">4</div><div><h3>Presença todos os dias</h3><p>À porta, no recreio, onde for preciso estar.</p></div></div>
+
+  <div class="candid"><img src="bruna2.jpg" alt="Bruna no Externato"></div>
+
+  <div class="quote"><p>"Gosto de conhecer cada criança pelo nome. É aí que tudo começa."</p><span>Bruna Sousa · Diretora Geral</span></div>
+
+  <h2 class="sec">O Externato</h2>
+  <p class="c-lead">Desde 1959, um lugar para a criatividade, no Restelo. Turmas pequenas, atenção a cada criança e um horário que acompanha as famílias.</p>
+
+  <div class="offer">
+    <div class="opill"><b>Jardim de Infância</b><small>3–5 anos</small></div>
+    <div class="opill"><b>1.º Ciclo</b><small>6–10 anos</small></div>
+    <div class="opill"><b>ATL</b><small>Prolongamento e férias</small></div>
+  </div>
+
+  <ul class="highs">
+    <li>Turmas até <b>16 alunos</b>, por escolha</li>
+    <li><b>Inglês desde os 3 anos</b>, incluído</li>
+    <li>Apoio <b>psicopedagógico</b> interno</li>
+    <li>Horário alargado <b>8h&nbsp;–&nbsp;19h</b></li>
+    <li>Método <b>"Aprender Mexendo"</b> — mãos na massa</li>
+  </ul>
+
+  <div class="cta">
+    <div class="ctatag">Matrículas 2026/2027 · últimas vagas</div>
+    <p>A melhor forma de decidir é visitar. Venha conhecer o colégio e sentir o ambiente.</p>
+    <a class="btnp" href="https://externatosantamariadebelem.com/marcar-visita" target="_blank" rel="noopener">Marcar visita</a>
+    <a class="btng" href="https://externatosantamariadebelem.com" target="_blank" rel="noopener">Visitar o site do Externato →</a>
+  </div>
+
+  <footer>
+    Externato Santa Maria de Belém<br>
+    Rua Duarte Pacheco Pereira, 24 · Restelo, Lisboa<br>
+    <a href="https://externatosantamariadebelem.com" style="color:var(--verde);text-decoration:none;font-weight:700">externatosantamariadebelem.com</a><br>
+    <span class="desde">— DESDE 1959 —</span>
+  </footer>
+</div>
+
+<!-- BARRA DE AÇÕES -->
+<nav class="bar">
+  <div class="inner">
+    <button class="save" onclick="saveContact()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+      <span class="lbl">Guardar</span>
+    </button>
+    <a href="tel:+351939317966">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11 11 0 0 0 3.4.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .55 3.4 1 1 0 0 1-.25 1Z"/></svg>
+      <span class="lbl">Ligar</span>
+    </a>
+    <a href="mailto:geral@externatosantamariadebelem.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <span class="lbl">Email</span>
+    </a>
+    <a class="wa" href="https://wa.me/351939317966?text=Ol%C3%A1%20Bruna%2C%20gostaria%20de%20falar%20sobre%20o%20Externato." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5c-.1.2-.3.3-.1.6.1.3.6 1 1.3 1.6.9.8 1.6 1 .9 1.2.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.6-.1 1.3Z"/></svg>
+      <span class="lbl">WhatsApp</span>
+    </a>
+    <button onclick="sharePage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      <span class="lbl">Partilhar</span>
+    </button>
+  </div>
+</nav>
+<div class="toast" id="toast">Link copiado ✓</div>
+
+<script>
+function saveContact(){
+  var v=[
+    "BEGIN:VCARD","VERSION:3.0",
+    "N:Sousa;Bruna;;;","FN:Bruna Sousa",
+    "ORG:Externato Santa Maria de Belém","TITLE:Diretora Geral",
+    "TEL;TYPE=CELL:+351939317966",
+    "EMAIL;TYPE=WORK:geral@externatosantamariadebelem.com",
+    "URL:https://externatosantamariadebelem.com",
+    "ADR;TYPE=WORK:;;Rua Duarte Pacheco Pereira 24;Lisboa;;1400-140;Portugal",
+    "END:VCARD"
+  ].join("\r\n");
+  try{
+    var blob=new Blob([v],{type:"text/vcard;charset=utf-8"});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download="Bruna-Externato.vcf";
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url)},1500);
+  }catch(e){
+    location.href="data:text/vcard;charset=utf-8,"+encodeURIComponent(v);
+  }
+}
+function toast(t){var el=document.getElementById("toast");el.textContent=t;el.classList.add("on");setTimeout(function(){el.classList.remove("on")},1900)}
+function sharePage(){
+  var d={title:"Bruna — Externato Santa Maria de Belém",text:"Bruna, Diretora Geral do Externato Santa Maria de Belém.",url:location.href};
+  if(navigator.share){navigator.share(d).catch(function(){})}
+  else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(function(){toast("Link copiado ✓")},function(){toast(location.href)})}
+}
+</script>
+</body>
+</html>
