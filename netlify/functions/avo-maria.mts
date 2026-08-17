@@ -96,19 +96,33 @@ export default async (req: Request) => {
       );
     };
 
-    // pro (rico) primeiro; se falhar (ex.: a chave não tem acesso ao pro) ou vier vazio, cai para o flash (estável).
+    // pro (rico) primeiro; se falhar/vier vazio, cai para o flash (estável). Retenta os erros
+    // TRANSITÓRIOS (429/5xx/rede) — um soluço do Google NUNCA pode dar "erro interno" a um pai.
+    const transitorio = (s: number) => s === 429 || s >= 500;
+    const pausa = (ms: number) => new Promise((res) => setTimeout(res, ms));
     let texto = "";
     for (const modelo of MODELOS) {
-      const r = await chamar(modelo);
-      if (!r.ok) { console.error("gemini http", modelo, r.status, (await r.text()).slice(0, 200), "→ próximo modelo"); continue; }
-      const dados = await r.json();
-      texto = (dados?.candidates?.[0]?.content?.parts || [])
-        .filter((p: { thought?: boolean }) => !p?.thought)
-        .map((p: { text?: string }) => p?.text || "")
-        .join("")
-        .trim();
+      for (let tent = 0; tent < 3 && !texto; tent++) {
+        try {
+          const r = await chamar(modelo);
+          if (!r.ok) {
+            console.error("gemini http", modelo, r.status, (await r.text()).slice(0, 160));
+            if (transitorio(r.status) && tent < 2) { await pausa(300 * (tent + 1)); continue; }
+            break; // permanente (400/403/404) ou esgotou → próximo modelo
+          }
+          const dados = await r.json();
+          texto = (dados?.candidates?.[0]?.content?.parts || [])
+            .filter((p: { thought?: boolean }) => !p?.thought)
+            .map((p: { text?: string }) => p?.text || "")
+            .join("")
+            .trim();
+          if (!texto) { console.error("gemini sem texto", modelo); break; } // vazio → próximo modelo
+        } catch (e) {
+          console.error("gemini rede", modelo, e);
+          if (tent < 2) { await pausa(300 * (tent + 1)); }
+        }
+      }
       if (texto) break;
-      console.error("gemini sem texto", modelo, "→ próximo modelo");
     }
 
     if (!texto) return Response.json({ error: "erro interno" }, { status: 500 });
