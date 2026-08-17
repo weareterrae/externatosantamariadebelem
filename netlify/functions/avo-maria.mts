@@ -5,7 +5,7 @@
 // IA via Google Gemini (REST, chave direta do plano pago). Requer GEMINI_API_KEY no Netlify.
 // IA via Google Gemini (chave direta do plano pago). "flash-latest" = melhor flash estável.
 // É um modelo "thinking": damos folga de tokens e filtramos as partes de raciocínio (p.thought).
-const MODEL = "gemini-2.5-pro";
+const MODELOS = ["gemini-2.5-pro", "gemini-flash-latest"];  // pro (rico) primário + reserva flash (estável)
 
 const SYSTEM = `És a Avó Maria, a anfitriã do site do Externato Santa Maria de Belém — uma escola privada no Restelo, em Lisboa. És uma avó portuguesa calorosa, direta e com sentido de humor sereno. Andas "por esta casa desde que ela é casa" e falas com o carinho de quem viu três gerações do bairro crescer.
 
@@ -76,41 +76,42 @@ export default async (req: Request) => {
       parts: [{ text: m.content }],
     }));
 
-    const r = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM }] },
-          contents,
-          generationConfig: { maxOutputTokens: 2048, temperature: 0.7, thinkingConfig: { thinkingBudget: 128 } },
-          safetySettings: [
-            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
-          ],
-        }),
-      },
-    );
+    const safetySettings = [
+      { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+      { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+      { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+      { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+    ];
+    const chamar = (modelo: string) => {
+      const generationConfig: Record<string, unknown> = { maxOutputTokens: 2048, temperature: 0.7 };
+      if (/pro/.test(modelo)) generationConfig.thinkingConfig = { thinkingBudget: 128 };       // pro: pensamento reduzido (rico + rápido)
+      else if (/2\.5|latest/.test(modelo)) generationConfig.thinkingConfig = { thinkingBudget: 0 }; // flash: sem pensamento (rápido)
+      return fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${process.env.GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ systemInstruction: { parts: [{ text: SYSTEM }] }, contents, generationConfig, safetySettings }),
+        },
+      );
+    };
 
-    if (!r.ok) {
-      console.error("gemini http", r.status, (await r.text()).slice(0, 300));
-      return Response.json({ error: "erro interno" }, { status: 500 });
+    // pro (rico) primeiro; se falhar (ex.: a chave não tem acesso ao pro) ou vier vazio, cai para o flash (estável).
+    let texto = "";
+    for (const modelo of MODELOS) {
+      const r = await chamar(modelo);
+      if (!r.ok) { console.error("gemini http", modelo, r.status, (await r.text()).slice(0, 200), "→ próximo modelo"); continue; }
+      const dados = await r.json();
+      texto = (dados?.candidates?.[0]?.content?.parts || [])
+        .filter((p: { thought?: boolean }) => !p?.thought)
+        .map((p: { text?: string }) => p?.text || "")
+        .join("")
+        .trim();
+      if (texto) break;
+      console.error("gemini sem texto", modelo, "→ próximo modelo");
     }
 
-    const dados = await r.json();
-    const texto = (dados?.candidates?.[0]?.content?.parts || [])
-      .filter((p: { thought?: boolean }) => !p?.thought)
-      .map((p: { text?: string }) => p?.text || "")
-      .join("")
-      .trim();
-
-    if (!texto) {
-      console.error("gemini sem texto", JSON.stringify(dados).slice(0, 300));
-      return Response.json({ error: "erro interno" }, { status: 500 });
-    }
+    if (!texto) return Response.json({ error: "erro interno" }, { status: 500 });
 
     return Response.json({ reply: texto });
   } catch (erro) {
