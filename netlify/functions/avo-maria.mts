@@ -5,7 +5,7 @@
 // IA via Google Gemini (REST, chave direta do plano pago). Requer GEMINI_API_KEY no Netlify.
 // IA via Google Gemini (chave direta do plano pago). "flash-latest" = melhor flash estável.
 // É um modelo "thinking": damos folga de tokens e filtramos as partes de raciocínio (p.thought).
-const MODEL = "gemini-flash-latest";
+const MODEL = "gemini-2.5-pro";
 
 const SYSTEM = `És a Avó Maria, a anfitriã do site do Externato Santa Maria de Belém — uma escola privada no Restelo, em Lisboa. És uma avó portuguesa calorosa, direta e com sentido de humor sereno. Andas "por esta casa desde que ela é casa" e falas com o carinho de quem viu três gerações do bairro crescer.
 
@@ -84,7 +84,7 @@ export default async (req: Request) => {
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM }] },
           contents,
-          generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
+          generationConfig: { maxOutputTokens: 2048, temperature: 0.7, thinkingConfig: { thinkingBudget: 128 } },
           safetySettings: [
             { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
             { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
