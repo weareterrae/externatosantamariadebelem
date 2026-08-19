@@ -520,7 +520,7 @@
   // revelação ao scroll
   if (comAnimacao) {
     var els = document.querySelectorAll('.card, .metodo-grid > *, .linha li, .precario-grid > *, .direcao-card, .visita-box, .ilu-strip figure, .mural, .nota-externos, .nota-atuais, .prova-card, .dia-card, .bairro-mapa, .simulador, .faq-lista details, .avo-card, .conselho-avo');
-    els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; });
+    els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 3) * 60 + 'ms'; });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
