@@ -76,24 +76,36 @@ export default async (req: Request) => {
       parts: [{ text: m.content }],
     }));
 
-    const r = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM }] },
-          contents,
-          generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
-          safetySettings: [
-            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
-            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
-          ],
-        }),
-      },
-    );
+    // Timeout curto: sem isto, um soluço/lentidão da Google prende esta função
+    // até o Netlify cortar a ligação por inatividade (dezenas de segundos) e o
+    // visitante nunca vê resposta nenhuma. Falhar depressa é melhor do que ficar
+    // pendurado — o widget no site já tem a sua própria mensagem de erro rápida.
+    const ctrl = new AbortController();
+    const prazo = setTimeout(() => ctrl.abort(), 8000);
+    let r;
+    try {
+      r = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: SYSTEM }] },
+            contents,
+            generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
+            safetySettings: [
+              { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+              { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+              { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+              { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+            ],
+          }),
+          signal: ctrl.signal,
+        },
+      );
+    } finally {
+      clearTimeout(prazo);
+    }
 
     if (!r.ok) {
       console.error("gemini http", r.status, (await r.text()).slice(0, 300));
