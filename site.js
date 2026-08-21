@@ -352,7 +352,7 @@
         if (!lista[i].classList.contains('reveal')) els.push(lista[i]);
       }
       if (!els.length) return;
-      els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 90 + 'ms'; });
+      els.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 60 + 'ms'; });
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
@@ -360,6 +360,18 @@
       }, { threshold: 0.12 });
       els.forEach(function (el) { io.observe(el); });
     } catch (e) {}
+  }
+
+  /* Cabeçalho "descola" ao sair do herói — só sombra/fundo (sem animar altura), rAF-throttled. */
+  function cabecalhoScroll() {
+    var h = document.querySelector('header');
+    if (!h) return;
+    var ticking = false;
+    function upd() { h.classList.toggle('compacto', window.scrollY > 24); ticking = false; }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { window.requestAnimationFrame(upd); ticking = true; }
+    }, { passive: true });
+    upd();
   }
 
   function init() {
@@ -371,6 +383,7 @@
     ligarEventos();
     preencherOrigem();
     colagem();
+    cabecalhoScroll();
     if (window.CONVERSAO_AO_CARREGAR) window.conversao(window.CONVERSAO_AO_CARREGAR, window.CONVERSAO_PROPS || {});
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

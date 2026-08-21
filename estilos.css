@@ -54,6 +54,9 @@
     --card-border: #E4DCC9;
     --radius: 16px;
     --shadow: 0 6px 24px rgba(38, 51, 43, 0.07);
+    /* Curvas de movimento (tabela do animate) — papel que assenta, nunca salta */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -99,7 +102,10 @@
     background: rgba(253, 251, 244, 0.94);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--card-border);
+    transition: box-shadow 200ms ease, background-color 200ms ease;
   }
+  /* ao sair do herói, o cabeçalho "descola" com uma sombra suave — dá foco ao conteúdo (sem animar altura) */
+  header.compacto { background: rgba(253, 251, 244, 0.98); box-shadow: 0 6px 20px rgba(38, 51, 43, 0.09); }
   .nav { display: flex; align-items: center; gap: 18px; padding: 12px 0; }
   .wrap.nav { max-width: 1300px; } /* o cabeçalho precisa de mais largura que o conteúdo (mais itens de menu) */
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
@@ -112,23 +118,35 @@
   }
   nav.menu { display: flex; gap: 13px; }
   nav.menu a {
+    position: relative;
     text-decoration: none; color: var(--ink); font-weight: 700; font-size: 14px; white-space: nowrap;
     border-bottom: 3px solid transparent; padding: 4px 0;
   }
-  nav.menu a:hover { border-bottom-color: var(--amarelo); }
+  /* sublinhado que se desenha da esquerda, como um traço de lápis (só em dispositivos com hover real) */
+  nav.menu a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 3px;
+    background: var(--amarelo); transform: scaleX(0); transform-origin: left center;
+    transition: transform 200ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { nav.menu a:hover::after { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { nav.menu a::after { transition: none; } }
   .btn {
     display: inline-block; text-decoration: none; text-align: center;
     font-family: "Nunito Sans", sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.01em;
     background: var(--verde); color: #fff;
     padding: 12px 26px; border-radius: 999px;
     box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28);
-    transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.55, 1), background 0.2s ease, box-shadow 0.3s ease;
+    transition: transform 200ms var(--ease-out), background 200ms ease, box-shadow 200ms ease;
   }
   /* hover caloroso: o botão levanta como papel e a sombra ganha o calor da terracota */
   .btn:hover { background: #2C5540; transform: translateY(-2px) rotate(-0.6deg); box-shadow: 0 9px 24px rgba(194, 122, 102, 0.34), 0 3px 10px rgba(30, 110, 66, 0.22); }
-  .btn:active { transform: translateY(0) scale(0.98); }
+  .btn:active { transform: translateY(0) scale(0.98); transition: transform 120ms var(--ease-out); }
   @media (prefers-reduced-motion: reduce) { .btn:hover, .btn:active { transform: none; } }
-  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+  .btn:focus-visible, a:focus-visible,
+  button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible,
+  summary:focus-visible, [tabindex]:focus-visible, .chip:focus-visible {
+    outline: 3px solid var(--azul); outline-offset: 2px; transition: outline-offset 120ms var(--ease-out);
+  }
   .btn.ghost {
     background: transparent; color: var(--verde);
     border: 2px solid var(--verde); box-shadow: none;
@@ -205,10 +223,11 @@
   /* cartões-link do navegador da homepage */
   .card-link { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
   .card-link:hover { border-color: var(--verde); }
+  .card-link:active { transform: translateY(-2px) scale(0.99); transition-duration: 140ms; }
   .card-link .card-seta { margin-top: auto; padding-top: 14px; color: var(--verde); font-weight: 700; font-size: 14.5px; }
 
   /* ---------- animações de entrada ---------- */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
@@ -218,7 +237,7 @@
   .card.reveal, .prova-card.reveal, .sala-card.reveal, .od-card.reveal {
     transform: translateY(24px) rotate(-1.7deg);
     box-shadow: 0 20px 40px rgba(38, 51, 43, 0.16);
-    transition: opacity 0.55s ease, transform 0.72s cubic-bezier(0.3, 1.3, 0.55, 1), box-shadow 0.72s ease;
+    transition: opacity 0.5s var(--ease-out), transform 0.55s var(--ease-out), box-shadow 0.55s ease;
   }
   .cards .card.reveal:nth-child(even), .prova-grid .prova-card.reveal:nth-child(even),
   .salas-cards .sala-card.reveal:nth-child(even), .od-cards .od-card.reveal:nth-child(even) {
@@ -235,6 +254,14 @@
   @media (prefers-reduced-motion: reduce) {
     .card.reveal, .prova-card.reveal, .sala-card.reveal, .od-card.reveal {
       opacity: 1; transform: none; transition: none; box-shadow: var(--shadow);
+    }
+  }
+  /* ecrãs estreitos: reveal sobe sem rodar — a rotação fazia o bbox ultrapassar a viewport (~3px) */
+  @media (max-width: 480px) {
+    .card.reveal, .prova-card.reveal, .sala-card.reveal, .od-card.reveal,
+    .cards .card.reveal:nth-child(even), .prova-grid .prova-card.reveal:nth-child(even),
+    .salas-cards .sala-card.reveal:nth-child(even), .od-cards .od-card.reveal:nth-child(even) {
+      transform: translateY(20px);
     }
   }
 
@@ -256,7 +283,7 @@
   }
   /* flutuação suave da estrela — só desktop */
   @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
-    @keyframes pairar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes pairar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     .estrela-hero { animation: pairar 7s ease-in-out infinite 2.2s; }
   }
 
@@ -265,13 +292,14 @@
   .onda svg { display: block; width: 200%; height: 100%; }
 
   /* ---------- vida (micro-interações e ambiente) ---------- */
-  .card, .prova-card, .ilu-strip figure { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .card, .prova-card, .ilu-strip figure { transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease; }
   .card:hover, .prova-card:hover, .ilu-strip figure:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(38, 51, 43, 0.13); }
   .card-ilu { overflow: hidden; }
   .card-ilu img, .ilu-strip img { transition: transform 0.5s ease; }
   .card:hover .card-ilu img, .ilu-strip figure:hover img { transform: scale(1.06); }
-  .chip { transition: transform 0.2s ease, border-color 0.2s ease; }
+  .chip { transition: transform 160ms var(--ease-out), border-color 0.2s ease; }
   .chip:hover { transform: translateY(-3px); border-color: var(--rosa); }
+  .chip:active { transform: translateY(-1px) scale(0.98); transition-duration: 120ms; }
   .pico svg { transform-origin: center; }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -285,7 +313,7 @@
     @keyframes desenhar { to { stroke-dashoffset: 0; } }
     .hero h1 .risco svg path { stroke-dasharray: 230; stroke-dashoffset: 230; animation: desenhar 0.9s ease 1s forwards; }
 
-    @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     .confete { animation: flutuar 5s ease-in-out infinite; }
     .confete.c2 { animation-delay: 1.3s; } .confete.c3 { animation-delay: 2.4s; }
     .hero-ilu img { animation: flutuar 8s ease-in-out infinite 1.4s; }
@@ -296,8 +324,7 @@
     @keyframes abanar { 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
     .card:hover .pico svg { animation: abanar 0.5s ease; }
 
-    @keyframes pulso { 0%, 100% { box-shadow: 0 4px 14px rgba(30, 110, 66, 0.28); } 50% { box-shadow: 0 6px 26px rgba(30, 110, 66, 0.5); } }
-    .nav > .btn { animation: pulso 3.6s ease-in-out infinite 2s; }
+    /* (removido) o CTA da nav já não pulsa em loop — animação infinita sempre-visível distrai e envelhece mal */
 
   }
   .card h3 { margin-bottom: 6px; }
@@ -557,9 +584,10 @@
   .avo-destaque-chips button {
     font: inherit; font-weight: 700; font-size: 13.5px; cursor: pointer;
     background: #fff; border: 1.5px solid var(--card-border); border-radius: 999px;
-    padding: 9px 16px; color: var(--ink); transition: border-color 0.15s ease, transform 0.15s ease;
+    padding: 9px 16px; color: var(--ink); transition: border-color 0.15s ease, transform 160ms var(--ease-out);
   }
   .avo-destaque-chips button:hover { border-color: var(--verde); transform: translateY(-1px); }
+  .avo-destaque-chips button:active { transform: scale(0.97); transition-duration: 120ms; }
   .avo-destaque-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
   .avo-destaque-ctas .btn { cursor: pointer; }
   .avo-chat-topo { background: var(--verde); color: #fff; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
