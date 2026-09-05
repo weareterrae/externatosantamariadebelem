@@ -100,21 +100,65 @@
         </div>
         <div class="form-linha">
           <div class="campo">
-            <label for="c-idade">Idade da criança</label>
-            <select id="c-idade" name="idade_crianca">
-              <option>3-5 anos (Jardim de Infância)</option>
-              <option>6-10 anos (1.º Ciclo)</option>
-              <option>Outra idade</option>
+            <label for="c-idade">Idade da criança *</label>
+            <select id="c-idade" name="idade_crianca" required>
+              <option value="" disabled selected hidden>Escolha uma opção</option>
+              <option>3 anos (Exploradores)</option>
+              <option>4 anos (Aventureiros)</option>
+              <option>5 anos (Descobridores)</option>
+              <option>6-7 anos (1.º/2.º ano)</option>
+              <option>8-10 anos (3.º/4.º ano)</option>
+              <option>Ainda não nasceu / bebé</option>
             </select>
+            <span class="form-erro">Escolha a idade da criança.</span>
           </div>
           <div class="campo">
-            <label for="c-quando">Para quando procura vaga?</label>
-            <select id="c-quando" name="quando_vaga">
+            <label for="c-quando">Para quando procura vaga? *</label>
+            <select id="c-quando" name="quando_vaga" required>
+              <option value="" disabled selected hidden>Escolha uma opção</option>
+              <option>Já, o quanto antes</option>
               <option>Setembro 2026</option>
-              <option>Ao longo do ano</option>
-              <option>Só a informar-me</option>
+              <option>Ao longo do ano letivo</option>
+              <option>Só a informar-me, para já</option>
             </select>
+            <span class="form-erro">Escolha uma opção.</span>
           </div>
+        </div>
+
+        <div class="form-linha">
+          <div class="campo">
+            <label for="c-situacao">A criança já anda numa escola? *</label>
+            <select id="c-situacao" name="situacao_atual" required>
+              <option value="" disabled selected hidden>Escolha uma opção</option>
+              <option>Sim, quero mudar de escola</option>
+              <option>Sim, é a primeira escola dela (creche/ama)</option>
+              <option>Não, ainda não anda em lado nenhum</option>
+            </select>
+            <span class="form-erro">Escolha uma opção.</span>
+          </div>
+          <div class="campo">
+            <label for="c-zona">Onde mora? *</label>
+            <select id="c-zona" name="zona" required>
+              <option value="" disabled selected hidden>Escolha uma opção</option>
+              <option>Belém / Restelo</option>
+              <option>Ajuda / Alcântara</option>
+              <option>Outra zona de Lisboa</option>
+              <option>Fora de Lisboa</option>
+            </select>
+            <span class="form-erro">Escolha uma opção.</span>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="c-soube">Como soube do Externato?</label>
+          <select id="c-soube" name="como_soube">
+            <option value="" disabled selected hidden>Escolha uma opção (opcional)</option>
+            <option>Instagram ou Facebook</option>
+            <option>Google</option>
+            <option>Passei por lá / vivo perto</option>
+            <option>Recomendação de um amigo ou familiar</option>
+            <option>Outra forma</option>
+          </select>
         </div>
 
         <label class="consent">
